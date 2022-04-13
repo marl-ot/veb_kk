@@ -9,10 +9,10 @@
     <header class="adapt-header">
         <section class="container page-navbar">
             <div class="left-navbar">
-                <a href="./index.html" class="logo">
+                <a href="/" class="logo">
                     <img src="{% static '/main/img/logo.png' %}" alt="Контурные карты" class="logo-img" windth='230' height="200">
                 </a>
-                <a href="./index.html" class="title">Электронные контурные карты</a>
+                <a href="/" class="title">Электронные контурные карты</a>
             </div>
             <!-- <div class="center-navbar">
                 <a href="./add_page.php" class="center-nav-link">Карты</a>
@@ -24,15 +24,15 @@
                     <img src="{% static '/main/img/user.png' %}" alt="User">
                 </a>
                 <div class="navbar-registration">
-                    <a href="./login.html" class="registration-link">Войти</a>
-                    <a href="./registr.html" class="registration-link">Регистрация</a>
+                    <a href="/login" class="registration-link">Войти</a>
+                    <a href="/registr" class="registration-link">Регистрация</a>
                 </div>
             </div>
         </section>
     </header>
     <section class="form-sec">
 
-        <form class="auth-form" method="post" action="./registr.php">
+        <form class="auth-form" method="post" action="/registr">
             <span class="form-span">Регистрация</span>
             <input class="form-input" type="email" name="email" placeholder="Email">
             <input class="form-input" type="password" name="password" placeholder="Пароль">
