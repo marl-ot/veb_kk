@@ -12,7 +12,3 @@ def login(request):
 
 def registr(request):
     return render(request, 'main/registr.html')
-
-
-def home(request):
-    return HttpResponse('<h4> Перейди на ссылку index/ </h4>')
