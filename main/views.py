@@ -12,3 +12,6 @@ def login(request):
 
 def registr(request):
     return render(request, 'main/registr.html')
+
+def singleMap(request):
+    return render(request, 'main/singleMap.html')

@@ -1,90 +1,11 @@
-{% extends 'main/layout.html' %}
-{% load static %}
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+<!-- Main body -->
+<main>
+    <!-- welcome -->
+    <section class="welcome">
+        <video src="{% static '/main/video/enter_video.mov' %}" controls="controls" class="entering-video"></video>
+        <p class="welcome-text">Привет ученик, этот сайт позволит тебе сдавать контурные карты по&nbsp;географии в&nbsp;электронном виде. Никакой бумаги, представь! Ты&nbsp;можешь посмотреть видео, чтобы понять что тут к&nbsp;чему ;)</p>
+    </section>
 
-
-{% block title %}Электронные контурные карты{% endblock %}
-
-{% block body %}
-    <header class="adapt-header">
-        <section class="container page-navbar">
-            <div class="left-navbar">
-                <a href="/" class="logo">
-                    <img src="{% static 'main/img/logo.png' %}" alt="Контурные карты" class="logo-img" windth='230' height="200">
-                </a>
-                <a href="/" class="title">Электронные контурные карты</a>
-            </div>
-            <!-- <div class="center-navbar">
-                <a href="./add_page.php" class="center-nav-link">Карты</a>
-                <a href="./inquiries.php" class="center-nav-link">lorem</a>
-                <a href="./about_us.php" class="center-nav-link">О нас</a>
-            </div> -->
-            <div class="right-navbar">
-                <a href="" class="icon-account">
-                    <img src="{% static '/main/img/user.png' %}" alt="User">
-                </a>
-                <div class="navbar-registration">
-                    <a href="/login" class="registration-link">Войти</a>
-                    <a href="/registr" class="registration-link">Регистрация</a>
-                </div>
-            </div>
-        </section>
-    </header>
-    <main class="d-flex flex-column h-100">
-        <div class="menu">
-
-            <!-- Иконка меню -->
-            <div class="icon-close">
-                <img src="{% static '/main/img/close-btn.png' %}">
-            </div>
-
-            <!-- Меню -->
-            <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-
-        <!-- Main body -->
-        <div class="background">
-
-            <div class="icon-menu">
-                <img src="{% static '/main/img/menu-ham-icon.png' %}"> Menu
-            </div>
-        </div>
-
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="{% static '/main/js/menu.js' %}"></script>
-        <section class="map-sec">
-            <div class="map-div">
-                <span class="map-title">некая карта</span>
-                <img src="{% static '/main/img/map-1.png' %}" alt="" class="map-img">
-            </div>
-            <div class="map-info">
-                <span class="tasks-title">Lorem, ipsum dolor.</span>
-                <ul class="tasks">
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Ipsam itaque ipsum asperiores ipsa?</li>
-                    <li>Nostrum optio incidunt omnis illum!</li>
-                    <li>Quae reiciendis dignissimos temporibus sapiente.</li>
-                    <li>Cupiditate dignissimos hic quis possimus.</li>
-                </ul>
-                <span class="leg-title">Lorem, ipsum.</span>
-                <ul class="legend">
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Ipsam itaque ipsum asperiores ipsa?</li>
-                    <li>Nostrum optio incidunt omnis illum!</li>
-                    <li>Quae reiciendis dignissimos temporibus sapiente.</li>
-                    <li>Cupiditate dignissimos hic quis possimus.</li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
-        </div>
-    </footer>
+</main>
 {% endblock %}
