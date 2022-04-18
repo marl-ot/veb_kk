@@ -1,0 +1,6 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Карта{% endblock %} {% block main %}
+<script src="{% static '/main/js/singleMap.js' %}"></script>
+<script>
+    createPaint(document.querySelector('.wrapper'));
+</script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/main/css/style.css' %}" rel="stylesheet">
+    <link href="{% static '/main/css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header class="adapt-header">
+        <section class="page-navbar">
+            <div class="left-navbar">
+                <a href="/" class="logo">
+                    <img src="{% static 'main/img/logo-correct.png' %}" alt="Контурные карты" class="logo-img" windth='150' height="150">
+                </a>
+                <a href="/" class="title">Электронные контурные карты</a>
+            </div>
+            <div class="center-navbar">
+                <a href="/singleMap" class="center-nav-link">Карты</a>
+                <a href="" class="center-nav-link">Атласы</a>
+                <a href="" class="center-nav-link">Оценки</a>
+            </div>
+            <div class="right-navbar">
+                <div class="navbar-registration">
+                    <a href="/login" class="registration-link">Войти</a>
+                    <a href="/registr" class="registration-link">Регистрация</a>
+                </div>
+                <a href="" class="icon-account">
+                    <img src="{% static '/main/img/user.png' %}" alt="User">
+                </a>
+            </div>
+        </section>
+    </header>
+    <div class="wrapper">
+        <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+        <label class="btn-menu" for="hmt">
+        <span class="first"></span>
+        <span class="second"></span>
+        <span class="third"></span>
+        </label>
+        <ul class="hidden-menu">
+            <li><a class="menu-link" href="">Атласы</a></li>
+            <li><a class="menu-link" href="">Ваши карты</a></li>
+            <li><a class="menu-link" href="">Ваши задания</a></li>
+            <li><a class="menu-link" href="">Ваши оценки</a></li>
+            <li><a class="menu-link" href="">О нас</a></li>
+        </ul>
+        {% block main %} {% endblock %}
+    </div>
+    <footer>
+        <a href="/" class="to-start">В начало</a>
+        <span class="copyright"> Все права защищены</span>
+    </footer>
+</body>
+
+</html>
