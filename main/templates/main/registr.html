@@ -2,21 +2,15 @@
 <main>
     <section class="form-sec">
 
-        <form class="auth-form" method="post" action="/registr">
-            <span class="form-span">Регистрация</span>
-            <input class="form-input" type="email" name="email" placeholder="Email">
-            <input class="form-input" type="password" name="password" placeholder="Пароль">
-            <input class="form-input" type="text" name="username" placeholder="Ваше имя">
-            <input class="form-input" type="text" name="city" placeholder="Ваша школа">
-            <label class="form-input">
-                    <input type="checkbox" name="role" value="teacher">
-                    Я учитель
-            </label>
-            <label class="form-input">
-                <input type="checkbox" name="role" value="student">
-                Я ученик
-            </label>
-            <input class="form_sub" type="submit" name='register' value="Зарегистрироваться">
+        <form method="post">
+            {% csrf_token %}
+        
+        {% for f in form %}
+        <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        
+            <button type="submit">Регистрация</button>
         </form>
     </section>
 </main>

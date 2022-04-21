@@ -1,11 +1,13 @@
 from django.urls import path
-from . import views
+from main.views import *
 
 
 urlpatterns = [
-    path('', views.index),
-    path('login/', views.login),
-    path('registr/', views.registr),
-    path('singleMap/', views.singleMap)
+    path('', index, name = 'home'),
+    path('login/', LoginUser.as_view(), name = 'login'),
+    path('registr/', RegisterUser.as_view(), name = 'registration'),
+    path('singleMap/', singleMap, name = 'first map'),
+    path('logout/', logout_user, name = "logout")
 ]
 
+hendler404 = pageNotFound
