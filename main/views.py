@@ -1,7 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout, login
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
@@ -13,8 +12,8 @@ def index(request):
     return render(request, 'main/index.html')
 
 
-def login(request):
-    return render(request, 'main/login.html')
+#def login(request):
+#    return render(request, 'main/login.html')
 
 def singleMap(request):
     return render(request, 'main/singleMap.html')
@@ -42,7 +41,3 @@ class LoginUser(LoginView):
     def get_success_url(self):
         return reverse_lazy('home')
 
-
-def logout_user(request):
-    logout(request)
-    return redirect('login')
