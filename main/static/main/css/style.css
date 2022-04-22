@@ -238,16 +238,6 @@ main {
     width: 900px;
 }
 
-.form-error{
-    border: 2px solid #D8D8D8;
-    background-color: #D8D8D8;
-    margin: 50px auto 0;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    width: 900px;
-}
-
 .form-input {
     margin-top: 12px;
     margin-bottom: 5px;
