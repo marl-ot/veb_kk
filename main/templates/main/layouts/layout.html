@@ -15,22 +15,26 @@
     <header class="adapt-header">
         <section class="page-navbar">
             <div class="left-navbar">
-                <a href="/" class="logo">
+                <a href="{% url 'home' %}" class="logo">
                     <img src="{% static 'main/img/logo-correct.png' %}" alt="Контурные карты" class="logo-img" windth='150' height="150">
                 </a>
-                <a href="/" class="title">Электронные контурные карты</a>
+                <a href="{% url 'home' %}" class="title">Электронные контурные карты</a>
             </div>
             <div class="center-navbar">
-                <a href="/singleMap" class="center-nav-link">Карты</a>
+                <a href="{% url 'first map' %}" class="center-nav-link">Карты</a>
                 <a href="" class="center-nav-link">Атласы</a>
                 <a href="" class="center-nav-link">Оценки</a>
             </div>
             <div class="right-navbar">
                 <div class="navbar-registration">
-                    <a href="/login" class="registration-link">Войти</a>
-                    <a href="/registr" class="registration-link">Регистрация</a>
+                    {% if request.user.is_authenticated %}
+                    <li class="logout"> <a> Привет, </a> {{user.username}} <a href="{% url 'logout' %}">Выйти</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="registration-link">Войти</a>
+                    <a href="{% url 'registration' %}" class="registration-link">Регистрация</a>
+                    {% endif %}
                 </div>
-                <a href="" class="icon-account">
+                <a href="{% url 'login' %}" class="icon-account">
                     <img src="{% static '/main/img/user.png' %}" alt="User">
                 </a>
             </div>
@@ -53,7 +57,7 @@
         {% block main %} {% endblock %}
     </div>
     <footer>
-        <a href="/" class="to-start">В начало</a>
+        <a href="{% url 'home' %}" class="to-start">В начало</a>
         <span class="copyright"> Все права защищены</span>
     </footer>
 </body>
