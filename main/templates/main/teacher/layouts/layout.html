@@ -21,7 +21,7 @@
                 <!-- <a href="{% url 'home' %}" class="title">Электронные контурные карты</a> -->
             </div>
             <div class="center-navbar">
-                <a href="{% url 'singleMap' %}" class="center-nav-link">Карты</a>
+                <a href="{% url 'teacherClasses' %}" class="center-nav-link">Классы</a>
                 <a href="" class="center-nav-link">Меню</a>
                 <a href="" class="center-nav-link">О нас</a>
             </div>
@@ -30,7 +30,7 @@
                     {% if request.user.is_authenticated %}
                     <!-- <div class="logout"> -->
                     <span class="hello-text">
-                            Привет,  {{user.username}} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
+                            Здравствуйте,  {{user.username}} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
                         </span>{% else %}
                     <!-- </div> -->
                     <a href="{% url 'login' %}" class="registration-link">Войти</a>

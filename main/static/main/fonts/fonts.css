@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'Comic Sans MS';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Comic Sans MS'), url("Comic_Sans_MS.ttf") format('ttf');
+}
