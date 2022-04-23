@@ -20,11 +20,13 @@
                 </a>
                 <!-- <a href="{% url 'home' %}" class="title">Электронные контурные карты</a> -->
             </div>
+            {% if request.user.is_authenticated %}
             <div class="center-navbar">
                 <a href="{% url 'singleMap' %}" class="center-nav-link">Карты</a>
                 <a href="" class="center-nav-link">Меню</a>
                 <a href="" class="center-nav-link">О нас</a>
             </div>
+            {% endif %}
             <div class="right-navbar">
                 <div class="navbar-registration">
                     {% if request.user.is_authenticated %}
