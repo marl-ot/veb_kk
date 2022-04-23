@@ -1,0 +1,19 @@
+{% extends 'main/teacher/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+<main class="classes-wrapper">
+    <!-- <div class="classes-wrapper"> -->
+    <div class="classes-wrapper-2">
+        <section class="classes">
+            <a href="{% url 'singleClass' %}s" class="class-link">5 класс</a>
+            <a href="singleClass" class="class-link">6 класс</a>
+            <a href="singleClass" class="class-link">7 класс</a>
+        </section>
+        <section class="classes">
+            <a href="singleClass" class="class-link">8 класс</a>
+            <a href="singleClass" class="class-link">9 класс</a>
+            <a href="singleClass" class="class-link">10 класс</a>
+        </section>
+    </div>
+    <a href="singleClass" class="class-link  class-11">11 класс</a>
+    <!-- </div> -->
+</main>
+{% endblock %}

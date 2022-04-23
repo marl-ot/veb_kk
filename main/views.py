@@ -18,6 +18,14 @@ def index(request):
 def singleMap(request):
     return render(request, 'main/singleMap.html')
 
+def Teacher_index(request):
+    return render(request, 'main/teacher/index.html')
+
+def Teacher_classes(request):
+    return render(request, 'main/teacher/classes.html')
+
+def Single_class(request):
+    return render(request, 'main/teacher/singleClass.html')
 
 def pageNotFound(request, exeption):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')

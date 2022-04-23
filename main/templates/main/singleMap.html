@@ -1,6 +1,18 @@
 {% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Карта{% endblock %} {% block main %}
-<script src="{% static '/main/js/singleMap.js' %}"></script>
-<script>
-    createPaint(document.querySelector('.wrapper'));
-</script>
+<script src="{% static '/main/js/index.js' %}"></script>
+<section class="container-map">
+    <div id="toolbar">
+        <h3>Карта</h3>
+        <label for="stroke">Выбрать цвет</label>
+        <input id="stroke" name='stroke' type="color">
+        <label for="lineWidth">Длина линии</label>
+        <input id="lineWidth" name='lineWidth' type="number" value="5">
+        <button id="clear">Очистить</button>
+        <button id="undo">Назад</button><br><br>
+        <button id="plane">Самолет</button><br><br>
+    </div>
+    <div class="drawing-board">
+        <canvas id="drawing-board"></canvas>
+    </div>
+</section>
 {% endblock %}
