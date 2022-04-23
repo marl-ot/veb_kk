@@ -33,8 +33,7 @@
                             Привет,  {{user.username}} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
                         </span>{% else %}
                     <!-- </div> -->
-                    <a href="{% url 'login' %}" class="registration-link">Войти</a>
-                    <a href="{% url 'registration' %}" class="registration-link">Регистрация</a> {% endif %}
+                    <a href="{% url 'login' %}" class="registration-link">Войти</a>{% endif %}
                 </div>
                 <a href="{% url 'login' %}" class="icon-account">
                     <img src="{% static '/main/img/user.png' %}" alt="User" windth='119' height="119">

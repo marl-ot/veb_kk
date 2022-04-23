@@ -3,14 +3,17 @@
     <section class="form-sec">
 
         <form class="auth-form" method="post">
-            <span class="form-span">Вход</span> {% csrf_token %}
+            <span class="form-span">Войти в аккаунт</span> {% csrf_token %}
             <div class="form-input form-error">{{ form.non_field_errors }}</div>
             {% for f in form %}
             <div class="input-wrapper"><label class="form-input form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</div>
             <div class="form-input form-error">{{ f.errors }}</div>
             {% endfor %}
-            <button class="form-sub form-span" type="submit">Войти</button>
+            <div class="flex">
+                <a href="{% url 'registration' %}" class="flex-child form-sub form-span">Регистрация</a>
+                <button class="flex-child form-sub form-span" type="submit">Войти</button>
+            </div>
         </form>
-    </section>`
+    </section>
 </main>
 {% endblock %}
