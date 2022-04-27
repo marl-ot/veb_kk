@@ -7,9 +7,21 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, FormView
 from main.forms import *
 
+menu = [{'title': "Карты", 'url_name': 'maps'},
+        {'title': "Меню", 'url_name': 'maps'},
+        {'title': "О нас", 'url_name': 'maps'},
+        {'title': "Войти", 'url_name': 'maps'}
+]
+
 
 def index(request):
     return render(request, 'main/index.html')
+
+def about(request):
+    return HttpResponse('О НАС')
+
+def info(request):
+    return HttpResponse('МЕНЮ')
 
 
 #def login(request):
@@ -30,6 +42,8 @@ def Single_class(request):
 def pageNotFound(request, exeption):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
+def show_class(request, class_id):
+    return HttpResponse(f"Отображение класса с id = {class_id}")
 
 class RegisterUser (CreateView):
     form_class = UserCreationForm

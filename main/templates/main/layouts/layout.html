@@ -22,9 +22,13 @@
             </div>
             {% if request.user.is_authenticated %}
             <div class="center-navbar">
-                <a href="{% url 'singleMap' %}" class="center-nav-link">Карты</a>
-                <a href="" class="center-nav-link">Меню</a>
-                <a href="" class="center-nav-link">О нас</a>
+                <a href="{% url 'maps' %}" class="center-nav-link">Карты</a>
+                <a href="{% url 'menu' %}" class="center-nav-link">Меню</a>
+                <a href="{% url 'about' %}" class="center-nav-link">О нас</a>
+            </div>
+            {% else %}
+            <div class="left-navbar">
+                <a href="{% url 'home' %}" class="title">Электронные контурные карты</a>
             </div>
             {% endif %}
             <div class="right-navbar">
