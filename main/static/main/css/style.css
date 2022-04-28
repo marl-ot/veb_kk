@@ -38,15 +38,13 @@ a {
     box-sizing: border-box;
 }
 
-
-/* .title {
-    margin-left: 2%;
+.title {
     color: white;
     font-style: normal;
     font-weight: 900;
     font-size: 28px;
     line-height: 35px;
-} */
+}
 
 .logo-img {
     margin-left: 100px;
