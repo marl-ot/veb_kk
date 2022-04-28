@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from main.models import Classes
 from django.views.generic import ListView, DetailView, CreateView, FormView
 from main.forms import *
 
@@ -23,7 +24,6 @@ def about(request):
 def info(request):
     return HttpResponse('МЕНЮ')
 
-
 #def login(request):
 #    return render(request, 'main/login.html')
 
@@ -34,7 +34,7 @@ def Teacher_index(request):
     return render(request, 'main/teacher/index.html')
 
 def Teacher_classes(request):
-    return render(request, 'main/teacher/classes.html')
+    return render(request, 'main/teacher/classes.html', )
 
 def Single_class(request):
     return render(request, 'main/teacher/singleClass.html')
@@ -42,8 +42,14 @@ def Single_class(request):
 def pageNotFound(request, exeption):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
-def show_class(request, class_id):
-    return HttpResponse(f"Отображение класса с id = {class_id}")
+def show_class(request, num_class):
+    classes = Classes.objects.all()
+
+    context = {
+        'classes': classes,
+        'menu': menu
+    }
+    return HttpResponse(f"Отображение класса с id = {num_class}", context=context)
 
 class RegisterUser (CreateView):
     form_class = UserCreationForm
