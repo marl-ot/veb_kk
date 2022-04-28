@@ -1,9 +1,4 @@
-@import url('/main/static/main/fonts/fonts.css');
-body {
-    left: 0;
-    margin: 0;
-}
-
+@import url("../fonts/fonts.css");
 body,
 html {
     height: 100%;
@@ -81,11 +76,14 @@ a {
     align-items: center;
     margin-right: 100px;
 }
+
+
 /*
 .icon-account {
     margin-right: 126px;
 }
 */
+
 .navbar-registration {
     display: flex;
     flex-direction: column;
@@ -118,7 +116,7 @@ a {
 .wrapper {
     font-family: Comic Sans MS;
     display: flex;
-    /* flex-direction: column; */
+    /* flex-direction: row; */
     height: 100%;
     background-color: #FFE39C;
     box-sizing: border-box;
@@ -168,11 +166,13 @@ main {
     width: 742px;
 }
 
+
 /*.floated {
     float:left;
     margin-right:5px;
 }
 */
+
 .flex {
     display: -webkit-box;
     display: -moz-box;
@@ -183,10 +183,10 @@ main {
 
 .flex-child {
     -webkit-box-flex: 1 1 auto;
-    -moz-box-flex:  1 1 auto;
-    -webkit-flex:  1 1 auto;
-    -ms-flex:  1 1 auto;
-    flex:  1 1 auto;
+    -moz-box-flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
 .form-span {
@@ -275,9 +275,10 @@ main {
 }
 
 
-/* отрисовка карты */
+/* РѕС‚СЂРёСЃРѕРІРєР° РєР°СЂС‚С‹ */
 
-h3 {
+
+/* h3 {
     background-color: #fff;
     background-clip: text;
     -webkit-background-clip: text;
@@ -293,9 +294,13 @@ h3 {
 #toolbar {
     display: flex;
     flex-direction: column;
-    padding: 25px 15px 0;
-    width: 220px;
-    background-color: #FFAE63;
+    /* padding: 25px 15px 0; */
+
+
+/* width: 220px; */
+
+
+/* background-color: #FFAE63;
     color: white;
 }
 
@@ -332,7 +337,6 @@ h3 {
     font-size: 24px;
     line-height: 34px;
     max-width: 316px;
-    /* margin: 57px 66px 53px 360px; */
     -webkit-border-radius: 18px;
     -moz-border-radius: 18px;
     -ms-border-radius: 18px;
@@ -344,9 +348,38 @@ h3 {
 }
 
 canvas {
-    width: 800px;
+    width: 100%;
     height: 100%;
-    background-color: #fff;
+    /* background-color: #fff;
+} */
+
+
+/* v2 */
+
+.main-map {
+    display: flex;
+}
+
+.colorButtons {
+    display: block;
+    margin: 20px 0;
+}
+
+canvas {
+    cursor: crosshair;
+}
+
+div#sidebar {
+    position: absolute;
+    left: 0;
+    width: 150px;
+    padding: 20px 20px;
+    top: 300;
+}
+
+canvas#canvas {
+    left: 200px;
+    top: 300px;
 }
 
 
@@ -400,9 +433,9 @@ canvas {
 
 TABLE {
     width: 300px;
-    /* Ширина таблицы */
+    /* РЁРёСЂРёРЅР° С‚Р°Р±Р»РёС†С‹ */
     border-top: 2px solid #000;
-    /* Линия сверху таблицы */
+    /* Р›РёРЅРёСЏ СЃРІРµСЂС…Сѓ С‚Р°Р±Р»РёС†С‹ */
     border-bottom: 2px solid #000;
     color: #C0931E;
     font-style: normal;
@@ -411,28 +444,28 @@ TABLE {
     line-height: 29px;
     margin-bottom: 13px;
     margin-right: 27px;
-    /* Линия внизу таблицы */
+    /* Р›РёРЅРёСЏ РІРЅРёР·Сѓ С‚Р°Р±Р»РёС†С‹ */
 }
 
 TD,
 TH {
     padding: 3px;
-    /* Поля вокруг содержимого ячеек */
+    /* РџРѕР»СЏ РІРѕРєСЂСѓРі СЃРѕРґРµСЂР¶РёРјРѕРіРѕ СЏС‡РµРµРє */
 }
 
 TH {
     text-align: left;
-    /* Выравнивание по левому краю */
+    /* Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ РїРѕ Р»РµРІРѕРјСѓ РєСЂР°СЋ */
     border-bottom: 1px solid #000;
-    /* Линия снизу */
+    /* Р›РёРЅРёСЏ СЃРЅРёР·Сѓ */
 }
 
 .vl {
     border-right: 1px solid #000;
-    /* Линия справа */
+    /* Р›РёРЅРёСЏ СЃРїСЂР°РІР° */
 }
 
-</style>
+
 /* end of tableof class */
 
 
