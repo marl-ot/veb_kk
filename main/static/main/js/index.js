@@ -1,135 +1,6 @@
-// const canvas = document.getElementById('drawing-board');
-// const toolbar = document.getElementById('toolbar');
-// const ctx = canvas.getContext('2d');
-
-// const canvasOffsetX = canvas.offsetLeft;
-// const canvasOffsetY = canvas.offsetTop;
-
-// canvas.width = window.innerWidth - canvasOffsetX;
-// canvas.height = window.innerHeight - canvasOffsetY;
-
-// let isPainting = false;
-// let lineWidth = 5;
-// let drawing = false
-// var mouse = { x: 0, y: 0, color: 0 };
-// var previous = { x: 0, y: 0, color: 0 };
-// let points = [];
-// let pathsry = [];
-// let colorsry = "#000000";
-// ctx.strokeStyle = "#000000";
-// let draw_list = [];
-// let planexy = { x: 0, y: 0 };
-
 // var img = new Image();
-// img.src = 'test-map.png';
-// img.onload = function() {
-
-//     var pattern = context.createPattern(img, "repeat");
-//     context.fillStyle = pattern;
-//     context.fillRect(10, 10, 150, 150);
-//     context.strokeRect(10, 10, 150, 150);
-// };
-
-// toolbar.addEventListener('click', e => {
-//     if (e.target.id === 'clear') {
-//         ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     }
-// });
-
-
-// toolbar.addEventListener('click', e => {
-//     if (e.target.id === 'plane') {
-//         canvas.addEventListener('click', function(e) {
-//             drawing = false;
-//             mouse = oMousePos(canvas, e);
-//             planexy = { x: mouse.x, y: mouse.y };
-//             var img = new Image();
-//             img.src = 'plane-icon.svg';
-//             ctx.drawImage(img, planexy.x, planexy.y);
-//             canvas.removeEventListener('click');
-
-//         })
-
-
-//     }
-// });
-
-
-
-// toolbar.addEventListener('change', e => {
-//     if (e.target.id === 'stroke') {
-//         ctx.strokeStyle = e.target.value;
-//         colorsry = e.target.value;
-//     }
-
-//     if (e.target.id === 'lineWidth') {
-//         lineWidth = e.target.value;
-//     }
-
-// });
-// canvas.addEventListener('mousedown', function(e) {
-//     drawing = true;
-//     previous = { x: mouse.x, y: mouse.y };
-//     mouse = oMousePos(canvas, e);
-//     points = [];
-//     points.push({ x: mouse.x, y: mouse.y })
-// });
-
-// canvas.addEventListener('mousemove', function(e) {
-//     if (drawing) {
-//         ctx.lineWidth = lineWidth;
-//         ctx.lineCap = 'round';
-//         previous = { x: mouse.x, y: mouse.y };
-//         mouse = oMousePos(canvas, e);
-//         points.push({ x: mouse.x, y: mouse.y, color: colorsry })
-//         ctx.beginPath();
-//         ctx.moveTo(previous.x, previous.y);
-//         ctx.lineTo(mouse.x, mouse.y);
-//         ctx.stroke();
-//     }
-// }, false);
-
-
-// canvas.addEventListener('mouseup', function() {
-//     drawing = false;
-//     pathsry.push(points);
-
-// }, false);
-
-
-// undo.addEventListener("click", Undo);
-
-// function drawPaths() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     pathsry.forEach(path => {
-//         ctx.beginPath();
-//         ctx.moveTo(path[0].x, path[0].y);
-//         for (let i = 1; i < path.length; i++) {
-//             ctx.strokeStyle = path[i].color;
-//             ctx.lineTo(path[i].x, path[i].y);
-
-
-//         }
-//         ctx.stroke();
-//     })
-// }
-
-// function Undo() {
-//     pathsry.splice(-1, 1);
-//     drawPaths();
-// }
-
-
-// function oMousePos(canvas, evt) {
-//     var ClientRect = canvas.getBoundingClientRect();
-//     return {
-//         x: Math.round(evt.clientX - ClientRect.left),
-//         y: Math.round(evt.clientY - ClientRect.top)
-//     }
-// }
-// console.log(planexy)
-var img = new Image();
-img.src = "main/static/main/img/test-map.png";
+// img.src = "/static/main/img/map-1.png";
+// console.log(ctx.drawImage(img, 10, 10, 80, 150));
 
 var isMouseDown = false;
 var canvas = document.createElement('canvas');
@@ -137,8 +8,101 @@ var body = document.getElementsByTagName("main")[0];
 var ctx = canvas.getContext('2d');
 var linesArray = [];
 currentSize = 1;
-var currentColor = "rgb(200,20,100)";
-var currentBg = img;
+var currentColor = "rgb(0,0,0)";
+let cameraOffset = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+let cameraZoom = 1
+let MAX_ZOOM = 5
+let MIN_ZOOM = 0.1
+let SCROLL_SENSITIVITY = 0.0005
+ctx.translate(window.innerWidth / 2, window.innerHeight / 2)
+ctx.scale(cameraZoom, cameraZoom)
+ctx.translate(-window.innerWidth / 2 + cameraOffset.x, -window.innerHeight / 2 + cameraOffset.y)
+ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+
+//ZOOM
+
+function getEventLocation(e) {
+    if (e.touches && e.touches.length == 1) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    } else if (e.clientX && e.clientY) {
+        return { x: e.clientX, y: e.clientY }
+    }
+}
+
+
+let isDragging = false
+let dragStart = { x: 0, y: 0 }
+
+function onPointerDown(e) {
+    isDragging = true
+    dragStart.x = getEventLocation(e).x / cameraZoom - cameraOffset.x
+    dragStart.y = getEventLocation(e).y / cameraZoom - cameraOffset.y
+}
+
+function onPointerUp(e) {
+    isDragging = false
+    initialPinchDistance = null
+    lastZoom = cameraZoom
+}
+
+function onPointerMove(e) {
+    if (isDragging) {
+        cameraOffset.x = getEventLocation(e).x / cameraZoom - dragStart.x
+        cameraOffset.y = getEventLocation(e).y / cameraZoom - dragStart.y
+    }
+}
+
+function handleTouch(e, singleTouchHandler) {
+    if (e.touches.length == 1) {
+        singleTouchHandler(e)
+    } else if (e.type == "touchmove" && e.touches.length == 2) {
+        isDragging = false
+        handlePinch(e)
+    }
+}
+
+let initialPinchDistance = null
+let lastZoom = cameraZoom
+
+function handlePinch(e) {
+    e.preventDefault()
+
+    let touch1 = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    let touch2 = { x: e.touches[1].clientX, y: e.touches[1].clientY }
+
+    // This is distance squared, but no need for an expensive sqrt as it's only used in ratio
+    let currentDistance = (touch1.x - touch2.x) ** 2 + (touch1.y - touch2.y) ** 2
+
+    if (initialPinchDistance == null) {
+        initialPinchDistance = currentDistance
+    } else {
+        adjustZoom(null, currentDistance / initialPinchDistance)
+    }
+}
+
+function adjustZoom(zoomAmount, zoomFactor) {
+    if (!isDragging) {
+        if (zoomAmount) {
+            cameraZoom += zoomAmount
+        } else if (zoomFactor) {
+            console.log(zoomFactor)
+            cameraZoom = zoomFactor * lastZoom
+        }
+
+        cameraZoom = Math.min(cameraZoom, MAX_ZOOM)
+        cameraZoom = Math.max(cameraZoom, MIN_ZOOM)
+
+        console.log(zoomAmount)
+    }
+}
+
+canvas.addEventListener('mousedown', onPointerDown)
+canvas.addEventListener('touchstart', (e) => handleTouch(e, onPointerDown))
+canvas.addEventListener('mouseup', onPointerUp)
+canvas.addEventListener('touchend', (e) => handleTouch(e, onPointerUp))
+canvas.addEventListener('mousemove', onPointerMove)
+canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove))
+canvas.addEventListener('wheel', (e) => adjustZoom(e.deltaY * SCROLL_SENSITIVITY))
 
 // INITIAL LAUNCH
 
@@ -201,13 +165,17 @@ canvas.addEventListener('mouseup', mouseup);
 // CREATE CANVAS
 
 function createCanvas() {
+    var img = new Image();
+    img.src = '/static/main/img/test-map-1.png';
     canvas.id = "canvas";
-    canvas.width = parseInt(document.getElementById("sizeX").value);
-    canvas.height = parseInt(document.getElementById("sizeY").value);
+    canvas.width = img.width;
+    canvas.height = img.height;
     canvas.style.zIndex = 8;
     canvas.style.position = "absolute";
     canvas.style.border = "1px solid";
-    ctx.fillStyle = currentBg;
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+    }
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     body.appendChild(canvas);
 }
@@ -224,7 +192,7 @@ function downloadCanvas(link, canvas, filename) {
 function save() {
     localStorage.removeItem("savedCanvas");
     localStorage.setItem("savedCanvas", JSON.stringify(linesArray));
-    console.log("Saved canvas!");
+    alert("Saved canvas!");
 }
 
 // LOAD FUNCTION
