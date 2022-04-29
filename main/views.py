@@ -42,14 +42,10 @@ def Single_class(request):
 def pageNotFound(request, exeption):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
-def show_class(request, num_class):
+def show_class(request, num_id):
     classes = Classes.objects.all()
 
-    context = {
-        'classes': classes,
-        'menu': menu
-    }
-    return HttpResponse(f"Отображение класса с id = {num_class}", context=context)
+    return HttpResponse(f"Отображение класса с id = {num_id}", classes)
 
 class RegisterUser (CreateView):
     form_class = UserCreationForm

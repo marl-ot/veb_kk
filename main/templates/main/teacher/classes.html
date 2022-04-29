@@ -1,9 +1,20 @@
-{% extends 'main/teacher/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+{% extends 'main/teacher/layouts/layout.html' %} {% load static %} 
+{% block title %}Электронные контурные карты{% endblock %} 
+{% block main %}
 <main class="classes-wrapper">
-    <!-- <div class="classes-wrapper"> -->
+    <ul class="list-articles">
         {% for c in classes %}
-            <a href="singleClass" class="class-link">5 класс</a>
-            <a href="{% url 'class' c.pk %}">Смотреть класс</a>
-    <!-- </div> -->
+                <li><div class="article-panel">
+        <p class="first">Категория: {{c.number}}</p>
+        <p class="last">Дата: {{c.num_id}}</p>
+    </div>
+    
+                    <h2>{{c.content}}</h2>
+        {{c.photo}}
+                <div class="clear"></div>
+                <p class="link-read-post"><a href="{{ c.get_absolute_url }}">Читать пост</a></p>
+                </li>
+        {% endfor %}
+    </ul>
 </main>
 {% endblock %}
