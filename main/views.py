@@ -36,14 +36,14 @@ def Teacher_index(request):
 def Teacher_classes(request):
     return render(request, 'main/teacher/classes.html', )
 
-def Single_class(request):
-    return render(request, 'main/teacher/singleClass.html')
+#def Single_class(request, num_id):
+#    return render(request, 'main/teacher/singleClass.html')
 
 def pageNotFound(request, exeption):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 def show_class(request, num_id):
-    return HttpResponse(f"Отображение класса с id = {num_id}")
+    return render(request, 'main/teacher/singleClass.html') #HttpResponse(f"Отображение класса с id = {num_id}")
 
 class RegisterUser (CreateView):
     form_class = UserCreationForm
@@ -63,3 +63,11 @@ class LoginUser(LoginView):
     def get_success_url(self):
         return reverse_lazy('home')
 
+'''
+class LoginTeacher(LoginView):
+    form_class = LoginUserForm
+    template_name = 'main/login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('teacher')
+'''

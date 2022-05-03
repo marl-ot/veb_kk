@@ -11,7 +11,7 @@ urlpatterns = [
     path('singleMap/', singleMap, name = 'maps'),
     path('teacher/', Teacher_index, name = 'teacher'),
     path('teacher/classes/', Teacher_classes, name = 'classes'),
-    path('teacher/singleClass/', Single_class, name = 'class'),
+    #path('teacher/class/', Single_class, name = 'class'),
     path('logout/', LogoutView.as_view(next_page = settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('menu/', info, name = "menu"),
     path('about/', about, name = "about"),
