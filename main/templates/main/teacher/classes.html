@@ -2,19 +2,20 @@
 {% block title %}Электронные контурные карты{% endblock %} 
 {% block main %}
 <main class="classes-wrapper">
-    <ul class="list-articles">
-        {% for c in classes %}
-                <li><div class="article-panel">
-        <p class="first">Категория: {{c.number}}</p>
-        <p class="last">Дата: {{c.num_id}}</p>
+    <!-- <div class="classes-wrapper"> -->
+    <div class="classes-wrapper-2">
+        <section class="classes">
+            <a href="{% url 'class' %}" class="class-link">5 класс</a>
+            <a href="{% url 'class' %}" class="class-link">6 класс</a>
+            <a href="{% url 'class' %}" class="class-link">7 класс</a>
+        </section>
+        <section class="classes">
+            <a href="{% url 'class' %}" class="class-link">8 класс</a>
+            <a href="{% url 'class' %}" class="class-link">9 класс</a>
+            <a href="{% url 'class' %}" class="class-link">10 класс</a>
+        </section>
     </div>
-    
-                    <h2>{{c.content}}</h2>
-        {{c.photo}}
-                <div class="clear"></div>
-                <p class="link-read-post"><a href="{{ c.get_absolute_url }}">Читать пост</a></p>
-                </li>
-        {% endfor %}
-    </ul>
+    <a href="{% url 'class' %}" class="class-link  class-11">11 класс</a>
+    <!-- </div> -->
 </main>
 {% endblock %}
