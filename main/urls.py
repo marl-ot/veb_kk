@@ -15,7 +15,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page = settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('menu/', info, name = "menu"),
     path('about/', about, name = "about"),
-    #path('teacher/class/<int:num_id>/', show_class, name = "class")
+    path('teacher/class/<int:num_id>/', show_class, name = "num_class")
 ]
 
 hendler404 = pageNotFound
