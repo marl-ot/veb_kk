@@ -45,7 +45,7 @@ def pageNotFound(request, exeption):
 def show_class(request, num_id):
     return render(request, 'main/teacher/singleClass.html') #HttpResponse(f"Отображение класса с id = {num_id}")
 
-class RegisterUser (CreateView):
+class RegisterUser(CreateView):
     form_class = UserCreationForm
     template_name = 'main/registr.html'
     success_url = reverse_lazy('login')
@@ -55,6 +55,25 @@ class RegisterUser (CreateView):
         login(self.request, user)
         return redirect('home')
 
+'''
+def a_change_password(request):
+    u = User.objects.get(username=request.user)
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            old_password = request.POST.get("old_password")
+            new_pass = request.POST.get("new_password")
+            new_pass_rep = request.POST.get("new_password_repeat")
+            if check_password(old_password, u.password):
+                return HttpResponse('ok')
+            else:
+                return HttpResponse('bad')
+    else:
+            form = ChangePasswordForm()
+
+    return render(request, 'login/change_password.html',
+              {'form': form, 'user': u})
+'''
 
 class LoginUser(LoginView):
     form_class = LoginUserForm
