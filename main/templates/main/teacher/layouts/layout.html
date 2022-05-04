@@ -3,7 +3,7 @@
 {% if request.user.is_authenticated %}
     <div class="center-navbar">
         <a href="{% url 'classes' %}" class="center-nav-link">Классы</a>
-        <a href="{% url 'menu' %}" class="center-nav-link">Меню</a>
+        <a href="{% url '#' %}" class="center-nav-link">Меню</a>
         <a href="{% url 'about' %}" class="center-nav-link">О нас</a>
     </div>
 {% else %}
