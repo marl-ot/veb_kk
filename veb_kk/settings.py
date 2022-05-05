@@ -135,3 +135,17 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = "home"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+'''
+EMAIL_BACKEND = 'django.core.mail.backends.smpt.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'mail@mail.mail'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'mail@mail.mail'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+'''
+ACCOUNT_EMAIL_VERIFICATION = "none"

@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.urls import path
 from main.views import *
+from django.contrib.auth import views
 
 
 
@@ -11,7 +12,6 @@ urlpatterns = [
     path('singleMap/', singleMap, name = 'maps'),
     path('teacher/', Teacher_index, name = 'teacher'),
     path('teacher/classes/', Teacher_classes, name = 'classes'),
-    #path('teacher/class/', Single_class, name = 'class'),
     path('logout/', LogoutView.as_view(next_page = settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('menu/', info, name = "menu"),
     path('about/', about, name = "about"),
@@ -20,6 +20,10 @@ urlpatterns = [
     path('user/password-change/done/', PasswordChangeDoneView.as_view(), name='password_change_done'),
     path('account/', account_student, name = 'account_student'),
     path('teacher/account/', account_teacher, name = 'account_teacher'),
+    path('user/password-reset/', views.PasswordResetView.as_view(), name='password_reset'),
+    path('user/password-reset/done/', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('user/reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('user/reset/done/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ]
 
 hendler404 = pageNotFound
