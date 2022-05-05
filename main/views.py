@@ -24,6 +24,12 @@ def about(request):
 def info(request):
     return HttpResponse('МЕНЮ')
 
+def account_student(request):
+    return render(request, 'main/account.html')
+
+def account_teacher(request):
+    return render(request, 'main/teacher/account.html')
+
 #def login(request):
 #    return render(request, 'main/login.html')
 
