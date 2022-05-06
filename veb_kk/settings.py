@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'teacher.apps.TeacherConfig',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,7 +135,9 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGOUT_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL_STUDENT = "home"
+
+LOGOUT_REDIRECT_URL_TEACHER = "home_teacher"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 '''
