@@ -52,7 +52,14 @@
         </section>
     </header>
     <div class="wrapper">
+        <main>
+        {% if request.user.is_authenticated %}
+            <ul class="hidden-menu">
+                <li><a class="menu-link" href="{% url 'account_teacher' %}">Аккаунт</a></li>
+            </ul>
+        {% endif %}
         {% block main %} {% endblock %}
+        </main>
     </div>
     <footer>
         {% block footer %}

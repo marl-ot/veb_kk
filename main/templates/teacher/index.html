@@ -1,9 +1,6 @@
 {% extends 'teacher/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
 <!-- Main body -->
 <main>
-    <ul class="hidden-menu">
-        <li><a class="menu-link" href="{% url 'account_teacher' %}">Аккаунт</a></li>
-    </ul>
     <!-- welcome -->
     <section class="welcome">
         <video src="{% static 'teacher/video/enter_video.mov' %}" controls="controls" class="entering-video"></video>

@@ -8,7 +8,7 @@ from main.models import Classes
 from django.views.generic import (ListView, DetailView, CreateView, FormView)
 from main.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
 from django.contrib.auth.views import (PasswordResetDoneView, PasswordChangeView, PasswordResetCompleteView,
-PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView,)
+PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordChangeDoneView)
 
 
 def index(request):
@@ -35,10 +35,8 @@ def show_class(request, num_id):
 class PasswordChangeUser(PasswordChangeView):
     form_class = UserPasswordChangeForm
     template_name = 'teacher/password_form_change.html'
-    success_url = reverse_lazy('about_teacher')
-    
-    def get_success_url(self):
-        return reverse_lazy('home_teacher')
+    success_url = reverse_lazy("password_change_done_teacher")
+
 
 
 class PasswordResetUser(PasswordResetView):
@@ -59,10 +57,12 @@ class PasswordResetConfirmUser(PasswordResetConfirmView):
 class PasswordResetCompleteUser(PasswordResetCompleteView):
     template_name = 'teacher/password_reset_complete.html'
     title = ("Восстановление пароля завершено")
-    time.sleep(2)
-    
-    def get_success_url(self):
-        return reverse_lazy('home_teacher')
+
+
+class PasswordChangeDoneUser(PasswordChangeDoneView):
+    template_name = "teacher/password_change_done.html"
+    title = ("Изменение пароля завершено")
+
 
 
 

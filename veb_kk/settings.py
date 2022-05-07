@@ -135,9 +135,9 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGOUT_REDIRECT_URL_STUDENT = "home"
+LOGOUT_REDIRECT_URL_STUDENT = "home" #??????
 
-LOGOUT_REDIRECT_URL_TEACHER = "home_teacher"
+LOGOUT_REDIRECT_URL_TEACHER = "home_teacher" #?????
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 '''
@@ -152,3 +152,6 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 '''
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+#print ("base dir path", BASE_DIR)
+#print (MEDIA_ROOT)
