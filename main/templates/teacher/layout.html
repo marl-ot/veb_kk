@@ -1,13 +1,18 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'teacher/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
     <link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+    <link type="image/x-icon" rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}">
+    <link type="image/png" sizes="16x16" rel="icon" href="{% static 'main/img/favicon/favicon-16x16.png' %}">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'main/img/favicon/favicon-32x32.png' %}">
+    <link type="image/png" sizes="96x96" rel="icon" href="{% static 'main/img/favicon/favicon-96x96.png' %}">
+    <link type="image/png" sizes="120x120" rel="icon" href="{% static 'main/img/favicon/favicon-120x120.png' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -16,7 +21,7 @@
         <section class="page-navbar">
             <div class="left-navbar">
                 <a href="{% url 'home_teacher' %}" class="logo">
-                    <img src="{% static 'teacher/gif/logo.gif' %}" alt="Контурные карты" class="logo-gif" windth='220' height="220">
+                    <img src="{% static 'main/gif/logo.gif' %}" alt="Контурные карты" class="logo-gif" windth='220' height="220">
                 </a>
             </div>
 {% block body %}
@@ -43,7 +48,7 @@
                     <a href="{% url 'login_teacher' %}" class="registration-link">Войти</a>{% endif %}
                 </div>
                 <a href="{% url 'login_teacher' %}" class="icon-account">
-                    <img src="{% static 'teacher/img/user.png' %}" alt="User" windth='119' height="119">
+                    <img src="{% static 'main/img/user.png' %}" alt="User" windth='119' height="119">
                 </a>
             </div>
         </section>

@@ -1,0 +1,17 @@
+{% extends 'teacher/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+
+    <h1>Страница с оценками</h1>
+    {% if estimation %}
+        {% for i in estimation %}
+            <div class="alert alert-warning">
+                <h3>{{ i.surname }}</h3>
+                <h3>{{ i.name }}</h3>
+                <h3>{{ i.patronymic }}</h3>
+                <a href ="{% url 'students' i.id %}" class="btn btn-warning">Подробнее</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Оценок пока нет</p>
+    {% endif %}
+    <a href="{% url 'editing' %}" class="form-sub">Поставить оценку</a>
+{% endblock %}
