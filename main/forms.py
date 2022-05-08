@@ -1,22 +1,23 @@
 from django import forms
-from django.contrib.auth.forms import (
-    UserCreationForm, 
-    AuthenticationForm, 
-    PasswordChangeForm,
-)
+from django.contrib.auth.forms import (UserCreationForm, AuthenticationForm, PasswordChangeForm,)
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import (
-    PasswordResetForm, SetPasswordForm,
-)
+from django.contrib.auth.forms import (PasswordResetForm, SetPasswordForm,)
 
-
+#-------------------------РЕГИСТРАЦИЯ-----------------------
 class RegisterUserForm(UserCreationForm):
     error_messages = {
         "password_mismatch": ("Пароли не совпадают"),
         'class': ('form-input'),
     }
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    #email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(
+        label='Логин', 
+        widget=forms.TextInput(attrs={'class': 'form-input'}),
+        strip=False,
+    )
+#    email = forms.EmailField(
+#        label='Email', 
+#        widget=forms.EmailInput(attrs={'class': 'form-input'}),
+#    )
     password1 = forms.CharField(
         label='Пароль', 
         widget=forms.PasswordInput(attrs={'class': 'form-input'}),
@@ -27,12 +28,12 @@ class RegisterUserForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={'class': 'form-input'}),
         strip=False,
     )
-    #is_staff = forms.ChoiceField(choices='учитель, ученик')
 
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2') #'email','is_staff'
+        fields = ('username', 'password1', 'password2')#email[1]
 
+#-----------------АВТОРИЗАЦИЯ-----------------------------
 
 class LoginUserForm(AuthenticationForm):
     error_messages = {
@@ -53,6 +54,7 @@ class LoginUserForm(AuthenticationForm):
         strip=False,
     )
 
+#-------------------СБРОС ПАРОЛЯ------------------------
 
 class ResetUserForm(PasswordResetForm):
     email = forms.EmailField(
@@ -68,7 +70,7 @@ class ResetUserForm(PasswordResetForm):
         widget=forms.EmailInput(attrs={'class': 'form-input'}),
     )
 
-
+#-----------------ИЗМЕНЕНИЕ ЗАБЫТОГО ПАРОЛЯ----------------------------
 class NewPasswordForm(SetPasswordForm):
     error_messages = {
         "password_mismatch": ("Пароли не совпадают"),
@@ -84,7 +86,7 @@ class NewPasswordForm(SetPasswordForm):
         widget=forms.PasswordInput(attrs={'class': 'form-input'}),
     )
 
-
+#--------------------СМЕНА ПАРОЛЯ-----------------------------
 class UserPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(
         label='Старый пароль', 

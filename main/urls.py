@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.urls import path
 from main.views import *
-from django.contrib.auth import views
+#from django.contrib.auth import views
 
 
 
@@ -14,7 +14,7 @@ urlpatterns = [
     path('menu/', info, name = "menu"),
     path('about/', about, name = "about"),
     path('password-change/', PasswordChangeUser.as_view(), name='password_change'),
-    path('password-change/done/', PasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('password-change/done/', PasswordChangeDoneUser.as_view(), name='password_change_done'),
     path('account/', account_student, name = 'account_student'),
     path('password-reset/', PasswordResetUser.as_view(), name='password_reset'),
     path('password-reset/done/', PasswordResetDoneUser.as_view(), name='password_reset_done'),

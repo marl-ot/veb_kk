@@ -22,36 +22,31 @@ def info(request):
 def account_student(request):
     return render(request, 'main/account.html')
 
-#def account_teacher(request):
-#    return render(request, 'main/teacher/account.html')
-
-#def login(request):
-#    return render(request, 'main/login.html')
 
 def singleMap(request):
     return render(request, 'main/singleMap.html')
 
-#def Teacher_index(request):
-#    return render(request, 'main/teacher/index.html')
-
-#def Teacher_classes(request):
-#    return render(request, 'main/teacher/classes.html', )
 
 def pageNotFound(request, exeption):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
-#def show_class(request, num_id):
-#    return render(request, 'main/teacher/class.html')
+
+#---------------------ИЗМЕНЕНИЕ ПАРОЛЯ------------------------
 
 class PasswordChangeUser(PasswordChangeView):
     form_class = UserPasswordChangeForm
     template_name = 'main/password_form_change.html'
-    success_url = reverse_lazy('about')
+    success_url = reverse_lazy('password_reset_done')
     
     def get_success_url(self):
         return reverse_lazy('home')
 
 
+class PasswordChangeDoneUser(PasswordChangeDoneView):
+    template_name = "main/password_change_done.html"
+    title = ("Изменение пароля завершено")
+
+#-----------------------СБРОС ПАРОЛЯ--------------------------
 class PasswordResetUser(PasswordResetView):
     form_class = ResetUserForm
     template_name = 'main/password_reset_form.html'
@@ -71,7 +66,7 @@ class PasswordResetCompleteUser(PasswordResetCompleteView):
     template_name = 'main/password_reset_complete.html'
     title = ("Восстановление пароля завершено")
 
-
+#---------------------РЕГИСТРАЦИЯ-----------------------------
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'main/registr.html'
@@ -82,7 +77,7 @@ class RegisterUser(CreateView):
         login(self.request, user)
         return redirect('home')
 
-
+#---------------------АВТОРИЗАЦИЯ---------------------------------
 class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'main/login.html'

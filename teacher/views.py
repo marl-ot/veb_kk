@@ -1,10 +1,10 @@
-import time
+#import time
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from main.models import Classes
+#from teacher.models import
 from django.views.generic import (ListView, DetailView, CreateView, FormView)
 from main.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
 from django.contrib.auth.views import (PasswordResetDoneView, PasswordChangeView, PasswordResetCompleteView,
@@ -32,12 +32,19 @@ def pageNotFound(request, exeption):
 def show_class(request, num_id):
     return render(request, 'teacher/class.html')
 
+    
+#---------------------ИЗМЕНЕНИЕ ПАРОЛЯ------------------------
 class PasswordChangeUser(PasswordChangeView):
     form_class = UserPasswordChangeForm
     template_name = 'teacher/password_form_change.html'
     success_url = reverse_lazy("password_change_done_teacher")
 
 
+class PasswordChangeDoneUser(PasswordChangeDoneView):
+    template_name = "teacher/password_change_done.html"
+    title = ("Изменение пароля завершено")
+
+#---------------------СБРОС ПАРОЛЯ------------------------
 
 class PasswordResetUser(PasswordResetView):
     form_class = ResetUserForm
@@ -58,13 +65,7 @@ class PasswordResetCompleteUser(PasswordResetCompleteView):
     template_name = 'teacher/password_reset_complete.html'
     title = ("Восстановление пароля завершено")
 
-
-class PasswordChangeDoneUser(PasswordChangeDoneView):
-    template_name = "teacher/password_change_done.html"
-    title = ("Изменение пароля завершено")
-
-
-
+#---------------------РЕГИСТРАЦИЯ------------------------
 
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
@@ -76,7 +77,7 @@ class RegisterUser(CreateView):
         login(self.request, user)
         return redirect('home_teacher')
 
-
+#---------------------АВТОРИЗАЦИЯ------------------------
 class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'teacher/login.html'
