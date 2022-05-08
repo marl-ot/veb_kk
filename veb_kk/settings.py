@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-9^b46ihlac-9x^2qwybc*@&+9o@o@q6=-r$**-e#t_ng#g!*l=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'teacher.apps.TeacherConfig',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,7 +135,9 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGOUT_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL_STUDENT = "home" #??????
+
+LOGOUT_REDIRECT_URL_TEACHER = "home_teacher" #?????
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 '''
@@ -149,3 +152,6 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 '''
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+#print ("base dir path", BASE_DIR)
+#print (MEDIA_ROOT)

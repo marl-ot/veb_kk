@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static '/main/css/style.css' %}" rel="stylesheet">
     <link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+    <link type="image/x-icon" rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}">
+    <link type="image/png" sizes="16x16" rel="icon" href="{% static 'main/img/favicon/favicon-16x16.png' %}">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'main/img/favicon/favicon-32x32.png' %}">
+    <link type="image/png" sizes="96x96" rel="icon" href="{% static 'main/img/favicon/favicon-96x96.png' %}">
+    <link type="image/png" sizes="120x120" rel="icon" href="{% static 'main/img/favicon/favicon-120x120.png' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -52,7 +57,14 @@
         </section>
     </header>
     <div class="wrapper">
+        <main>
+        {% if request.user.is_authenticated %}
+            <ul class="hidden-menu">
+                <li><a class="menu-link" href="{% url 'account_teacher' %}">Аккаунт</a></li>
+            </ul>
+        {% endif %}
         {% block main %} {% endblock %}
+        </main>
     </div>
     <footer>
         {% block footer %}
