@@ -34,8 +34,6 @@ class StudentsDeleteView(DeleteView):
 #        return reverse_lazy('raitings')
 
 
-
-
 def editing(request):
     error = ''
     if request.method == 'POST':
