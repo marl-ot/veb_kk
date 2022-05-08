@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 #from teacher.models import
 from django.views.generic import (ListView, DetailView, CreateView, FormView)
-from main.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
+from teacher.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
 from django.contrib.auth.views import (PasswordResetDoneView, PasswordChangeView, PasswordResetCompleteView,
 PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordChangeDoneView)
 
@@ -49,6 +49,7 @@ class PasswordChangeDoneUser(PasswordChangeDoneView):
 class PasswordResetUser(PasswordResetView):
     form_class = ResetUserForm
     template_name = 'teacher/password_reset_form.html'
+    success_url = reverse_lazy("password_reset_done_teacher")
 
 
 class PasswordResetDoneUser(PasswordResetDoneView):
@@ -59,6 +60,7 @@ class PasswordResetDoneUser(PasswordResetDoneView):
 class PasswordResetConfirmUser(PasswordResetConfirmView):
     template_name = "teacher/password_reset_confirm.html"
     form_class = NewPasswordForm
+    success_url = reverse_lazy("password_reset_complete_teacher")
 
 
 class PasswordResetCompleteUser(PasswordResetCompleteView):
