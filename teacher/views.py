@@ -26,11 +26,14 @@ def account_teacher(request):
 def Teacher_classes(request):
     return render(request, 'teacher/classes.html', )
 
-def pageNotFound(request, exeption):
+def pageNotFound():
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 def show_class(request, num_id):
-    return render(request, 'teacher/class.html')
+    if 4 < num_id < 12:
+        return render(request, 'teacher/class.html')
+    else:
+        return pageNotFound()
 
     
 #---------------------ИЗМЕНЕНИЕ ПАРОЛЯ------------------------
