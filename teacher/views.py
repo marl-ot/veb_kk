@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 #from teacher.models import
 from django.views.generic import (ListView, DetailView, CreateView, FormView)
-from teacher.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
+from main.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
 from django.contrib.auth.views import (PasswordResetDoneView, PasswordChangeView, PasswordResetCompleteView,
 PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordChangeDoneView)
 
