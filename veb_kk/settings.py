@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'raitings.apps.RaitingsConfig',
     'teacher.apps.TeacherConfig',
     'main.apps.MainConfig',
     'django.contrib.admin',
