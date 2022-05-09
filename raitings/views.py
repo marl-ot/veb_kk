@@ -30,8 +30,8 @@ class StudentsDeleteView(DeleteView):
     success_url = 'raitings'
     template_name = 'table/table_delete.html'
 
-#    def get_success_url(self):
-#        return reverse_lazy('raitings')
+    def get_success_url(self):
+        return reverse_lazy('raitings')
 
 
 def editing(request):

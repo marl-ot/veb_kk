@@ -29,7 +29,28 @@ def Teacher_classes(request):
 def pageNotFound():
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
-def show_class(request, num_id):
+#def show_class(request, num_id):
+#    if 4 < num_id < 12:
+#        return render(request, 'teacher/class.html')
+#    else:
+#        return pageNotFound()
+
+
+def show_class_a(request, num_id):
+    if 4 < num_id < 12:
+        return render(request, 'teacher/class.html')
+    else:
+        return pageNotFound()
+
+
+def show_class_b(request, num_id):
+    if 4 < num_id < 12:
+        return render(request, 'teacher/class.html')
+    else:
+        return pageNotFound()
+
+
+def show_class_c(request, num_id):
     if 4 < num_id < 12:
         return render(request, 'teacher/class.html')
     else:
