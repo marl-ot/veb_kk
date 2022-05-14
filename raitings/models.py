@@ -6,11 +6,11 @@ class Articles(models.Model):
     name = models.CharField('Имя', max_length = 50)
     patronymic = models.CharField('Отчество', max_length = 50)
     task = models.CharField('Задание', max_length = 200)
-    estimation = models.IntegerField('Оценка', validators=[MinValueValidator(2), MaxValueValidator(5)])
+    estimation = models.IntegerField('Оценка', validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
         return self.surname
-    
+
     def get_absolute_url(self):
         return f'/raitings/{self.id}'
 
