@@ -43,8 +43,8 @@
                     {% if request.user.is_authenticated %}
                     <!-- <div class="logout"> -->
                     <span class="hello-text">
-                            Привет,  {{user.username}} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
-                        </span>{% else %}
+                          <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
+                    </span>{% else %}
                     <!-- </div> -->
                     <a href="{% url 'login' %}" class="registration-link">Войти</a>{% endif %}
                 </div>
@@ -62,11 +62,6 @@
     </header>
     <div class="wrapper ">
         <main>
-        {% if request.user.is_authenticated %}
-            <ul class="hidden-menu ">
-                <li><a class="menu-link " href="{% url 'account_teacher' %} ">Аккаунт</a></li>
-            </ul>
-        {% endif %}
         {% block main %} {% endblock %}
         </main>
     </div>
