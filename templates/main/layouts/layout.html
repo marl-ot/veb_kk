@@ -69,12 +69,12 @@
                         {% if request.user.is_teacher %}
                             <!-- <div class="logout"> -->
                                 <span class="hello-text">
-                                    Здравствуйте,  {% if request.user.first_name %} {{user.first_name}} {% else %} {{user.username}} {% endif %} <a href="{% url 'logout_teacher' %}" class="logout-link">Выйти</a>
+                                    {% if request.user.first_name %} {{user.first_name}} {% else %} {{user.username}} {% endif %} <a href="{% url 'logout_teacher' %}" class="logout-link">Выйти</a>
                                 </span>
                         {% else %}
                     <!-- <div class="logout"> -->
                     <span class="hello-text">
-                            Привет,  {% if request.user.first_name == None %} {{user.username}} {% else %} {{user.first_name}} {% endif %} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
+                            {% if request.user.first_name == None %} {{user.username}} {% else %} {{user.first_name}} {% endif %} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
                         </span>
                         {% endif %}
                     {% else %}
@@ -104,7 +104,7 @@
                 </header>
                         {% endif %}
     <div class="wrapper">
-    <!--<main>
+    <main><!--
         {% if request.user.is_authenticated %}
             {% if request.user.is_teacher %}
                 <ul class="hidden-menu">
@@ -115,9 +115,9 @@
                     <li><a class="menu-link" href="{% url 'account' %}">Аккаунт</a></li>
                 </ul>
             {% endif %}
-        {% endif %}
+        {% endif %}-->
         {% block main %} {% endblock %}
-        </main>-->
+        </main>
     </div>
     <footer>
         {% block footer %}

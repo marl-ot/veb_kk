@@ -11,7 +11,7 @@ html {
 .registration-link:hover,
 .form-sub:hover,
 .title:hover {
-    color: black;
+    color: rgb(42, 63, 182);
     text-decoration: none;
 }
 
@@ -20,7 +20,7 @@ html {
 
 .adapt-header {
     font-family: Comic Sans MS;
-    background: #FFAE63;
+    background: #6db9f3;
     /* padding: 1% 3%; */
     margin: 0 auto;
     position: relative;
@@ -41,7 +41,7 @@ html {
 }
 
 .title {
-    color: white;
+    color: rgb(1, 1, 1);
     font-style: normal;
     font-weight: 900;
     font-size: 28px;
@@ -66,7 +66,7 @@ html {
 }
 
 .center-nav-link {
-    color: white;
+    color: rgb(10, 9, 9);
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -126,7 +126,7 @@ html {
     display: flex;
     /* flex-direction: row; */
     height: 100%;
-    background-color: #FFE39C;
+    background-color: #6db9f3;
     box-sizing: border-box;
 }
 
@@ -184,7 +184,7 @@ main {
 */
 
 .form-span {
-    color: black;
+    color: rgb(212, 210, 210);
     font-style: bold;
     font-weight: 900;
     font-size: 36px;
@@ -423,7 +423,7 @@ canvas#canvas {
 }
 
 .class-h2 {
-    color: black;
+    color: rgb(186, 185, 185);
     font-style: bold;
     font-weight: 900;
     font-size: 45px;

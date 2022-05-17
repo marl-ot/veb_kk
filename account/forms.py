@@ -4,7 +4,7 @@ from django.forms import ModelForm, TextInput, NumberInput, EmailInput, DateInpu
 class ProfileForm(ModelForm):
     class Meta:
         model = Auth
-        fields = ['first_name', 'last_name', 'patronymic', 'school_number', 'birth_date', 'email']
+        fields = ['first_name', 'last_name', 'patronymic', 'birth_date', 'email']
 
         widgets = {
             'first_name': TextInput(attrs ={
@@ -22,10 +22,6 @@ class ProfileForm(ModelForm):
             'email': EmailInput(attrs={
                 'class':'form-control',
                 'placeholder':'Почта'
-            }),
-            'school_number': NumberInput(attrs={
-                'class':'form-control',
-                'placeholder':'Номер школы'
             }),
             'birth_date': DateInput(attrs={
                 'class':'form-control',
