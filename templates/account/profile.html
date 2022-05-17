@@ -1,0 +1,27 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Личный кабинет{% endblock %} 
+{% block main %}
+    {% if request.user.is_authenticated %}
+        <h1>Личный кабинет</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        <span>{{ error }}</span>
+        <style>
+        input[type='number'] {
+            -moz-appearance:textfield;
+        }
+        
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    </style>
+        <button class="btn btn-success" type="submit">Сохранить</button>
+    </form>
+        {% if request.user.is_teacher %}
+            <a href="{% url 'password_change_teacher' %}" class="form-sub">Смена пароля</a>
+        {% else %}
+            <a href="{% url 'password_change' %}" class="form-sub">Смена пароля</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
