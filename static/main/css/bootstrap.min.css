@@ -258,7 +258,8 @@ sup {
     top: -.5em
 }
 
-a:hover {
+
+/* a:hover {
     color: #562C05
 }
 
@@ -266,7 +267,7 @@ a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
     color: inherit;
     text-decoration: none
-}
+} */
 
 code,
 kbd,
@@ -298,9 +299,10 @@ code {
     word-wrap: break-word
 }
 
-a>code {
+
+/* a>code {
     color: inherit
-}
+} */
 
 kbd {
     padding: .2rem .4rem;
@@ -4776,11 +4778,12 @@ fieldset:disabled .btn {
     color: rgba(0, 0, 0, .55)
 }
 
-.navbar-light .navbar-text a,
+
+/* .navbar-light .navbar-text a,
 .navbar-light .navbar-text a:focus,
 .navbar-light .navbar-text a:hover {
     color: rgba(0, 0, 0, .9)
-}
+} */
 
 .navbar-dark .navbar-brand {
     color: #fff
@@ -4822,11 +4825,12 @@ fieldset:disabled .btn {
     color: rgba(255, 255, 255, .55)
 }
 
-.navbar-dark .navbar-text a,
+
+/* .navbar-dark .navbar-text a,
 .navbar-dark .navbar-text a:focus,
 .navbar-dark .navbar-text a:hover {
     color: #fff
-}
+} */
 
 .card {
     position: relative;

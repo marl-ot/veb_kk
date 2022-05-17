@@ -2,16 +2,16 @@
 body,
 html {
     height: 100%;
+    width: 100%;
     min-height: 1000px;
     min-width: 1000px;
 }
 
 .center-nav-link:hover,
-.registration-link:hover {
-    color: #C0931E;
-}
-
-a {
+.registration-link:hover,
+.form-sub:hover,
+.title:hover {
+    color: black;
     text-decoration: none;
 }
 
@@ -114,6 +114,8 @@ a {
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
+    margin-bottom: 13px;
+    margin-right: 27px;
 }
 
 
@@ -161,15 +163,17 @@ main {
 
 .form-sec {
     display: flex;
+    justify-content: center;
+    margin-top: 200px;
 }
 
 .auth-form {
-    margin: 4em auto 1em;
     border: 2px solid white;
     background-color: white;
     display: flex;
     flex-direction: column;
-    width: 742px;
+    min-width: 1000px;
+    align-items: center;
 }
 
 
@@ -179,29 +183,13 @@ main {
 }
 */
 
-.flex {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-}
-
-.flex-child {
-    -webkit-box-flex: 1 1 auto;
-    -moz-box-flex: 1 1 auto;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-}
-
 .form-span {
-    margin: 1em auto;
     color: black;
     font-style: bold;
     font-weight: 900;
-    font-size: 32px;
+    font-size: 36px;
     line-height: 45px;
+    padding-top: 10px;
 }
 
 .input-wrapper {
@@ -213,9 +201,15 @@ main {
     margin: auto;
     color: #C0931E;
     font-family: Comic Sans MS;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 28px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.login-buttons button {
+    margin: 0 30px;
 }
 
 .form-sub {
@@ -233,19 +227,26 @@ main {
     font-size: 24px;
     line-height: 34px;
     max-width: 316px;
-    margin: 2em auto;
+    margin: 30px auto;
     -webkit-border-radius: 18px;
     -moz-border-radius: 18px;
     -ms-border-radius: 18px;
     -o-border-radius: 18px;
 }
 
-.form_sub:hover {
+
+/* .form_sub:hover {
     transition: all 0.5s;
     box-shadow: 0px 0px 20px 18px rgba(255, 255, 255, 1);
     -webkit-box-shadow: 0px 0px 20px 18px rgba(255, 255, 255, 1);
     -moz-box-shadow: 0px 0px 20px 18px rgba(255, 255, 255, 1);
-}
+    -webkit-transition:;
+    -moz-transition:;
+    -ms-transition:;
+    -o-transition:; */
+
+
+/* } */
 
 .success {
     color: #050537;
@@ -380,12 +381,27 @@ div#sidebar {
     left: 0;
     width: 150px;
     padding: 20px 20px;
-    top: 300;
+    /* top: 300; */
 }
 
 canvas#canvas {
-    left: 200px;
+    left: 250px;
     top: 300px;
+}
+
+.Storage input {
+    margin-bottom: 15px;
+}
+
+.legend-task {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+}
+
+.legend {
+    padding-top: 100px;
 }
 
 
@@ -394,15 +410,32 @@ canvas#canvas {
 .classes-wrapper,
 .classes {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
 }
 
 .classes-wrapper {
     margin: 38px 72px;
 }
 
-.classes-wrapper-2 {
-    display: flex;
+.classes {
+    flex-direction: column;
+}
+
+.class-h2 {
+    color: black;
+    font-style: bold;
+    font-weight: 900;
+    font-size: 45px;
+    line-height: 45px;
+    padding-left: 40px;
+}
+
+@media (max-width: 2500px) {
+    .classes-wrapper {
+        /* flex-direction: column; */
+        max-width: 1300px;
+    }
 }
 
 .class-link {
@@ -427,9 +460,10 @@ canvas#canvas {
     -o-border-radius: 42px;
 }
 
-.class-11 {
+
+/* .class-11 {
     width: 657px;
-}
+} */
 
 
 /* end of classes */
@@ -479,7 +513,7 @@ TH {
 
 footer {
     font-family: Comic Sans MS;
-    flex: 1 0 auto;
+    /* flex: 1 0 auto; */
     display: flex;
     background-color: #FFAE63;
     color: white;
