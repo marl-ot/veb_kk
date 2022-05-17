@@ -15,40 +15,12 @@ def account(request):
         if profile_form.is_valid():
             profile_form.save()
             messages.success(request, ('Ваш профиль был успешно обновлен!'))
-            return redirect('home')
+            if request.user.is_teacher == True:
+                return redirect('home_teacher')
+            else:
+                return redirect('home')
         else:
             messages.error(request, ('Пожалуйста, исправьте ошибки.'))
     else:
         profile_form = ProfileForm(instance=request.user)
-    return render(request, 'account/profile.html', {
-        'profile_form': profile_form
-    })
-
-
-#def account(request):
-#    return render(request, 'account/profile.html')
-"""
-def account(request):
-    error = ''
-    if request.method == 'POST':
-        form = ProfileForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        else:
-            error = 'Форма была заполнена неверно'
-
-    form = ProfileForm()
-
-    context = {
-        'form': form,
-        'error': error
-    }
-    return render(request, 'account/profile.html', context=context)
-"""
-""" 
-def account(request, user_id):
-    user = Auth.objects.get(pk=user_id)
-    user.profile.bio = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
-    user.save()
-"""
+    return render(request, 'account/profile.html', {'profile_form': profile_form})

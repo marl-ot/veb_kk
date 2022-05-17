@@ -1,39 +1,12 @@
-from django.contrib.auth import login #logout
-from django.contrib.auth.views import LoginView #LogoutView
-from django.http import HttpResponse, HttpResponseNotFound #Http404
-from django.shortcuts import render, redirect #get_object_or_404
+from django.contrib.auth import login
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponse, HttpResponseNotFound
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import  CreateView #FormView, ListView, DetailView
+from django.views.generic import  CreateView
 from main.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
 from django.contrib.auth.views import (PasswordResetDoneView, PasswordChangeView, PasswordResetCompleteView,
 PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView,)
-#from main.forms import UserForm, IsTeacherForm
-#from django.contrib.auth.decorators import login_required
-#from django.db import transaction
-#from django.contrib import messages
-
-""" 
-@login_required
-@transaction.atomic
-def update_profile(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        isteacher_form = IsTeacherForm(request.POST, instance=request.user.isteacher)
-        if user_form.is_valid() and isteacher_form.is_valid():
-            user_form.save()
-            isteacher_form.save()
-            messages.success(request, _('Ваш профиль был успешно обновлен!'))
-            return redirect('settings:profile') #!!!!!!!!!!!!!!!!
-        else:
-            messages.error(request, _('Пожалуйста, исправьте ошибки.'))
-    else:
-        user_form = UserForm(instance=request.user)
-        isteacher_form = IsTeacherForm(instance=request.user.isteacher)
-    return render(request, 'main/profile.html', {
-        'user_form': user_form,
-        'isteacher_form': isteacher_form
-    })
-"""
 
 
 def index(request):
@@ -44,10 +17,6 @@ def about(request):
 
 def info(request):
     return HttpResponse('МЕНЮ')
-
-def account_student(request):
-    return render(request, 'main/account.html')
-
 
 def singleMap(request):
     return render(request, 'main/singleMap.html')

@@ -11,9 +11,14 @@
                 {% endfor %}
             </div>
         <div class="flex">
-            <a href="{% url 'registration' %}" class="flex-child form-sub">Регистрация</a>
-            <button class="flex-child form-sub" type="submit">Войти</button>
-            <a href="{% url 'password_reset' %}" class="flex-child form-sub">Забыли пароль?</a>
+            {% if request.user.is_teacher %}
+                <button class="flex-child form-sub" type="submit">Войти</button>
+                <a href="{% url 'password_reset_teacher' %}" class="flex-child form-sub">Забыли пароль?</a>
+            {% else %}
+                <a href="{% url 'registration' %}" class="flex-child form-sub">Регистрация</a>
+                <button class="flex-child form-sub" type="submit">Войти</button>
+                <a href="{% url 'password_reset' %}" class="flex-child form-sub">Забыли пароль?</a>
+            {% endif %}
         </div>
     </form>
 </section>

@@ -137,9 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'main.Auth'
 
-LOGOUT_REDIRECT_URL_STUDENT = "home" #??????
-
-LOGOUT_REDIRECT_URL_TEACHER = "home_teacher" #?????
+LOGOUT_REDIRECT_URL = "home"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 '''
