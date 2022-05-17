@@ -4,12 +4,7 @@
         <h1>Личный кабинет</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.last_name }}<br>
-        {{ form.first_name }}<br>
-        {{ form.patronymic }}<br>
-        {{ form.email }}<br>
-        {{ form.birth_date }}<br>
-        {{ form.school_number }}<br>
+        {{ profile_form.as_p }}
         <span>{{ error }}</span>
         <button class="btn btn-success" type="submit">Сохранить</button>
     </form>
