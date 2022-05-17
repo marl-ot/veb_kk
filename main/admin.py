@@ -1,9 +1,9 @@
 from django.contrib import admin
-from main.models import Classe, Auth, Work, DoneWork, Grade, School
+from main.models import Classes, Auth, Works, DoneWorks, Grades, Schools
 
-admin.site.register(Grade)
-admin.site.register(DoneWork)
-admin.site.register(Work)
+admin.site.register(Grades)
+admin.site.register(DoneWorks)
+admin.site.register(Works)
 admin.site.register(Auth)
-admin.site.register(Classe)
-admin.site.register(School)
+admin.site.register(Classes)
+admin.site.register(Schools)
