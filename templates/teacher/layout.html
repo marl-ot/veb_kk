@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+    <link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+    <link type="image/x-icon" rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}">
+    <link type="image/png" sizes="16x16" rel="icon" href="{% static 'main/img/favicon/favicon-16x16.png' %}">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'main/img/favicon/favicon-32x32.png' %}">
+    <link type="image/png" sizes="96x96" rel="icon" href="{% static 'main/img/favicon/favicon-96x96.png' %}">
+    <link type="image/png" sizes="120x120" rel="icon" href="{% static 'main/img/favicon/favicon-120x120.png' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header class="adapt-header">
+        <section class="page-navbar">
+            <div class="left-navbar">
+                <a href="{% url 'home_teacher' %}" class="logo">
+                    <img src="{% static 'main/gif/logo.gif' %}" alt="Контурные карты" class="logo-gif" windth='220' height="220">
+                </a>
+            </div>
+{% block body %}
+{% if request.user.is_authenticated %}
+    <div class="center-navbar">
+        <a href="{% url 'classes' %}" class="center-nav-link">Класс</a>
+        <a href="#" class="center-nav-link">Меню</a>
+        <a href="{% url 'about_teacher' %}" class="center-nav-link">О нас</a>
+    </div>
+{% else %}
+    <div class="left-navbar">
+        <a href="{% url 'home_teacher' %}" class="title">Электронные контурные карты</a>
+    </div>
+{% endif %}
+{% endblock %}
+            <div class="right-navbar">
+                <div class="navbar-registration">
+                    {% if request.user.is_authenticated %}
+                    <!-- <div class="logout"> -->
+                    <span class="hello-text">
+                            Привет,  {{user.username}} <a href="{% url 'logout_teacher' %}" class="logout-link">Выйти</a>
+                        </span>{% else %}
+                    <!-- </div> -->
+                    <a href="{% url 'login' %}" class="registration-link">Войти</a>
+                </div>
+                    <a href="{% url 'login' %}" class="icon-account">
+                    {% endif %}
+                    <img src="{% static 'main/img/user.png' %}" alt="User" windth='119' height="119">
+                </a>
+            </div>
+                
+        </section>
+    </header>
+    <div class="wrapper">
+        <main>
+            {% if request.user.is_authenticated %}
+            <ul class="hidden-menu">
+                <li><a class="menu-link" href="{% url 'account_teacher' %}">Аккаунт</a></li>
+            </ul>
+            {% endif %}
+        {% block main %} {% endblock %}
+        </main>
+    </div>
+    <footer>
+        {% block footer %}
+        <a href="{% url 'home_teacher' %}" class="to-start">На главную</a>
+        <a href="{% url 'about_teacher' %}" class="to-start">О нас</a>
+        <span class="copyright"> Все права защищены</span>
+        {% endblock %}
+    </footer>
+</body>
+
+</html>

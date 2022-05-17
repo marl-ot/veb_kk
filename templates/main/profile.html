@@ -1,0 +1,10 @@
+{% extends 'main/layouts/layout.html' %}{% load static %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <button type="submit">Сохранить изменения</button>
+</form>
+
+{% endblock %}
