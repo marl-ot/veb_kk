@@ -1,5 +1,5 @@
 from ratings.models import Articles
-from django.forms import ModelForm, TextInput, IntegerField
+from django.forms import ModelForm, TextInput
 
 class ArticlesForm(ModelForm):
     class Meta:

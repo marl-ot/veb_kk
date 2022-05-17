@@ -1,16 +1,16 @@
-from django.contrib.auth import logout, login
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login #logout
+from django.contrib.auth.views import LoginView #LogoutView
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect #get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import (ListView, DetailView, CreateView, FormView)
+from django.views.generic import  CreateView #FormView, ListView, DetailView
 from main.forms import (UserPasswordChangeForm, LoginUserForm, NewPasswordForm, RegisterUserForm, ResetUserForm)
 from django.contrib.auth.views import (PasswordResetDoneView, PasswordChangeView, PasswordResetCompleteView,
 PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView,)
 #from main.forms import UserForm, IsTeacherForm
-from django.contrib.auth.decorators import login_required
-from django.db import transaction
-from django.contrib import messages
+#from django.contrib.auth.decorators import login_required
+#from django.db import transaction
+#from django.contrib import messages
 
 """ 
 @login_required
