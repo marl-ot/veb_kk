@@ -6,18 +6,18 @@ from django.urls import reverse_lazy
 
 def ratings(request):
     estimation= Articles.objects.order_by('surname')
-    return render(request, 'table/table_rating.html', {'estimation':estimation})
+    return render(request, 'ratings/table_rating.html', {'estimation':estimation})
 
 
 class StudentsDetailView(DetailView):
     model = Articles
-    template_name = 'table/details_view.html'
+    template_name = 'ratings/details_view.html'
     context_object_name = 'article'
 
 
 class StudentsUpdateView(UpdateView):
     model = Articles
-    template_name = 'table/table_editing.html'
+    template_name = 'ratings/table_editing.html'
     form_class = ArticlesForm
 
     def get_success_url(self):
@@ -28,7 +28,7 @@ class StudentsUpdateView(UpdateView):
 class StudentsDeleteView(DeleteView):
     model = Articles
     success_url = 'ratings'
-    template_name = 'table/table_delete.html'
+    template_name = 'ratings/table_delete.html'
 
     def get_success_url(self):
         return reverse_lazy('ratings')
@@ -46,8 +46,8 @@ def editing(request):
 
     form = ArticlesForm()
 
-    data = {
+    context = {
         'form': form,
         'error': error
     }
-    return render(request, 'table/table_editing.html', data)
+    return render(request, 'ratings/table_editing.html', context=context)

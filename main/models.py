@@ -28,7 +28,10 @@ def save_user_profile(sender, instance, **kwargs):
 """
 
 class Auth(AbstractUser):
-    patronymic = models.CharField(null=True, verbose_name = 'Отчество', max_length=255)
+    email = models.EmailField(null=True, verbose_name = 'Почта', max_length=150)
+    last_name = models.CharField(null=True, verbose_name = 'Фамилия', max_length=150)
+    first_name = models.CharField(null=True, verbose_name = 'Имя', max_length=150)
+    patronymic = models.CharField(null=True, verbose_name = 'Отчество', max_length=150)
     school_number = models.IntegerField(null=True, verbose_name = 'Номер школы')
     birth_date = models.DateField(null=True, verbose_name = 'Дата рождения', blank=True)
     is_teacher = models.BooleanField(verbose_name = 'Учитель', default=False)
