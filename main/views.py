@@ -22,7 +22,7 @@ def singleMap(request):
     return render(request, 'main/singleMap.html')
 
 
-def pageNotFound(request, exeption):
+def pageNotFound(request, **kwargs):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 

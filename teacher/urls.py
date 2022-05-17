@@ -1,11 +1,12 @@
 from django.conf import settings
 from django.urls import path
-from main.views import (index, LoginUser, RegisterUser, singleMap, 
-                        info, about, PasswordChangeDoneUser, PasswordChangeUser,
-                        PasswordResetCompleteUser, PasswordResetConfirmUser,
-                        PasswordResetDoneUser, PasswordResetUser, pageNotFound)
 from teacher.views import Teacher_classes, show_class_a, show_class_b, show_class_c
 from django.contrib.auth.views import LogoutView
+from main.views import (index, LoginUser, RegisterUser, info, about, 
+                        PasswordChangeDoneUser, PasswordChangeUser,
+                        PasswordResetCompleteUser, PasswordResetConfirmUser,
+                        PasswordResetDoneUser, PasswordResetUser, pageNotFound)
+
 
 
 

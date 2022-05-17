@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from ratings.models import Articles
+from main.views import pageNotFound
 from ratings.forms import ArticlesForm
 from django.views.generic import DetailView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 
 def ratings(request):
     estimation= Articles.objects.order_by('surname')
-    return render(request, 'ratings/table_rating.html', {'estimation':estimation})
+    if request.user.is_teacher:
+        return render(request, 'ratings/table_rating.html', {'estimation':estimation})
+    else:
+        return pageNotFound(request)
 
 
 class StudentsDetailView(DetailView):

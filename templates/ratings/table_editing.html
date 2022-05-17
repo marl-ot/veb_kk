@@ -10,6 +10,16 @@
         {{ form.task }}<br>
         {{ form.estimation }}<br>
         <span>{{ error }}</span>
+        <style>
+            input[type='number'] {
+                -moz-appearance:textfield;
+            }
+            
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+        </style>
         <button class="btn btn-success" type="submit">Оценить</button>
     </form>
 {% endblock %}
