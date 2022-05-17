@@ -46,8 +46,8 @@ def editing(request):
 
     form = ArticlesForm()
 
-    data = {
+    context = {
         'form': form,
         'error': error
     }
-    return render(request, 'ratings/table_editing.html', data)
+    return render(request, 'ratings/table_editing.html', context=context)
