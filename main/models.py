@@ -28,30 +28,31 @@ def save_user_profile(sender, instance, **kwargs):
 """
 
 class Auth(AbstractUser):
-    patronymic = models.CharField(verbose_name = 'Отчество', max_length=255)
-    school_number = models.IntegerField(null=True, verbose_name = 'Номер школы', blank=True)
+    patronymic = models.CharField(null=True, verbose_name = 'Отчество', max_length=255)
+    school_number = models.IntegerField(null=True, verbose_name = 'Номер школы')
     birth_date = models.DateField(null=True, verbose_name = 'Дата рождения', blank=True)
     is_teacher = models.BooleanField(verbose_name = 'Учитель', default=False)
 
 
 class Classes(models.Model):
     class_number = models.IntegerField(verbose_name = 'Номер Класса', validators=[MinValueValidator(1), MaxValueValidator(11)], default=1)
-    class_letter = models.CharField(verbose_name = 'Буква класса', max_length=2, default="what's letter?")
+    class_letter = models.CharField(verbose_name = 'Буква класса', max_length=5, default="буква")
 
     def __str__(self):
         return (str(self.class_number) + str(self.class_letter))
 
 class Works(models.Model):
-    work = models.ImageField(verbose_name = 'Работа', upload_to="base_maps/%Y/%m/%d/", default='base_map')
-    legend = models.CharField(verbose_name = 'Легенда', max_length=255, default='text')
-    task = models.CharField(verbose_name = 'Задание', max_length=255, default='text')
+    work = models.ImageField(verbose_name = 'Работа', upload_to="base_maps/%Y/%m/%d/", default='Базовая карта')
+    legend = models.CharField(verbose_name = 'Легенда', max_length=255, default='Легенда')
+    task = models.CharField(verbose_name = 'Задание', max_length=255, default='Задание')
 
 class DoneWorks(models.Model):
     student = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = 'Идентификация студента', on_delete = models.PROTECT)
-    done_work = models.ImageField(verbose_name = 'Готовая работа', upload_to="done_map/%Y/%m/%d/", default='current_map')
+    done_work = models.ImageField(verbose_name = 'Готовая работа', upload_to="done_map/%Y/%m/%d/", default='Готовая карта')
     work = models.ForeignKey(Works, verbose_name = 'Идентификация работы', on_delete = models.CASCADE)
     time_create = models.DateTimeField(verbose_name = 'Время создания', auto_now_add=True)
     time_update = models.DateTimeField(verbose_name = 'Время обновления', auto_now=True)
+    comment_from_student = models.CharField(verbose_name = 'Комментарий', max_length=255, default='Комментарий')
 
 
 class Grades(models.Model):
@@ -59,8 +60,6 @@ class Grades(models.Model):
     work = models.ForeignKey(DoneWorks, verbose_name = 'Идентификация работы', on_delete = models.CASCADE)
     grade = models.IntegerField(verbose_name = 'Оценка', validators=[MinValueValidator(1), MaxValueValidator(5)])
     teacher = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = 'Учитель', on_delete = models.CASCADE, related_name = 'My_teacher')
-
-#class MyUser(AbstractBaseUser):
-
+    comment_from_teacher = models.CharField(verbose_name = 'Комментарий', max_length=255, default='Комментарий')
 
 #school_number = models.CharField(max_length=30, blank=True)
