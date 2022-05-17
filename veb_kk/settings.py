@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'ratings.apps.RatingsConfig',
+    #'ratings.apps.RatingsConfig',
     'account.apps.AccountConfig',
     'teacher.apps.TeacherConfig',
     'main.apps.MainConfig',
