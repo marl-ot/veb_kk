@@ -47,14 +47,13 @@
                     <span class="hello-text">
                             Привет,  {{user.username}} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
                         </span>{% else %}
-                    <!-- </div> -->
-                    <a href="{% url 'login' %}" class="registration-link">Войти</a>
+                        <!-- </div> -->
+                        <a href="{% url 'login' %}" class="registration-link">Войти</a>{% endif %}
+                    </div>
+                    <a href="{% url 'account' %}" class="icon-account">
+                        <img src="{% static '/main/img/user.png' %}" alt="User" windth='119' height="119">
+                    </a>
                 </div>
-                    <a href="{% url 'login' %}" class="icon-account">
-                    {% endif %}
-                    <img src="{% static 'main/img/user.png' %}" alt="User" windth='119' height="119">
-                </a>
-            </div>
             
         </section>
     </header>
@@ -62,7 +61,7 @@
         <main>
         {% if request.user.is_authenticated %}
             <ul class="hidden-menu">
-                <li><a class="menu-link" href="{% url 'account_student' %}">Аккаунт</a></li>
+                <li><a class="menu-link" href="{% url 'account' %}">Аккаунт</a></li>
             </ul>
         {% endif %}
         {% block main %} {% endblock %}

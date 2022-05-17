@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.urls import path
 from teacher.views import *
+from django.contrib.auth.views import LogoutView
 #from django.contrib.auth import views
 
 

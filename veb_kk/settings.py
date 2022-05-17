@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'ratings.apps.RatingsConfig',
+    'account.apps.AccountConfig',
     'teacher.apps.TeacherConfig',
     'main.apps.MainConfig',
     'django.contrib.admin',

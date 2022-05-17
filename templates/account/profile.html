@@ -1,0 +1,8 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Личный кабинет{% endblock %} 
+{% block main %}
+    {% if request.user.is_authenticated %}
+        
+        <a href="{% url 'password_change' %}" class="form-sub">Смена пароля</a>
+
+    {% endif %}
+{% endblock %}
