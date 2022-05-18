@@ -27,10 +27,10 @@ class RegisterUserForm(UserCreationForm):
         widget=forms.TextInput(attrs={'class': 'form-input'}),
         strip=False,
     )
-#    email = forms.EmailField(
-#        label='Email', 
-#        widget=forms.EmailInput(attrs={'class': 'form-input'}),
-#    )
+    email = forms.EmailField(
+        label='Email', 
+        widget=forms.EmailInput(attrs={'class': 'form-input'}),
+    )
     password1 = forms.CharField(
         label='Пароль', 
         widget=forms.PasswordInput(attrs={'class': 'form-input'}),

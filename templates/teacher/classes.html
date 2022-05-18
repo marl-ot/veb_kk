@@ -1,52 +1,72 @@
 {% extends 'main/layouts/layout.html' %} {% load static %} 
 {% block title %}Электронные контурные карты{% endblock %} 
-{% block main %}
+{% block main %} 
+{% if request.user.is_teacher %}
+    {% if request.user.school_number_id.school_num == request.user.full_class_id.school_id.school_num %}
 <main class="classes-wrapper">
     <!-- <div class="classes-wrapper"> -->
     <div class="classes-wrapper-2">
         <section class="classes">
             <p> 5 классы </p>
-            <a href="{% url 'num_class_a' 5 %}" class="class-link">5А класс</a>
-            <a href="{% url 'num_class_b' 5 %}" class="class-link">5Б класс</a>
-            <a href="{% url 'num_class_c' 5 %}" class="class-link">5В класс</a>
+                
+                    {% if request. %}
+                        {% for c in school_classes %}
+                            <a href="{% url 'num_class_a' 5 %}" class="class-link">{{ c.full_class }}</a>
+                        {% endfor %}
+                    {% endif %}
+                
         </section>
         <section class="classes">
             <p> 6 классы </p>
-            <a href="{% url 'num_class_a' 6 %}" class="class-link">6А класс</a>
-            <a href="{% url 'num_class_b' 6 %}" class="class-link">6Б класс</a>
-            <a href="{% url 'num_class_c' 6 %}" class="class-link">6В класс</a>
+            {% if request.user.full_class.class_number == 6 %}
+                        {% for c in full %}
+                            <a href="{% url 'num_class_a' 6 %}" class="class-link">{{ c.full_class }}</a>
+                        {% endfor %}
+                    {% endif %}
         </section>
         <section class="classes">
             <p> 7 классы </p>
-            <a href="{% url 'num_class_a' 7 %}" class="class-link">7А класс</a>
-            <a href="{% url 'num_class_b' 7 %}" class="class-link">7Б класс</a>
-            <a href="{% url 'num_class_c' 7 %}" class="class-link">7В класс</a>
+            {% if request.user.full_class.class_number == 7 %}
+                        {% for c in full %}
+                            <a href="{% url 'num_class_a' 7 %}" class="class-link">{{ c.full_class }}</a>
+                        {% endfor %}
+                    {% endif %}
         </section>
         <section class="classes">
             <p> 8 классы </p>
-            <a href="{% url 'num_class_a' 8 %}" class="class-link">8А класс</a>
-            <a href="{% url 'num_class_b' 8 %}" class="class-link">8Б класс</a>
-            <a href="{% url 'num_class_c' 8 %}" class="class-link">8В класс</a>
+            {% if request.user.full_class.class_number == 8 %}
+                        {% for c in full %}
+                            <a href="{% url 'num_class_a' 8 %}" class="class-link">{{ c.full_class }}</a>
+                        {% endfor %}
+                    {% endif %}
         </section>
         <section class="classes">
             <p> 9 классы </p>
-            <a href="{% url 'num_class_a' 9 %}" class="class-link">9А класс</a>
-            <a href="{% url 'num_class_b' 9 %}" class="class-link">9Б класс</a>
-            <a href="{% url 'num_class_c' 9 %}" class="class-link">9В класс</a>
+            {% if request.user.full_class.class_number == 9 %}
+                        {% for c in full %}
+                            <a href="{% url 'num_class_a' 9 %}" class="class-link">{{ c.full_class }}</a>
+                        {% endfor %}
+                    {% endif %}
         </section>
         <section class="classes">
             <p> 10 классы </p>
-            <a href="{% url 'num_class_a' 10 %}" class="class-link">10А класс</a>
-            <a href="{% url 'num_class_b' 10 %}" class="class-link">10Б класс</a>
-            <a href="{% url 'num_class_c' 10 %}" class="class-link">10В класс</a>
+            {% if request.user.full_class.class_number == 10 %}
+                        {% for c in full %}
+                            <a href="{% url 'num_class_a' 10 %}" class="class-link">{{ c.full_class }}</a>
+                        {% endfor %}
+                    {% endif %}
         </section>
         <section class="classes">
             <p> 11 классы </p>
-            <a href="{% url 'num_class_a' 11 %}" class="class-link">11А класс</a>
-            <a href="{% url 'num_class_b' 11 %}" class="class-link">11Б класс</a>
-            <a href="{% url 'num_class_c' 11 %}" class="class-link">11В класс</a>
+            {% if request.user.full_class.class_number == 11 %}
+                        {% for c in full %}
+                            <a href="{% url 'num_class_a' 11 %}" class="class-link">{{ c.full_class }}</a>
+                        {% endfor %}
+                    {% endif %}
         </section>
     </div>
     <!-- </div> -->
 </main>
+    {% endif %}
+{% endif %}
 {% endblock %}
