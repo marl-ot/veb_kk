@@ -69,6 +69,10 @@ class Works(models.Model):
     legend = models.CharField(verbose_name = 'Легенда', max_length=255, default='Легенда')
     task = models.CharField(verbose_name = 'Задание', max_length=255, default='Задание')
     number = models.IntegerField(verbose_name = 'Номер задания', unique=True, default=1)
+    is_active = is_active = models.BooleanField(
+        _("Активность"),
+        default=False,
+    )
 
     def __str__(self):
         return str(self.number)

@@ -2,18 +2,21 @@
 {% block title %}Электронные контурные карты{% endblock %} 
 {% block main %} 
 {% if request.user.is_teacher %}
-    {% if request.user.school_number_id.school_num == request.user.full_class_id.school_id.school_num %}
-<main class="classes-wrapper">
-    <!-- <div class="classes-wrapper"> -->
-    <div class="classes-wrapper-2">
-        <section class="classes">
-            <p> 5 классы </p>
+    {% if request.user.school_number_id.school_num == request.classes.school_id.school_num %}
+    <p>ginfinfdv</p>
+    
+        <main class="classes-wrapper">
+            <!-- <div class="classes-wrapper"> -->
+            <div class="classes-wrapper-2">
+                <section class="classes">
+                    <p> 5 классы </p>
                 
-                    {% if request. %}
-                        {% for c in school_classes %}
+                    {% if request.full_classes.class_number == 5 %}
+                        {% for c in full %}
                             <a href="{% url 'num_class_a' 5 %}" class="class-link">{{ c.full_class }}</a>
                         {% endfor %}
                     {% endif %}
+                    
                 
         </section>
         <section class="classes">
