@@ -30,14 +30,14 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Schools(models.Model):
-    school_num = models.IntegerField(verbose_name = 'Номер школы', default=1)
+    school_num = models.IntegerField(verbose_name = 'Номер школы', unique=True, default=1)
     school_name = models.CharField(null=True, verbose_name = 'Название школы', max_length=150, default = 'ГБОУ', blank=True)
 
     def __str__(self):
-        return self.school_num
+        return str(self.school_num)
 
 class Classes(models.Model):
-    class_number = models.IntegerField(verbose_name = 'Номер Класса', validators=[MinValueValidator(1), MaxValueValidator(11)], default=1)
+    class_number = models.IntegerField(verbose_name = 'Номер класса', validators=[MinValueValidator(1), MaxValueValidator(11)], default=1)
     class_letter = models.CharField(verbose_name = 'Буква класса', max_length=5, default="буква")
     school = models.ForeignKey(Schools, null=True, verbose_name = 'Номер школы', on_delete = models.CASCADE)
 
@@ -55,17 +55,27 @@ class Auth(AbstractUser):
     birth_date = models.DateField(null=True, verbose_name = 'Дата рождения', blank=True)
     is_teacher = models.BooleanField(verbose_name = 'Учитель', default=False)
     full_class = models.ForeignKey(Classes, null=True, verbose_name = 'Класс', on_delete = models.CASCADE, blank=True)
+    school_number = models.ForeignKey(Schools, null=True, verbose_name = 'Номер школы', on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.username
-    
+        if self.is_teacher:
+            return (str(self.username).upper())
+        else:
+            return str(self.username)
+
+
 class Works(models.Model):
     work = models.ImageField(verbose_name = 'Работа', upload_to="base_maps/%Y/%m/%d/", default='Базовая карта')
     legend = models.CharField(verbose_name = 'Легенда', max_length=255, default='Легенда')
     task = models.CharField(verbose_name = 'Задание', max_length=255, default='Задание')
+    number = models.IntegerField(verbose_name = 'Номер задания', unique=True, default=1)
+    is_active = is_active = models.BooleanField(
+        _("Активность"),
+        default=False,
+    )
 
     def __str__(self):
-        return self.task
+        return str(self.number)
 
 class DoneWorks(models.Model):
     student = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = 'Идентификация студента', on_delete = models.PROTECT)
@@ -76,7 +86,7 @@ class DoneWorks(models.Model):
     comment_from_student = models.CharField(verbose_name = 'Комментарий от студента', max_length=255, default='Комментарий')
 
     def __str__(self):
-        return (str(self.student) + ' ' + str(self.work))
+        return (str(self.student.last_name) + ' ' + str(self.work.number))
 
 
 class Grades(models.Model):
@@ -88,6 +98,6 @@ class Grades(models.Model):
     comment_from_teacher = models.CharField(verbose_name = 'Комментарий от учителя', max_length=255, default='Комментарий')
 
     def __str__(self):
-        return (str(self.work) + ' ' + str(self.grade))
+        return (str(self.work.number) + ' ' + str(self.grade))
 
 #school_number = models.CharField(max_length=30, blank=True)
