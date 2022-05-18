@@ -19,8 +19,10 @@ def info(request):
     return HttpResponse('МЕНЮ')
 
 def singleMap(request):
-    return render(request, 'main/singleMap.html')
-
+    if request.user.is_teacher == False:
+        return render(request, 'main/singleMap.html')
+    else:
+        return pageNotFound(request)
 
 def pageNotFound(request, **kwargs):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
