@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.urls import path
-from teacher.views import Teacher_classes, show_class_a, show_class_b, show_class_c
+from teacher.views import Teacher_classes, classwork, homework, show_class_a, show_class_b, show_class_c, class_menu,one_student,homework
 from django.contrib.auth.views import LogoutView
 from main.views import (LoginUser, RegisterUser, index, info, maps, atlas, about, book,
                         PasswordChangeDoneUser, PasswordChangeUser,
@@ -12,7 +12,11 @@ from main.views import (LoginUser, RegisterUser, index, info, maps, atlas, about
 
 urlpatterns = [
     path('', index, name = 'home_teacher'),
-    path('class/', Teacher_classes, name = 'classes_home_teacher'),
+    path('class_menu/',class_menu, name = 'class_menu'),
+    path('one_student/',one_student, name = 'one_student'),
+    path('classwork/',classwork, name = 'classwork'),
+    path('homework/',homework, name = 'homework'),
+    path('class/', index, name = 'classes_home_teacher'),
     path('login/', LoginUser.as_view(), name = 'login_teacher'),
     path('registr/', RegisterUser.as_view(), name = 'registr_teacher'),
     path('logout/', LogoutView.as_view(next_page = settings.LOGOUT_REDIRECT_URL), name='logout_teacher'),

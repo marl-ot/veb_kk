@@ -1,0 +1,46 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+<h3 class="class-h2 class-menu-h3"> Домашняя работа для 5А класса </h3>
+<form action="">
+    <table cellspacing="0">
+        <tr>
+            <th>Книга</th>
+            <th>Атлас</th>
+            <th>Карта</th>
+            <th>Выбор заданий</th>
+            <th>Активно до</th>
+
+        </tr>
+        <tr>
+            <td>
+                <select class="select">
+                    <option>Страница 1</option>
+                    <option>Страница 2</option>
+                </select>
+            </td>
+            <td>
+                <select class="select">
+                    <option>Страница 1</option>
+                    <option>Страница 2</option>
+                </select>
+            </td>
+            <td>
+                <select class="select">
+                    <option>Карта 1</option>
+                    <option>Карта 2</option>
+                </select>
+            </td>
+            <td>
+                <select class="select">
+                    <option>Задание 1</option>
+                    <option>Задание 2</option>
+                </select>
+            </td>
+            <td>
+                <input type="date" class="input-hw-cw">
+            </td>
+        </tr>
+    </table>
+    <button class="form-sub sub-hm" type="submit">Сохранить</button>
+    <a href="#" class="button-acc">Сделать тест</a>
+</form>
+{%endblock%}

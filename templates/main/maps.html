@@ -1,7 +1,63 @@
-{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
-    {% if request.user.is_teacher %}
-
-    {% else %}
-        
-    {% endif %}
-{% endblock %}
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %} {% if request.user.is_teacher %}
+<table cellspacing="0">
+    <tr>
+        <th>Номер</th>
+        <th>Задание</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Карта по теме 1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Карта по теме 2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Карта по теме 3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Карта по теме 4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Карта по теме 5</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Карта по теме 6</td>
+    </tr>
+</table>
+{% else %}
+<table cellspacing="0">
+    <tr>
+        <th>Номер</th>
+        <th>Задание</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Карта по теме 1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Карта по теме 2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Карта по теме 3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Карта по теме 4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Карта по теме 5</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Карта по теме 6</td>
+    </tr>
+</table>
+{% endif %} {% endblock %}

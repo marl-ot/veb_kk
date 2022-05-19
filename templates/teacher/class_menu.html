@@ -1,0 +1,16 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+
+<h3 class="class-h2 class-menu-h3">Меню 5A класса </h3>
+<section class="class-menu">
+    <section class="classes">
+        <a href="{% url 'num_class_a' 5 %}" class="class-link">Журнал</a>
+    </section>
+    <section class="classes">
+        <a href="{% url 'homework' %}" class="class-link">Задать Домашнюю работу</a>
+    </section>
+    <section class="classes">
+        <a href="{% url 'classwork'%}" class="class-link">Работа в классе</a>
+    </section>
+</section>
+
+{% endblock %}

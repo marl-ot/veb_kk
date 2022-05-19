@@ -25,7 +25,7 @@ def Teacher_classes(request):
     else:
         return pageNotFound(request)
 
-""" 
+"""
 def class_objects(request):
     classes = Classes.objects.all()
     school_classes = []
@@ -52,7 +52,7 @@ def show_class_a(request, num_id):
             return render(request, 'teacher/class.html')
         else:
             return pageNotFound(request)
-        
+
     else:
         return pageNotFound(request)
 
@@ -71,3 +71,18 @@ def show_class_c(request, num_id):
             return render(request, 'teacher/class.html')
         else:
             return pageNotFound(request)
+
+
+def class_menu(request):
+    return render(request, 'teacher/class_menu.html')
+
+
+
+def one_student(request):
+    return render(request, 'teacher/one_student.html')
+
+def homework(request):
+    return render(request, 'teacher/homework.html')
+
+def classwork(request):
+    return render(request, 'teacher/classwork.html')

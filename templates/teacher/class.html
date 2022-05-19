@@ -1,31 +1,73 @@
 {% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+<h3 class="class-h2 class-menu-h3"> Журнал 5A класса </h3>
+<table cellspacing="0">
+    <tr>
+        <th>Номер</th>
+        <th>ФИО</th>
+        <th>3.03</th>
+        <th>10.03</th>
+        <th>17.03</th>
+        <th>Средний балл</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>
+            <a href="{% url 'one_student'%}" class="one-student">Иванов Павел Георгиевич</a>
+        </td>
+        <td>5</td>
+        <td>5</td>
+        <td>4</td>
+        <td>4.3</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>
+            <a href="" class="one-student">Мунштук Евгений Артемович</a></td>
+        <td>4</td>
+        <td>4</td>
+        <td>4</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>
+            <a href="" class="one-student">Панктратов Артем Владимирович</a></td>
+        <td>5</td>
+        <td>5</td>
+        <td>5</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>
+            <a href="" class="one-student">Погорелова Софья Дмитриевна</a></td>
+        <td>4</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3.3</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>
+            <a href="" class="one-student">Попов Александр Семенович</a></td>
+        <td>4</td>
+        <td>3</td>
+        <td>4</td>
+        <td>3.7</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>
+            <a href="" class="one-student">Северный Павел Георгиевич</a></td>
+        <td>4</td>
+        <td>5</td>
+        <td>5</td>
+        <td>4.7</td>
+    </tr>
 
-    <table cellspacing="0">
-        <tr>
-            <th>Имя</th>
-            <th>Задание</th>
-            <th>Cдал</th>
-            <th>оценка</th>
-        </tr>
-        <tr>
-            <td>Вася</td>
-            <td>карта 1</td>
-            <td>28.03.2022</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>Петя</td>
-            <td>карта</td>
-            <td>28.03.2022</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>Игорь</td>
-            <td>тест</td>
-            <td>28.03.2022</td>
-            <td>3</td>
-        </tr>
-    </table>
+
+
+</table>
 
 
 {%endblock%}

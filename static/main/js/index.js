@@ -43,12 +43,12 @@ document.getElementById('saveToImage').addEventListener('click', function() {
 document.getElementById('eraser').addEventListener('click', eraser);
 document.getElementById('clear').addEventListener('click', createCanvas);
 document.getElementById('save').addEventListener('click', save);
-document.getElementById('load').addEventListener('click', load);
-document.getElementById('clearCache').addEventListener('click', function() {
-    localStorage.removeItem("savedCanvas");
-    linesArray = [];
-    console.log("Cache cleared!");
-});
+// document.getElementById('load').addEventListener('click', load);
+// document.getElementById('clearCache').addEventListener('click', function() {
+//     localStorage.removeItem("savedCanvas");
+//     linesArray = [];
+//     console.log("Cache cleared!");
+// });
 
 // REDRAW
 
@@ -80,14 +80,14 @@ function createCanvas() {
     img.src = '/static/main/img/test-map-1.png';
     canvas.id = "canvas";
     canvas.width = img.width * 0.5;
-    canvas.height = img.height * 0.4;
+    canvas.height = img.height * 0.39;
     canvas.style.zIndex = 8;
     canvas.style.position = "absolute";
     canvas.style.border = "1px solid";
     img.onload = function() {
-        ctx.drawImage(img, 0, 0, img.width * 0.5, img.height * 0.4);
-    }
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, img.width * 0.5, img.height * 0.39);
+        }
+        // ctx.fillRect(0, 0, canvas.width, canvas.height);
     body.appendChild(canvas);
 
 
@@ -105,29 +105,29 @@ function downloadCanvas(link, canvas, filename) {
 function save() {
     localStorage.removeItem("savedCanvas");
     localStorage.setItem("savedCanvas", JSON.stringify(linesArray));
-    alert("Saved canvas!");
+    alert("Задание сдано!");
 }
 
 // LOAD FUNCTION
 
-function load() {
-    if (localStorage.getItem("savedCanvas") != null) {
-        linesArray = JSON.parse(localStorage.savedCanvas);
-        var lines = JSON.parse(localStorage.getItem("savedCanvas"));
-        for (var i = 1; i < lines.length; i++) {
-            ctx.beginPath();
-            ctx.moveTo(linesArray[i - 1].x, linesArray[i - 1].y);
-            ctx.lineWidth = linesArray[i].size;
-            ctx.lineCap = "round";
-            ctx.strokeStyle = linesArray[i].color;
-            ctx.lineTo(linesArray[i].x, linesArray[i].y);
-            ctx.stroke();
-        }
-        console.log("Canvas loaded.");
-    } else {
-        console.log("No canvas in memory!");
-    }
-}
+// function load() {
+//     if (localStorage.getItem("savedCanvas") != null) {
+//         linesArray = JSON.parse(localStorage.savedCanvas);
+//         var lines = JSON.parse(localStorage.getItem("savedCanvas"));
+//         for (var i = 1; i < lines.length; i++) {
+//             ctx.beginPath();
+//             ctx.moveTo(linesArray[i - 1].x, linesArray[i - 1].y);
+//             ctx.lineWidth = linesArray[i].size;
+//             ctx.lineCap = "round";
+//             ctx.strokeStyle = linesArray[i].color;
+//             ctx.lineTo(linesArray[i].x, linesArray[i].y);
+//             ctx.stroke();
+//         }
+//         console.log("Canvas loaded.");
+//     } else {
+//         console.log("No canvas in memory!");
+//     }
+// }
 
 // ERASER HANDLING
 
