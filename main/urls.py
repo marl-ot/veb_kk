@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from main.views import (index, LoginUser, RegisterUser, singleMap, 
+from main.views import (index, LoginUser, RegisterUser, singleMap, book,atlas, maps,
                         info, about, PasswordChangeDoneUser, PasswordChangeUser,
                         PasswordResetCompleteUser, PasswordResetConfirmUser,
                         PasswordResetDoneUser, PasswordResetUser, pageNotFound)
@@ -14,7 +14,9 @@ urlpatterns = [
     path('registr/', RegisterUser.as_view(), name = 'registration'),
     path('singleMap/', singleMap, name = 'maps'),
     path('logout/', LogoutView.as_view(next_page = settings.LOGOUT_REDIRECT_URL), name='logout'),
-    path('menu/', info, name = "menu"),
+    path('book/', book, name = "book"),
+    path('atlas/', atlas, name = "atlas"),
+    path('contour_map/', maps, name = "contour_map"),
     path('about/', about, name = "about"),
     path('password-change/', PasswordChangeUser.as_view(), name='password_change'),
     path('password-change/done/', PasswordChangeDoneUser.as_view(), name='password_change_done'),

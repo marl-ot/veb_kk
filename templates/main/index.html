@@ -1,15 +1,110 @@
 {% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
 <!-- Main body -->
     <!-- welcome -->
-        {% if request.user.is_teacher %}
+    {% if request.user.is_authenticated == False %}
             <section class="welcome">
-                <video src="{% static 'main/video/enter_video.mov' %}" controls="controls" class="entering-video"></video>
+                <!--<video src="{% static 'main/video/enter_video.mov' %}" controls="controls" class="entering-video"></video>-->
                 <p class="welcome-text">Здравствуйте, наша команда надеется, что этот сайт поможет вам в&nbsp;работе и&nbsp;облегчит проверку контурных карт, вы&nbsp;можете ознакомится с&nbsp;видеоинструкцией</p>
             </section>
-        {% else %}
-            <section class="welcome">
-                <video src="{% static '/main/video/enter_video.mov' %}" controls="controls" class="entering-video"></video>
-                <p class="welcome-text">Привет ученик, этот сайт позволит тебе сдавать контурные карты по&nbsp;географии в&nbsp;электронном виде. Никакой бумаги, представь! Ты&nbsp;можешь посмотреть видео, чтобы понять что тут к&nbsp;чему ;)</p>
+    {% else %}
+        {% if request.user.is_teacher %}
+            {% if request.user.school_number_id.school_num == request.classes.school_id.school_num %}
+                <p>ginfinfdv</p>
+        
+                    <main class="classes-wrapper">
+                        <!-- <div class="classes-wrapper"> -->
+                        <div class="classes-wrapper-2">
+                            <section class="classes">
+                                <p> 5 классы </p>
+                    
+                        {% if request.full_classes.class_number == 5 %}
+                            {% for c in full %}
+                                <a href="{% url 'num_class_a' 5 %}" class="class-link">{{ c.full_class }}</a>
+                            {% endfor %}
+                        {% endif %}
+                        
+                    
             </section>
+            <section class="classes">
+                <p> 6 классы </p>
+                {% if request.user.full_class.class_number == 6 %}
+                            {% for c in full %}
+                                <a href="{% url 'num_class_a' 6 %}" class="class-link">{{ c.full_class }}</a>
+                            {% endfor %}
+                        {% endif %}
+            </section>
+            <section class="classes">
+                <p> 7 классы </p>
+                {% if request.user.full_class.class_number == 7 %}
+                            {% for c in full %}
+                                <a href="{% url 'num_class_a' 7 %}" class="class-link">{{ c.full_class }}</a>
+                            {% endfor %}
+                        {% endif %}
+            </section>
+            <section class="classes">
+                <p> 8 классы </p>
+                {% if request.user.full_class.class_number == 8 %}
+                            {% for c in full %}
+                                <a href="{% url 'num_class_a' 8 %}" class="class-link">{{ c.full_class }}</a>
+                            {% endfor %}
+                        {% endif %}
+            </section>
+            <section class="classes">
+                <p> 9 классы </p>
+                {% if request.user.full_class.class_number == 9 %}
+                            {% for c in full %}
+                                <a href="{% url 'num_class_a' 9 %}" class="class-link">{{ c.full_class }}</a>
+                            {% endfor %}
+                        {% endif %}
+            </section>
+            <section class="classes">
+                <p> 10 классы </p>
+                {% if request.user.full_class.class_number == 10 %}
+                            {% for c in full %}
+                                <a href="{% url 'num_class_a' 10 %}" class="class-link">{{ c.full_class }}</a>
+                            {% endfor %}
+                        {% endif %}
+            </section>
+            <section class="classes">
+                <p> 11 классы </p>
+                {% if request.user.full_class.class_number == 11 %}
+                            {% for c in full %}
+                                <a href="{% url 'num_class_a' 11 %}" class="class-link">{{ c.full_class }}</a>
+                            {% endfor %}
+                        {% endif %}
+            </section>
+        </div>
+        <!-- </div> -->
         {% endif %}
+    </main>
+            
+        {% else %}
+            <table cellspacing="0">
+                <tr>
+                    <th>Имя</th>
+                    <th>Задание</th>
+                    <th>Cдал</th>
+                    <th>оценка</th>
+                </tr>
+                <tr>
+                    <td>Вася</td>
+                    <td>карта 1</td>
+                    <td>28.03.2022</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Петя</td>
+                    <td>карта</td>
+                    <td>28.03.2022</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Игорь</td>
+                    <td>тест</td>
+                    <td>28.03.2022</td>
+                    <td>3</td>
+                </tr>
+            </table>
+        {% endif %}
+    {% endif %}
 {% endblock %}
