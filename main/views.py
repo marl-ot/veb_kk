@@ -12,6 +12,15 @@ PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView,)
 def index(request):
     return render(request, 'main/index.html')
 
+def book(request):
+    return render(request, 'main/books.html')
+
+def atlas(request):
+    return render(request, 'main/atlases.html')
+
+def maps(request):
+    return render(request, 'main/maps.html')
+
 def about(request):
     return render(request, 'main/about.html')
 

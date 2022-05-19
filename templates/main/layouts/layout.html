@@ -21,7 +21,7 @@
         <section class="page-navbar">
             <div class="left-navbar">
                 {% if request.user.is_teacher %}
-                    <a href="{% url 'home_teacher' %}" class="logo">
+                    <a href="{% url 'classes_home_teacher' %}" class="logo">
                         <img src="{% static 'main/gif/logo.gif' %}" alt="Контурные карты" class="logo-gif" windth='220' height="220">
                         <!--
                             <img src="{% static 'main/img/logo-prefinal.png' %}" alt="Контурные карты" class="logo-img" windth='230' height="230">
@@ -38,19 +38,11 @@
             </div>
 {% block body %}
         {% if request.user.is_authenticated %}
-            {% if request.user.is_teacher %}
                 <div class="center-navbar">
-                    <a href="{% url 'classes' %}" class="center-nav-link">Класс</a>
-                    <a href="#" class="center-nav-link">Меню</a>
-                    <a href="{% url 'about_teacher' %}" class="center-nav-link">О нас</a>
+                    <a href="{% url 'book' %}" class="center-nav-link">Учебник</a>
+                    <a href="{% url 'atlas' %}" class="center-nav-link">Атлас</a>
+                    <a href="{% url 'contour_map' %}" class="center-nav-link">Карта</a>
                 </div>
-            {% else %}
-                <div class="center-navbar">
-                    <a href="{% url 'maps' %}" class="center-nav-link">Мои карты</a>
-                    <a href="#" class="center-nav-link">Меню</a>
-                    <a href="{% url 'about' %}" class="center-nav-link">О нас</a>
-                </div>
-            {% endif %} 
         {% else %}
             {% if request.user.is_teacher %}
                 <div class="left-navbar">
@@ -69,12 +61,12 @@
                         {% if request.user.is_teacher %}
                             <!-- <div class="logout"> -->
                                 <span class="hello-text">
-                                    {% if request.user.first_name %} {{user.first_name}} {% else %} {{user.username}} {% endif %} <a href="{% url 'logout_teacher' %}" class="logout-link">Выйти</a>
+                                    Учитель {% if request.user.first_name %} {{user.first_name}} {% else %} {{user.username}} {% endif %} <a href="{% url 'logout_teacher' %}" class="logout-link">Выйти</a>
                                 </span>
                         {% else %}
                     <!-- <div class="logout"> -->
                     <span class="hello-text">
-                            {% if request.user.first_name == None %} {{user.username}} {% else %} {{user.first_name}} {% endif %} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
+                            Ученик {% if request.user.first_name == None %} {{user.username}} {% else %} {{user.first_name}} {% endif %} <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
                         </span>
                         {% endif %}
                     {% else %}
@@ -122,14 +114,12 @@
     <footer>
         {% block footer %}
             {% if request.user.is_teacher %}
-                <a href="{% url 'home_teacher' %}" class="to-start">На главную</a>
-                <a href="{% url 'about_teacher' %}" class="to-start">О нас</a>
-                <span class="copyright"> Все права защищены</span>
+                <a href="{% url 'classes_home_teacher' %}" class="to-start">На главную</a>
             {% else %}
                 <a href="{% url 'home' %}" class="to-start">На главную</a>
-                <a href="{% url 'about' %}" class="to-start">О нас</a>
-                <span class="copyright"> Все права защищены</span>
             {% endif %}
+            <a href="{% url 'about' %}" class="to-start">О нас</a>
+            <span class="copyright"> Все права защищены</span>
         {% endblock %}
     </footer>
 </body>
