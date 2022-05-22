@@ -1,0 +1,22 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+<section class="work-review">
+    <img src="{% static 'main/img/done_work.png' %}" alt="done_work" class="done-work">
+    <form action="" class="review-form">
+        <label for="grade" class="review-label">оценка</label>
+        <select name="grade" id="grade" class="select select-width">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <label for="comment" class="review-label">Комментарий</label>
+        <textarea name="comment" id="comment" cols="60" rows="20"></textarea>
+        <button class="form-sub" type="submit">Сохранить</button>
+    </form>
+</section>
+
+
+
+
+{% endblock %}

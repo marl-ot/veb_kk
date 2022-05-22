@@ -97,6 +97,12 @@ def one_student(request, student_id):
         
     return pageNotFound(request)
 
+def undone_work(request):
+    return render(request, 'teacher/undone_work.html')
+
+def work_review(request):
+    return render(request, 'teacher/work_review.html')
+    
 def homework(request):
     return render(request, 'teacher/homework.html')
 

@@ -1,6 +1,6 @@
 from django.urls import path
 from main.views import index, pageNotFound
-from teacher.views import (classwork, homework, show_class, class_menu, one_student, homework)
+from teacher.views import (classwork, undone_work, homework, show_class, class_menu, one_student, work_review, homework)
 
 
 
@@ -10,6 +10,8 @@ urlpatterns = [
     path('', index, name = 'teacher_classes'),
     path('class_menu/<int:class_id>/', class_menu, name = 'class_menu'),
     path('student/<int:student_id>/', one_student, name = 'one_student'),
+    path('undone_work/', undone_work, name = 'undone_work'),
+    path('work_review/', work_review, name = 'work_review'),
     path('classwork/', classwork, name = 'classwork'),
     path('homework/', homework, name = 'homework'),
     path('my_class/<int:class_id>/', show_class, name = "one_class"),
