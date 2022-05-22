@@ -1,13 +1,13 @@
 {% extends 'main/layouts/layout.html' %} {% load static %} 
 {% block title %}Контурные карты{% endblock %} 
 
-{% block body %} {% if request.user.is_authenticated %}{% if request.user.is_teacher == False %}
+{% block body %} {% if request.user.is_authenticated %}
 <div class="center-navbar">
     <a href="{% url 'book' %}" class="center-nav-link">Учебник</a>
     <a href="{% url 'atlas' %}" class="center-nav-link">Атлас</a>
     <a href="{% url 'contour_map' %}" class="center-nav-link active-page">Карта</a>
 </div>
-{% endif %}{% else %}
+{% else %}
 <div class="left-navbar">
     <a href="{% url 'home' %}" class="title">Электронные контурные карты</a>
 </div>
