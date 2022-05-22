@@ -1,7 +1,7 @@
 {% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
 <section class="class">
     <div class="class-table">
-        <h3 class="class-h2 class-menu-h3"> Непроверенные работы 5А </h3>
+        <h3 class="class-h2 class-menu-h3"> Непроверенные работы {{ full_class }} </h3>
         <table cellspacing="0">
             <tr>
                 <th>Номер по списку</th>
@@ -9,33 +9,16 @@
                 <th>работа</th>
                 <th>сдана</th>
             </tr>
-            <!-- {% for i in all_students %}
+            {% for student in all_students_one_school %}
+                {% if student.full_class == full_class %}
             <tr>
-                <td>{{ i.id }}</td>
+                <td>{% for i in numbers %}{{ i }}{% endfor %}</td>
                 <td>
-                    <a href="{% url 'one_student' %}" class="one-student">Иванов Павел Георгиевич
-                    </a>
-                </td>
-                <td><a href="" class="homework-review">работа 3</a></td>
-                <td>5</td>
-                <td>4</td>
-                <td>4.3</td>
+                    <a href="{% url 'work_review' student.id %}" class="one-student">{{ student.last_name }} {{ student.first_name }} {{ student.patronymic }}</a></td>
+                <td><a href="{% url 'work_review' student.id %}" class="homework-review">работа 3</a></td>
+                <td>16.03</td> 
             </tr>
-            {% endfor %} -->
-            <tr>
-                <td>2</td>
-                <td>
-                    <a href="" class="one-student">Мунштук Евгений Артемович</a></td>
-                <td><a href="{% url 'work_review' %}" class="homework-review">работа 3</a></td>
-                <td>16.03</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>
-                    <a href="" class="one-student">Панктратов Артем Владимирович</a></td>
-                <td><a href="{% url 'work_review' %}" class="work-review-link">работа 3</a></td>
-                <td>15.03</td>
-            </tr>
+            {% endif %}{% endfor %}
         </table>
     </div>
 </section>

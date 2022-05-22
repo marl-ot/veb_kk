@@ -49,14 +49,15 @@ class Classes(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(11)], 
         default=1
     )
-    class_letter = models.CharField(verbose_name = 'Буква класса', max_length=5, default="буква")
+    class_letter = models.CharField(verbose_name = 'Буква класса', max_length=3, default=" ")
     school = models.ForeignKey(Schools, null=True, verbose_name = 'Номер школы', on_delete = models.CASCADE)
-    #teacher = models.ForeignKey(
-    #    settings.AUTH_USER_MODEL, 
-    #    verbose_name = 'Учитель', 
-    #    on_delete = models.PROTECT,
-    #    blank = False
-    #)
+    teacher = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        verbose_name = 'Учитель', 
+        on_delete = models.PROTECT,
+        blank = False,
+        default = 1
+    )
 
     def __str__(self):
         return (str(self.class_number) + str(self.class_letter))
@@ -85,7 +86,7 @@ class Auth(AbstractUser):
 
     def __str__(self):
         if self.is_teacher:
-            return (str(self.username).upper())
+            return (str(self.last_name) + ' ' + str(self.first_name) + ' ' + str(self.patronymic)).title()
         else:
             return str(self.username)
 

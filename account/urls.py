@@ -1,7 +1,7 @@
 from django.urls import path
-from account.views import account
+from account.views import account_changes
 
 
 urlpatterns = [
-    path('', account, name = 'account'),
+    path('', account_changes, name = 'account'),
 ]

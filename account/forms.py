@@ -4,31 +4,31 @@ from django.forms import ModelForm, TextInput, NumberInput, EmailInput, DateInpu
 class UserForm(ModelForm):
     class Meta:
         model = Auth
-        fields = ['username', 'first_name', 'last_name', 'patronymic', 'birth_date', 'email']
+        fields = ['username', 'birth_date', 'email']# 'first_name', 'last_name', 'patronymic', 'email'
 
         widgets = {
             'username': TextInput(attrs ={
-                'class': 'form control',
+                'class': 'info-span form control',
                 'placeholder': 'Логин'
             }),
-            'first_name': TextInput(attrs ={
-                'class': 'form control',
-                'placeholder': 'Имя'
-            }),
-            'last_name': TextInput(attrs={
-                'class': 'form control',
-                'placeholder': 'Фамилия'
-            }),
-            'patronymic': TextInput(attrs={
-                'class': 'form control',
-                'placeholder': 'Отчество'
-            }),
+            # 'first_name': TextInput(attrs ={
+            #     'class': 'form control',
+            #     'placeholder': 'Имя'
+            # }),
+            # 'last_name': TextInput(attrs={
+            #     'class': 'form control',
+            #     'placeholder': 'Фамилия'
+            # }),
+            # 'patronymic': TextInput(attrs={
+            #     'class': 'form control',
+            #     'placeholder': 'Отчество'
+            # }),
             'email': EmailInput(attrs={
-                'class':'form control',
+                'class':'info-span',
                 'placeholder':'Почта'
             }),
             'birth_date': DateInput(attrs={
-                'class':'form control',
+                'class':'info-span',
                 'placeholder':'Дата рождения'
             }),
         }
@@ -37,27 +37,27 @@ class UserForm(ModelForm):
 class TeacherForm(ModelForm):
     class Meta:
         model = Auth
-        fields = ['username', 'first_name', 'last_name', 'patronymic', 'email']
+        fields = ['username', 'email'] # 'first_name', 'last_name', 'patronymic'
 
         widgets = {
             'username': TextInput(attrs ={
-                'class': 'form control',
+                'class': 'info-span',
                 'placeholder': 'Логин'
             }),
-            'first_name': TextInput(attrs ={
-                'class': 'form control',
-                'placeholder': 'Имя'
-            }),
-            'last_name': TextInput(attrs={
-                'class': 'form control',
-                'placeholder': 'Фамилия'
-            }),
-            'patronymic': TextInput(attrs={
-                'class': 'form control',
-                'placeholder': 'Отчество'
-            }),
+            # 'first_name': TextInput(attrs ={
+            #     'class': 'form control',
+            #     'placeholder': 'Имя'
+            # }),
+            # 'last_name': TextInput(attrs={
+            #     'class': 'form control',
+            #     'placeholder': 'Фамилия'
+            # }),
+            # 'patronymic': TextInput(attrs={
+            #     'class': 'form control',
+            #     'placeholder': 'Отчество'
+            # }),
             'email': EmailInput(attrs={
-                'class':'form control',
+                'class':'info-span',
                 'placeholder':'Почта'
             }),
         }
