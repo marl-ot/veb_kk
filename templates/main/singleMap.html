@@ -1,0 +1,68 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Карта{% endblock %} 
+
+{% block main %}
+
+<div id="sidebar">
+    <div class="colorButtons">
+        <h3>Цвет</h3>
+        <input type="color" id="colorpicker" value="#000" class="colorpicker">
+    </div>
+    <!-- <div class="colorButtons">
+            <h3>Фон</h3>
+            <input type="color" value="#ffffff" id="bgcolorpicker" class="colorpicker">
+        </div> -->
+
+    <div class="toolsButtons">
+        <h3>Инструменты</h3>
+        <button id="eraser" class="button-map">Ластик</button>
+        <button id="clear" class="button-map">Очистить карту</button>
+    </div>
+
+    <div class="buttonSize">
+        <h3>Размер кисти (<span id="showSize">1</span>)</h3>
+        <input type="range" min="1" max="50" value="1" step="1" id="controlSize">
+    </div>
+
+    <!-- <div class="canvasSize">
+        <h3>Поле</h3>
+        <div class="input-group">
+            <span class="input-group-addon">X</span>
+            <input type="number" id="sizeX" class="form-control" placeholder="sizeX" value="800" class="size">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Y</span>
+            <input type="number" id="sizeY" class="form-control" placeholder="sizeY" value="1300" class="size">
+        </div>
+        <input type="button" class="updateSize btn btn-success" value="Update" id="canvasUpdate"> -->
+    <!-- </div> -->
+    <div class="Storage">
+        <input type="button" value="Сдать" class="button-map" id="save">
+        <!-- <input type="button" value="Загрузить" class="btn btn-warning" id="load">
+            <input type="button" value="Очистить кэш" class="btn btn-warning" id="clearCache"> -->
+        <a id="saveToImage" class="button-map">Загрузить</a>
+    </div>
+</div>
+<div class="legend-task">
+    <div class="legend">
+        <h3 class="legend-head">Условные обозначения</h3>
+        <ul class="legend-ul">
+            <li class="legend-li">&#9651; <input type="text" class="legend-input"></li>
+            <li class="legend-li">&#9652; <input type="text" class="legend-input"></li>
+            <li class="legend-li">◐ <input type="text" class="legend-input"></li>
+            <li class="legend-li">&#9632; <input type="text" class="legend-input"></li>
+            <li class="legend-li">&#9788; <input type="text" class="legend-input"></li>
+        </ul>
+    </div>
+    <div class="task">
+        <h3 class="task-h3">Задание</h3>
+        <p class="task-text">
+            1) подписать названия городов Магаданской области
+            <br> 2) отметить самые высокие точки Магаданской области
+            <br> 3) подписать условные знаки в "Условные обозначения"</p>
+    </div>
+</div>
+<script src="{% static '/main/js/index.js' %}" async></script>
+
+{% endblock %}

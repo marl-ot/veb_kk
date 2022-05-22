@@ -1,0 +1,80 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Электронные контурные карты{% endblock %} 
+
+{% block main %} 
+
+{% if request.user.is_teacher %}
+
+<section class="classes-wrapper">
+    <!-- <div class="classes-wrapper"> -->
+    <div class="classes-wrapper-2">
+
+        <section class="classes">
+            <h3 class="class-h2"> 5 классы </h3>
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 5 %}
+                        <a href="{% url 'class_menu' %}" class="class-link">{{ c.class_number }}{{ c.class_letter }}</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+            <h3 class="class-h2"> 6 классы </h3>
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 6 %}
+                        <a href="{% url 'class_menu' %}" class="class-link">{{ c.class_number }}{{ c.class_letter }}</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+            <h3 class="class-h2"> 7 классы </h3>
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 7 %}
+                        <a href="{% url 'class_menu' %}" class="class-link">{{ c.class_number }}{{ c.class_letter }}</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+            <h3 class="class-h2"> 8 классы </h3>
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 8 %}
+                        <a href="{% url 'class_menu' %}" class="class-link">{{ c.class_number }}{{ c.class_letter }}</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+            <h3 class="class-h2"> 9 классы </h3>
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 9 %}
+                        <a href="{% url 'class_menu' %}" class="class-link">{{ c.class_number }}{{ c.class_letter }}</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+            <h3 class="class-h2"> 10 классы </h3>
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 10 %}
+                        <a href="{% url 'class_menu' %}" class="class-link">{{ c.class_number }}{{ c.class_letter }}</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+            <h3 class="class-h2"> 11 классы </h3>
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 11 %}
+                        <a href="{% url 'class_menu' %}" class="class-link">{{ c.class_number }}{{ c.class_letter }}</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+    </div>
+    <!-- </div> -->
+</section>
+{% endif %}
+{% endblock %} 

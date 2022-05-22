@@ -1,0 +1,30 @@
+{% extends 'teacher/layout.html' %} {% load static %} 
+
+{% block title %}Электронные контурные карты{% endblock %} 
+
+{% block main %}
+
+
+    <h1>Страница с оценками</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.surname }}<br>
+        {{ form.name }}<br>
+        {{ form.patronymic }}<br>
+        {{ form.task }}<br>
+        {{ form.estimation }}<br>
+        <span>{{ error }}</span>
+        <style>
+            input[type='number'] {
+                -moz-appearance:textfield;
+            }
+            
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+        </style>
+        <button class="btn btn-success" type="submit">Оценить</button>
+    </form>
+    
+{% endblock %}

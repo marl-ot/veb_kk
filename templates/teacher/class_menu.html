@@ -1,0 +1,20 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Меню {{ full_class }} класса{% endblock %} 
+
+{% block main %}
+
+    <h3 class="class-h2 class-menu-h3">Меню {{ full_class }} класса</h3>
+    <section class="class-menu">
+        <section class="classes">
+            <a href="{% url 'one_class' class_id %}" class="class-link">Журнал</a>
+        </section>
+        <section class="classes">
+            <a href="{% url 'homework' %}" class="class-link">Задать домашнюю работу</a>
+        </section>
+        <section class="classes">
+            <a href="{% url 'classwork'%}" class="class-link">Работа в классе</a>
+        </section>
+    </section>
+
+{% endblock %}

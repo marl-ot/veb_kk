@@ -1,0 +1,52 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Личный кабинет{% endblock %} 
+
+{% block main %} 
+{% if request.user.is_authenticated %} 
+    {% if request.user.is_teacher %}
+        <section class="account-info">
+            <span class="info-span">ФИО: Белышева Юлия Владимировна</span>
+            <span class="info-span">Логин: teacher</span>
+            <span class="info-span">Школа: 2097</span>
+            <span class="info-span">Классы: 5А, 5Б, 5В, 6А, 7В, 8А</span>
+            <span class="info-span">Почта: best_teacher@mail.ru</span> 
+            <a href="{% url 'password_change' %}" class="button-acc">Смена пароля</a> 
+        </section>
+    {% else %}
+        <!-- <h1>Личный кабинет</h1>
+            <form method="post">
+                {% csrf_token %}
+                    {% if request.user.is_teacher %}
+                        {{ teacher_form.as_p }}
+                        <span>{{ error }}</span>
+                    {% else %}
+                        {{ user_form.as_p }}
+                        <span>{{ error }}</span>
+                    {% endif %}
+            <style>
+                input[type='number'] {
+                    -moz-appearance:textfield;
+                }
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+            </style>
+        <button class="btn btn-success" type="submit">Сохранить</button>
+        <!-- </form>  -->
+        <section class="account-info">
+            <span class="info-span">ФИО: Калмыков Святослав Алексеевич</span>
+            <span class="info-span">Логин: marlot</span>
+            <span class="info-span">Школа: 2097</span>
+            <span class="info-span">Класс: 5Б</span>
+            <span class="info-span">День рождения: 2002.09.20</span>
+            <span class="info-span">Почта: svyat@mail.ru</span> 
+    
+                <a href="{% url 'password_change' %}" class="button-acc">Смена пароля</a> 
+
+    {% endif %}
+</section>
+{% endif %}
+{% endblock %}

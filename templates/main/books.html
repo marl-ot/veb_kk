@@ -1,0 +1,50 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Учебники{% endblock %} 
+
+{% block body %} {% if request.user.is_authenticated %}{% if request.user.is_teacher == False %}
+<div class="center-navbar">
+    <a href="{% url 'book' %}" class="center-nav-link active-page">Учебник</a>
+    <a href="{% url 'atlas' %}" class="center-nav-link">Атлас</a>
+    <a href="{% url 'contour_map' %}" class="center-nav-link">Карта</a>
+</div>
+{% endif %}{% else %}
+<div class="left-navbar">
+    <a href="{% url 'home' %}" class="title">Электронные контурные карты</a>
+</div>
+{% endif %} {% endblock %} 
+
+{% block main %} 
+    {% if request.user.is_teacher %}
+<section class="paginate-book">
+    <img src="{% static 'main/img/studentbook.jpg' %}" alt="" class="img-book">
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a class="active" href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+    </div>
+</section>
+
+    {% else %}
+
+<section class="paginate-book">
+    <img src="{% static 'main/img/studentbook.jpg' %}" alt="" class="img-book">
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a class="active" href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+    </div>
+</section>
+
+    {% endif %} 
+{% endblock %}

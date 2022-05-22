@@ -1,0 +1,81 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Журнал {{ full_class }} класса{% endblock %} 
+
+{% block main %}
+
+<h3 class="class-h2 class-menu-h3">Журнал {{ full_class }} класса</h3>
+<table cellspacing="0">
+    <tr>
+        <th>Номер по списку</th>
+        <th>ФИО</th>
+        <th>3.03</th>
+        <th>10.03</th>
+        <th>17.03</th>
+        <th>Средний балл</th>
+    </tr>
+
+    {% for student in all_students_one_school %}
+        {% if student.full_class == full_class %}
+    <tr>
+        <td>{{ number }}</td>
+        <td>
+            <a href="{% url 'one_student' student.id %}" class="one-student">{{ student.first_name }} {{ student.last_name }} {{ student.patronymic }}</a>
+        </td>
+        <td>5</td>
+        <td>5</td>
+        <td>4</td>
+        <td>4.3</td>
+    </tr>
+{% endif %}{% endfor %}
+
+{% comment %} 
+    <tr>
+        <td>2</td>
+        <td>
+            <a href="" class="one-student">Мунштук Евгений Артемович</a></td>
+        <td>4</td>
+        <td>4</td>
+        <td>4</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>
+            <a href="" class="one-student">Панктратов Артем Владимирович</a></td>
+        <td>5</td>
+        <td>5</td>
+        <td>5</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>
+            <a href="" class="one-student">Погорелова Софья Дмитриевна</a></td>
+        <td>4</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3.3</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>
+            <a href="" class="one-student">Попов Александр Семенович</a></td>
+        <td>4</td>
+        <td>3</td>
+        <td>4</td>
+        <td>3.7</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>
+            <a href="" class="one-student">Северный Павел Георгиевич</a></td>
+        <td>4</td>
+        <td>5</td>
+        <td>5</td>
+        <td>4.7</td>
+    </tr>
+</table> 
+{% endcomment %}
+
+{% endblock %}

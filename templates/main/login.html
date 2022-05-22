@@ -1,0 +1,26 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Вход{% endblock %} 
+
+{% block main %}
+<section class="form-sec">
+
+    <form class="auth-form" method="post">
+        <span class="form-span">Войти в аккаунт</span> {% csrf_token %}
+        <div class="form-input">{{ form.non_field_errors }}</div>
+
+        <div class="form-input">
+            {% for f in form %}
+            <div class="input-wrapper"><label class="form-input" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</div>
+            <div class="form-input">{{ f.errors }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="flex">
+            <!-- <a href="{% url 'registration' %}" class="flex-child form-sub">Регистрация</a>  -->
+            <button class="form-sub" type="submit">Войти</button>
+            <a href="{% url 'password_reset' %}" class="form-sub">Забыли пароль?</a> 
+        </div>
+    </form>
+</section>
+{% endblock %}

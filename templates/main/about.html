@@ -1,0 +1,12 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Электронные контурные карты{% endblock %} 
+
+{% block main %}
+<!-- Main body -->
+    {% if request.user.is_teacher %}
+        <h4> О нас </h4>
+    {% else %}
+        <h4> О нас </h4>
+    {% endif %}
+{% endblock %}

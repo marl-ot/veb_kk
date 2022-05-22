@@ -1,0 +1,83 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+{% block title %}Контурные карты{% endblock %} 
+
+{% block body %} {% if request.user.is_authenticated %}{% if request.user.is_teacher == False %}
+<div class="center-navbar">
+    <a href="{% url 'book' %}" class="center-nav-link">Учебник</a>
+    <a href="{% url 'atlas' %}" class="center-nav-link">Атлас</a>
+    <a href="{% url 'contour_map' %}" class="center-nav-link active-page">Карта</a>
+</div>
+{% endif %}{% else %}
+<div class="left-navbar">
+    <a href="{% url 'home' %}" class="title">Электронные контурные карты</a>
+</div>
+{% endif %} {% endblock %} 
+
+{% block main %} 
+    {% if request.user.is_teacher %}
+<table cellspacing="0">
+    <tr>
+        <th>Номер</th>
+        <th>Задание</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Карта по теме 1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Карта по теме 2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Карта по теме 3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Карта по теме 4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Карта по теме 5</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Карта по теме 6</td>
+    </tr>
+</table>
+
+    {% else %}
+
+<table cellspacing="0">
+    <tr>
+        <th>Номер</th>
+        <th>Задание</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Карта по теме 1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Карта по теме 2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Карта по теме 3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Карта по теме 4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Карта по теме 5</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Карта по теме 6</td>
+    </tr>
+</table>
+
+    {% endif %} 
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+<!-- Main body -->
+<!-- welcome -->
+
+{% if request.user.is_authenticated == False %}
+
+    <section class="welcome">
+        <div class="instruction">
+            <video src="{% static 'main/video/enter_video.mp4' %}" controls="controls" class="entering-video" poster="{% static 'main/img/poster.png' %}"></video>
+            <a href="" class="pdf-instr-link">
+                <img src="{% static 'main/img/poster2.jpg' %}" alt="pdf-инстрункция" class="instruction-img">
+                <!-- <span class="pdf-span">pdf инстрункция</span>  -->
+            </a>
+        </div>
+        <p class="welcome-text">Здравствуйте, наша команда надеется, что этот сайт поможет вам в&nbsp;работе и&nbsp;облегчит проверку контурных карт, вы&nbsp;можете ознакомится с&nbsp;видеоинструкцией</p>
+    </section>
+
+{% else %} 
+
+
+
+    {% if request.user.is_teacher %}
+
+<section class="classes-wrapper">
+    <!-- <div class="classes-wrapper"> -->
+    <div class="classes-wrapper-2">
+        <section class="classes">
+            
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 5 %}
+                        <a href="{% url 'class_menu' c.id %}" class="class-link">{{ c.class_number }}{{ c.class_letter }} класс</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 6 %}
+                        <a href="{% url 'class_menu' c.id %}" class="class-link">{{ c.class_number }}{{ c.class_letter }} класс</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 7 %}
+                        <a href="{% url 'class_menu' c.id %}" class="class-link">{{ c.class_number }}{{ c.class_letter }} класс</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 8 %}
+                        <a href="{% url 'class_menu' c.id %}" class="class-link">{{ c.class_number }}{{ c.class_letter }} класс</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 9 %}
+                        <a href="{% url 'class_menu' c.id %}" class="class-link">{{ c.class_number }}{{ c.class_letter }} класс</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 10 %}
+                        <a href="{% url 'class_menu' c.id %}" class="class-link">{{ c.class_number }}{{ c.class_letter }} класс</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+        <section class="classes">
+                {% for c in teacher_classes %}
+                    {% if c.class_number == 11 %}
+                        <a href="{% url 'class_menu' c.id %}" class="class-link">{{ c.class_number }}{{ c.class_letter }} класс</a>
+                    {% endif %}
+                {% endfor %}
+        </section>
+
+    </div>
+    <!-- </div> -->
+</section>
+
+    {% else %}
+
+        <section class="student-home">
+            <h3 class="home-page-h3">Привет, {{ user.first_name }}!</h3>
+            <div class="hm-wrap">
+                <div class="hm">
+                    <span class="hm-span">Ваша оценка за последнее дз</span>
+                    <span class="last-grade">5</span>
+                    <a href="" class="hm-link">Подробнее</a>
+                </div>
+
+                <div class="hm">
+                    <span class="hm-span">Вам задано новое домашнее задание!</span>
+                    <a href="{% url 'homework_list' %}" class="hm-link">Посмотреть задание</a>
+                </div>
+                
+                <div class="hm">
+                    <span class="hm-span">Список всех ваших домашних работ</span>
+                    <a href="{% url 'active_homework' %}" class="hm-link">Посмотреть</a>
+                </div>
+            </div>
+        </section>
+        
+    {% endif %}
+
+{% endif %} 
+{% endblock %}

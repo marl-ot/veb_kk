@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Calibri';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Calibri'), url("calibri.ttf") format('ttf');
+}
+
+@font-face {
+    font-family: 'Calibri';
+    font-style: bold;
+    font-weight: 700;
+    src: local('Calibri'), url("calibri_bold.ttf") format('ttf');
+}

@@ -1,0 +1,60 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Ученик{% endblock %} 
+
+{% block main %}
+
+<h3 class="class-h2 class-menu-h3"> {{ student.first_name }} {{ student.last_name }} {{ student.patronymic }} </h3>
+<table cellspacing="0">
+    <tr>
+        <th>Номер</th>
+        <th>Работа</th>
+        <th>Статус</th>
+        <th>Дата сдачи</th>
+        <th>Оценка</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>
+            <a href="" class="done_homework">Работа 1</a></td>
+        <td>
+            Сдано
+        </td>
+        <td>
+            2.03
+        </td>
+        <td>
+            4
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>
+            <a href="" class="done_homework">Работа 2</a></td>
+        <td>
+            Сдано
+        </td>
+        <td>
+            9.03
+        </td>
+        <td>
+            5
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>
+            <a href="" class="done_homework">Работа 3</a></td>
+        <td>
+            Сдано
+        </td>
+        <td>
+            16.03
+        </td>
+        <td>
+            4
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
