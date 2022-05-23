@@ -95,7 +95,7 @@
                     <span class="last-grade">5</span>
                     <a href="" class="hm-link">Подробнее</a>
                 </div>
-                {% if is_active %}
+                {% if is_active >= 1 %}
                 <div class="hm">
                     <span class="hm-span">Вам задано новое домашнее задание!</span>
                     <a href="{% url 'active_homework' %}" class="hm-link">Посмотреть задание</a>

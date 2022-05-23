@@ -92,7 +92,7 @@ def maps(request):
 def info(request):
     return HttpResponse('МЕНЮ')
     
-def active_homework(request):
+def homeworks(request):
     if request.user.is_authenticated:
         if request.user.is_teacher == False:
             works = Works.objects.filter()
@@ -103,11 +103,11 @@ def active_homework(request):
 
         else:
             context = {}
-        return render(request, 'main/active_homework.html', context=context)
+        return render(request, 'main/homework.html', context=context)
 
     return pageNotFound(request)
 
-def homeworks(request):
+def active_homework(request):
     if request.user.is_authenticated:
         if request.user.is_teacher == False:
             works = Works.objects.filter()
@@ -122,7 +122,7 @@ def homeworks(request):
             }
         else:
             context = {}
-        return render(request, 'main/homework.html', context=context)
+        return render(request, 'main/active_homework.html', context=context)
 
     return pageNotFound(request)
 

@@ -4,12 +4,17 @@
 
 {% block main %} 
     {% if request.user.is_teacher == False %}
-        <h3 class="class-h2 class-menu-h3">Все ваши домашние задания</h3>
+        <h3 class="class-h2 class-menu-h3">Актуальные домашние задания</h3>
         <section class="class-menu">
             {% for w in works %}
+                {% if is_active == 0 %}
+                    <p>Актуальные домашние задания отсутствуют</p>
+                {% endif %}
+                {% if w.is_active %}
                     <section class="classes">
                         <a href="{% url 'maps' w.id %}" class="class-link"> Работа {{ w.number }}</a>
                     </section>
+                {% endif %}
             {% endfor %}
         </section> 
     {% endif %}
