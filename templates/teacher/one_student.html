@@ -13,10 +13,14 @@
         <th>Дата сдачи</th>
         <th>Оценка</th>
     </tr>
+    {% for student in all_students_one_school %}
+    {% if student.full_class == full_class %}
+        {% for work in comment_grade %}
+            {% if student.id == work.student.id %}
     <tr>
         <td>1</td>
         <td>
-            <a href="" class="done_homework">Работа 1</a></td>
+            <a href="{% url 'work_review' student.id work.work_id %}" class="done_homework">Работа 1</a></td>
         <td>
             Сдано
         </td>
@@ -27,6 +31,7 @@
             4
         </td>
     </tr>
+    {% endif %}{% endfor %}{% endif %}{% endfor %}
     <tr>
         <td>2</td>
         <td>

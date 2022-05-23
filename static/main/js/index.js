@@ -77,8 +77,8 @@ canvas.addEventListener('mouseup', mouseup);
 
 function createCanvas() {
     var img = new Image();
-    img.src = '/media/base_maps/2022/05/masterpiece1.png'; // /static/main/img/test-map-1.png
-    canvas.id = "canvas";
+    img.src = '/media/base_maps/2022/05/masterpiece1.png'; // /static/main/img/test-map-1.png 
+    canvas.id = "canvas";                                   // ВЫВОД КАРТЫ ИЗ БАЗЫ
     canvas.width = img.width * 0.5;
     canvas.height = img.height * 0.39;
     canvas.style.zIndex = 8;

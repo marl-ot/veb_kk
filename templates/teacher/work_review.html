@@ -1,6 +1,8 @@
 {% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+{% if request.user.is_authenticated %}
+{% if request.user.is_teacher %}
 <section class="work-review">
-    <img src="{% static 'main/img/done_work.png' %}" alt="done_work" class="done-work">
+    <img src="{% static '/main/img/test-map-1.png' %}" alt="done_work" class="done-work"> <!-- ВЫВОД КАРТЫ ИЗ БАЗЫ -->
     <form action="" class="review-form">
         {% comment %} <label for="grade" class="review-label">оценка</label>
         <select name="grade" id="grade" class="select select-width">
@@ -9,11 +11,21 @@
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option> {% endcomment %}
+            {% if done_works.student_id == student_id %}
+            {% if request.user.school_number_id == student.school_number_id %}
+            <span class="info-span">ФИО: {{ student.last_name}} {{ student.first_name }} {{ student.patronymic }} </span>
+            <span class="info-span">Класс: {{ student.full_class }}</span>
+            <span class="info-span">Задание: {{ works.task }}</span>
+            <span class="info-span">Легенда: {{ works.legend }}</span>
+            {% if done_works.comment_from_student %}
+            <span class="info-span">Комментарий от ученика: {{ done_works.comment_from_student }}</span>
+            {% endif %}
             <form method="post">
                 {% csrf_token %}
                     {{ grades_form.as_p }}
                     <span>{{ error }}</span>
         <button class="form-sub" type="submit">Сохранить</button>
+        {% endif %}{% endif %}
         </select>
         {% comment %} <label for="comment" class="review-label">Комментарий</label>
         <textarea name="comment" id="comment" cols="60" rows="20"></textarea> {% endcomment %}
@@ -21,6 +33,6 @@
 </section>
 
 
-
-
+{% endif %}
+{% endif %}
 {% endblock %}

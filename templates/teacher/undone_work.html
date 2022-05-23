@@ -11,17 +11,20 @@
             </tr>
             {% for student in all_students_one_school %}
                 {% if student.full_class == full_class %}
-                    
-
+                    {% for work in comment_grade %}
+                        {% if student.id == work.student.id %}
+                            
             <tr>
-                <td>{% for i in numbers %}{{ i }}{% endfor %}</td>
-                <td>
-                    <a href="{% url 'work_review' student.id %}" class="one-student">{{ student.last_name }} {{ student.first_name }} {{ student.patronymic }}</a></td>
-                <td><a href="{% url 'work_review' student.id %}" class="homework-review">работа 3</a></td>
+                <td>{% for num in numbers %}{{ num }}{% endfor %}</td>
+
+                <td><a href="{% url 'work_review' student.id work.work_id %}" class="one-student">{{ student.last_name }} {{ student.first_name }} {{ student.patronymic }}</a></td>
+                
+                <td><a href="{% url 'work_review' student.id work.work_id %}" class="homework-review">{{ work.work_id }}</a></td>
+                
                 <td>16.03</td> 
             </tr>
             
-            {% endif %}{% endfor %}
+            {% endif %}{% endfor %}{% endif %}{% endfor %}
         </table>
     </div>
 </section>

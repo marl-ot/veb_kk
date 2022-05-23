@@ -117,7 +117,7 @@ class Works(models.Model):
     work_name = models.CharField(verbose_name = 'Название задания', max_length=50, blank = False)
 
     def __str__(self):
-        return str(self.number)
+        return ('Работа ' + str(self.number))
 
 class DoneWorks(models.Model):
     student = models.ForeignKey(
