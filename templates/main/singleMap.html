@@ -47,6 +47,7 @@
 <div class="legend-task">
     <div class="legend">
         <h3 class="legend-head">Условные обозначения</h3>
+        {% comment %} ВОЗМОЖНО НУЖНО СДЕЛАТЬ СРАЗУ ТАБЛИЦУ УСЛОВНЫХ ОБОЗНАЧЕНИЙ ИЛИ ССЛЫКУ НА НЕЕ {% endcomment %}
         <ul class="legend-ul">
             <li class="legend-li">&#9651; <input type="text" class="legend-input"></li>
             <li class="legend-li">&#9652; <input type="text" class="legend-input"></li>
@@ -55,14 +56,14 @@
             <li class="legend-li">&#9788; <input type="text" class="legend-input"></li>
         </ul>
     </div>
+    {% for work in works %}
     <div class="task">
-        <h3 class="task-h3">Задание</h3>
+        <h3 class="task-h3">{{ work.work_name }}</h3>
         <p class="task-text">
-            1) подписать названия городов Магаданской области
-            <br> 2) отметить самые высокие точки Магаданской области
-            <br> 3) подписать условные знаки в "Условные обозначения"</p>
+            {{ work.task | safe }}</p>
     </div>
+    <script src="{% static '/main/js/index.js' %}" async></script>
+    {% endfor %}
 </div>
-<script src="{% static '/main/js/index.js' %}" async></script>
 
 {% endblock %}

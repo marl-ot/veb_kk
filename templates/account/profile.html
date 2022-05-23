@@ -8,8 +8,8 @@
         <h1>Личный кабинет</h1>
             
         <section class="account-info">
-            <span class="info-span">ФИО: {{ user_info }}</span>
-            <span class="info-span">Школа: {{ user_school }}</span>
+            <span class="info-span">ФИО: {{ user_info.last_name}} {{ user_info.first_name }} {{ user_info.patronymic }} </span>
+            <span class="info-span">Школа: {{ user_school }} </span>
             <span class="info-span">Классы: {% for c in teacher_classes %} {{ c.class_number }}{{ c.class_letter }}; {% endfor %}</span>
             {% comment %}<span class="info-span">Почта: {{ user_info.email }} </span> {% endcomment %}
             <a href="{% url 'password_change' %}" class="button-acc">Смена пароля</a>             
@@ -23,7 +23,7 @@
     {% if request.user.is_teacher == False %}
         <!-- </form>  -->
         <section class="account-info">
-            <span class="info-span">ФИО: {{ user_info.last_name }} {{ user_info.first_name }} {{ user_info.patronymic }}</span>
+            <span class="info-span">ФИО: {{ user_info.last_name}} {{ user_info.first_name }} {{ user_info.patronymic }}</span>
             <span class="info-span">Школа: {{ user_school }}</span>
             <span class="info-span">Класс: {{ student_class }}</span>
             {% if user_info.birth_date != None %}

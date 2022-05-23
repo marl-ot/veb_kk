@@ -2,17 +2,21 @@
 <section class="work-review">
     <img src="{% static 'main/img/done_work.png' %}" alt="done_work" class="done-work">
     <form action="" class="review-form">
-        <label for="grade" class="review-label">оценка</label>
+        {% comment %} <label for="grade" class="review-label">оценка</label>
         <select name="grade" id="grade" class="select select-width">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <label for="comment" class="review-label">Комментарий</label>
-        <textarea name="comment" id="comment" cols="60" rows="20"></textarea>
+            <option value="5">5</option> {% endcomment %}
+            <form method="post">
+                {% csrf_token %}
+                    {{ grades_form.as_p }}
+                    <span>{{ error }}</span>
         <button class="form-sub" type="submit">Сохранить</button>
+        </select>
+        {% comment %} <label for="comment" class="review-label">Комментарий</label>
+        <textarea name="comment" id="comment" cols="60" rows="20"></textarea> {% endcomment %}
     </form>
 </section>
 

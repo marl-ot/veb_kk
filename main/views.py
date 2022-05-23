@@ -1,3 +1,4 @@
+from operator import is_
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpResponseNotFound
@@ -11,38 +12,78 @@ from main.models import Classes, Schools, Auth, Works
 
 
 def index(request):
-
     if request.user.is_authenticated:
+
+        works = Works.objects.filter()
+
         if request.user.is_teacher:
+
             teacher_classes = Classes.objects.filter(school_id=request.user.school_number_id)
-            #geograf_classes = Classes.objects.all()
-            works = Works.objects.filter()
-            is_active = 0
-            for w in works:
-                if w.is_active:
-                    is_active += 1
 
             context =  {
                 'teacher_classes': teacher_classes,
+            }
+
+        else:
+
+            is_active = False
+            for w in works:
+                if w.is_active == 1:
+                    is_active = True
+
+            print(is_active)
+
+            context = {
                 'is_active': is_active,
             }
-        else:
-            context = {
-                
-            }
-    #print(teacher_classes)
 
         return render(request, 'main/index.html', context=context)
         
     return render(request, 'main/index.html')
 
 def book(request):
+    if request.user.is_authenticated:
+        if request.user.is_teacher:
+
+            context =  {
+
+            }
+        else:
+            context = {
+                
+            }
+        return render(request, 'main/books.html', context=context)
+
     return render(request, 'main/books.html')
 
 def atlas(request):
+    if request.user.is_authenticated:
+        if request.user.is_teacher:
+
+            context =  {
+
+            }
+        else:
+            context = {
+                
+            }
+        return render(request, 'main/atlases.html', context=context)
+
     return render(request, 'main/atlases.html')
 
 def maps(request):
+    if request.user.is_authenticated:
+        if request.user.is_teacher:
+
+            context =  {
+
+            }
+        else:
+            context = {
+                
+            }
+        return render(request, 'main/maps.html', context=context)
+
     return render(request, 'main/maps.html')
 
 # def about(request):
@@ -89,8 +130,12 @@ def singleMap(request, work_id):
     if request.user.is_authenticated:
         if request.user.is_teacher == False:
             works = Works.objects.filter(id = work_id)
+            for i in works:
+                location_link = i.work
+            #print(location_link)
             context = {
-
+                'works': works,
+                'location_link': location_link,
             }
         else:
             context = {}

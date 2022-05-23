@@ -4,17 +4,6 @@ from django.contrib.auth.forms import (UserCreationForm, AuthenticationForm, Pas
 from django.contrib.auth.forms import (PasswordResetForm, SetPasswordForm,)
 from main.models import Auth
 
-""" 
-class UserForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('first_name', 'last_name', 'email')
-
-class IsTeacherForm(forms.ModelForm):
-    class Meta:
-        model = IsTeacher
-        fields = ('patronymic', 'school_number', 'birth_date')
-"""
 
 #-------------------------РЕГИСТРАЦИЯ-----------------------
 class RegisterUserForm(UserCreationForm):

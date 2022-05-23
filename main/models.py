@@ -86,7 +86,7 @@ class Auth(AbstractUser):
 
     def __str__(self):
         if self.is_teacher:
-            return (str(self.last_name) + ' ' + str(self.first_name) + ' ' + str(self.patronymic)).title()
+            return (str(self.last_name) + ' ' + str(self.first_name) + ' ' + str(self.patronymic)).upper()
         else:
             return str(self.username)
 
@@ -95,7 +95,7 @@ class Works(models.Model):
     number = models.IntegerField(verbose_name = 'Номер задания', unique=True)
     work = models.ImageField(
         verbose_name = 'Работа',
-        upload_to="base_maps/%Y/%m/%d/", 
+        upload_to="base_maps/%Y/%m/", 
         default='Базовая карта'
     )
     legend = models.CharField(verbose_name = 'Легенда', max_length=511, blank = True)
@@ -106,7 +106,15 @@ class Works(models.Model):
         verbose_name = 'Номер школы', 
         on_delete = models.CASCADE
     )
+    teacher = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        verbose_name = 'Учитель', 
+        on_delete = models.PROTECT, 
+        blank=False,
+        default=2
+    )
     is_active = models.BooleanField(verbose_name = "Активность", default=False)
+    work_name = models.CharField(verbose_name = 'Название задания', max_length=50, blank = False)
 
     def __str__(self):
         return str(self.number)
@@ -133,7 +141,7 @@ class DoneWorks(models.Model):
     )
 
     def __str__(self):
-        return (str(self.student.last_name) + ' ' + str(self.work.number))
+        return (str(self.student.last_name) + ' №' + str(self.work.number))
 
 
 class Grades(models.Model):
@@ -144,7 +152,7 @@ class Grades(models.Model):
         related_name = 'Студент'
     )
     work = models.ForeignKey(DoneWorks, verbose_name = 'Идентификация работы', on_delete = models.CASCADE)
-    grade = models.IntegerField(verbose_name = 'Оценка', validators=[MinValueValidator(1), MaxValueValidator(5)])
+    grade = models.IntegerField(null=True, verbose_name = 'Оценка', validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True)
     status = models.BooleanField(verbose_name = 'Статус', default=False)
     teacher = models.ForeignKey(
         settings.AUTH_USER_MODEL, 
@@ -154,11 +162,8 @@ class Grades(models.Model):
     )
     comment_from_teacher = models.CharField(
         verbose_name = 'Комментарий от учителя', 
-        max_length=255, 
-        default='Комментарий'
+        max_length=255,
     )
 
     def __str__(self):
-        return (str(self.work.number) + ' ' + str(self.grade))
-
-#school_number = models.CharField(max_length=30, blank=True)
+        return (str(self.work) + ' оценка ' + str(self.grade))

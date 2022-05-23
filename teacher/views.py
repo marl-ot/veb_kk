@@ -1,13 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from teacher.forms import GradesForm
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 from main.views import pageNotFound
-from main.models import Auth, Classes, Schools
+from main.models import Auth, Classes, Schools, Grades
 
 
 def show_class(request, class_id):
 
     if request.user.is_authenticated:
         if request.user.is_teacher:
-            #classes = Classes.objects.filter(id = class_id)[0]
+
             all_students_one_school = Auth.objects.filter(school_number_id = request.user.school_number_id)
             full_class = Classes.objects.filter(id = class_id)[0]
             
@@ -39,40 +44,6 @@ def show_class(request, class_id):
         return render(request, 'teacher/class.html', context=context)
         
     return pageNotFound(request)
-
-
-    # if 4 < num_id < 12:
-    #     if request.user.is_teacher:
-    #         return render(request, 'teacher/class.html')
-    #     else:
-    #         return pageNotFound(request)
-
-
-# def show_class_a(request, num_id):
-#     if 4 < num_id < 12:
-#         if request.user.is_teacher:
-#             return render(request, 'teacher/class.html')
-#         else:
-#             return pageNotFound(request)
-
-#     else:
-#         return pageNotFound(request)
-
-
-# def show_class_b(request, num_id):
-#     if 4 < num_id < 12:
-#         if request.user.is_teacher:
-#             return render(request, 'teacher/class.html')
-#         else:
-#             return pageNotFound(request)
-
-
-# def show_class_c(request, num_id):
-#     if 4 < num_id < 12:
-#         if request.user.is_teacher:
-#             return render(request, 'teacher/class.html')
-#         else:
-#             return pageNotFound(request)
 
 
 def class_menu(request, class_id):
@@ -118,10 +89,14 @@ def undone_work(request, class_id):
     if request.user.is_authenticated:
         if request.user.is_teacher:
 
+            #comment_grade = Grades.objects.filter(student_class_id=class_id)
+
             #classes = Classes.objects.filter(id = class_id)[0]
-            all_students_one_school = Auth.objects.filter(school_number_id = request.user.school_number_id)
-            full_class = Classes.objects.filter(id = class_id)[0]
-            
+            all_students_one_school = Auth.objects.filter(school_number_id=request.user.school_number_id)
+            full_class = Classes.objects.filter(id=class_id)[0]
+
+            students_list = []
+            #for c in
             students_class_list = []
             for student in all_students_one_school:
                 if student.full_class == full_class:
@@ -130,13 +105,14 @@ def undone_work(request, class_id):
             numbers = []
             for i in range(1, len(students_class_list)+1):
                 numbers.append(i)
-            print(numbers)
+            #print(numbers)
 
 
             teacher_classes = Classes.objects.filter(school_id=request.user.school_number_id)
             
 
             context =  {
+                #'comment_grade': comment_grade,
                 'numbers': numbers,
                 'full_class': full_class,
                 'class_id': class_id,
@@ -151,17 +127,33 @@ def undone_work(request, class_id):
         
     return pageNotFound(request)
 
-
+@login_required
+@transaction.atomic
 def work_review(request, student_id):
+    if request.method == 'POST':
+        grades_form = GradesForm(request.POST, instance=request.user)
+        if grades_form.is_valid():
+            grades_form.save()
+            messages.success(request, _('Ваш профиль был успешно обновлен!'))
+            if request.user.is_teacher == True:
+                return redirect('home_teacher')
+            else:
+                return pageNotFound(request)
+        else:
+            messages.error(request, _('Пожалуйста, исправьте ошибки.'))
+    else:
+        grades_form = GradesForm(instance=request.user)
+
     if request.user.is_authenticated:
         if request.user.is_teacher:
             
+            #comment_grade = Grades.objects.filter(student_id = student_id)[0]
             students = Auth.objects.filter(id = student_id)[0]
-
+            
             context =  {
-                
-                #'student_id': student_id,
+            #    'comment_grade': comment_grade,
                 'students': students,
+                'grades_form': grades_form,
             }
         else:
             context = {
@@ -173,7 +165,29 @@ def work_review(request, student_id):
     return pageNotFound(request)
     
 def homework(request):
-    return render(request, 'teacher/homework.html')
+    if request.user.is_authenticated:
+        if request.user.is_teacher:
+
+            context =  {
+
+            }
+        else:
+            context = {
+                
+            }
+        return render(request, 'teacher/homework.html', context=context)
+    return pageNotFound(request)
 
 def classwork(request):
-    return render(request, 'teacher/classwork.html')
+    if request.user.is_authenticated:
+        if request.user.is_teacher:
+
+            context =  {
+
+            }
+        else:
+            context = {
+                
+            }
+        return render(request, 'teacher/classwork.html', context=context)
+    return pageNotFound(request)
