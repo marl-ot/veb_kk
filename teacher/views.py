@@ -1,3 +1,4 @@
+from turtle import done
 from django.shortcuts import render, redirect
 from teacher.forms import GradesForm
 from django.contrib.auth.decorators import login_required
@@ -73,10 +74,29 @@ def one_student(request, student_id):
             teacher = Auth.objects.filter(id=request.user.id)[0]
             works = Works.objects.filter(teacher_id=teacher.id)
             done_works = DoneWorks.objects.filter(student_id=student_id)
-            #print(works)
-            student = Auth.objects.filter(id = student_id)[0]
+            grades = Grades.objects.filter(student_id=student_id)
 
+            students_works_list = []
+            for student in done_works:
+                if student.student_id == student_id:
+                    students_works_list.append(student)
+            print(students_works_list)
+            numbers = []
+            for i in range(1, len(students_works_list)+1):
+                numbers.append(i)
+            print(numbers)
+            print(teacher, 'teacher')
+            print(works, 'works')
+            print(done_works, 'done_works')
+            student = Auth.objects.filter(id = student_id)[0]
+            print(student, "student")
+            
             context =  {
+                'grades': grades,
+                'numbers': numbers,
+                'works': works,
+                'done_works': done_works,
+                'student_id': student_id,
                 'student': student,
             }
             

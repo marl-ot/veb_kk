@@ -4,7 +4,7 @@
 
 {% block main %}
 
-<h3 class="class-h2 class-menu-h3"> {{ student.last_name }} {{ student.first_name }} {{ student.patronymic }} </h3>
+<h3 class="class-h2 class-menu-h3"> {{ student.last_name }} {{ student.first_name }} {{ student.patronymic }} {{ student.full_class }}</h3>
 <table cellspacing="0">
     <tr>
         <th>Номер</th>
@@ -13,53 +13,25 @@
         <th>Дата сдачи</th>
         <th>Оценка</th>
     </tr>
-    {% for student in all_students_one_school %}
-    {% if student.full_class == full_class %}
-        {% for work in comment_grade %}
-            {% if student.id == work.student.id %}
+    {% if student_id == student.id %}
+    {% for student_work in works %}
     <tr>
-        <td>1</td>
+        <td>{{ student_work.number }}</td>
         <td>
-            <a href="{% url 'work_review' student.id work.work_id %}" class="done_homework">Работа 1</a></td>
+            <a href="{% url 'work_review' student_id student_work.id %}" class="done_homework">{{ student_work.work_name }}</a></td>
         <td>
-            Сдано
+            {% if grades.status == True %}Проверено{% endif %}{% if grades.status == False %}Сдано{% endif %}
         </td>
         <td>
             2.03
         </td>
+        
         <td>
-            4
+            {% if grades.work_id == student_work.id %}{{ grades.grade }}{% endif %}
         </td>
+       
     </tr>
-    {% endif %}{% endfor %}{% endif %}{% endfor %}
-    <tr>
-        <td>2</td>
-        <td>
-            <a href="" class="done_homework">Работа 2</a></td>
-        <td>
-            Сдано
-        </td>
-        <td>
-            9.03
-        </td>
-        <td>
-            5
-        </td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>
-            <a href="" class="done_homework">Работа 3</a></td>
-        <td>
-            Сдано
-        </td>
-        <td>
-            16.03
-        </td>
-        <td>
-            4
-        </td>
-    </tr>
+{% endfor %}{% endif %}
 </table>
 
 {% endblock %}
