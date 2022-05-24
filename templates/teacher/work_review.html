@@ -11,15 +11,11 @@
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option> {% endcomment %}
-            {% if done_works.student_id == student_id %}
-            {% if request.user.school_number_id == student.school_number_id %}
+            {% if request.user.school_number_id == student.school_number_id %} 
             <span class="info-span">ФИО: {{ student.last_name}} {{ student.first_name }} {{ student.patronymic }} </span>
             <span class="info-span">Класс: {{ student.full_class }}</span>
             <span class="info-span">Задание: {{ works.task }}</span>
             <span class="info-span">Легенда: {{ works.legend }}</span>
-            {% if done_works.comment_from_student %}
-            <span class="info-span">Комментарий от ученика: {{ done_works.comment_from_student }}</span>
-            {% endif %}
             <form method="post">
                 {% csrf_token %}
                     {{ grades_form.as_p }}
@@ -33,6 +29,5 @@
 </section>
 
 
-{% endif %}
 {% endif %}
 {% endblock %}

@@ -74,7 +74,7 @@ def one_student(request, student_id):
             teacher = Auth.objects.filter(id=request.user.id)[0]
             works = Works.objects.filter(teacher_id=teacher.id)
             done_works = DoneWorks.objects.filter(student_id=student_id)
-            grades = Grades.objects.filter(student_id=student_id)
+            grades = DoneWorks.objects.filter(student_id=student_id)
 
             students_works_list = []
             for student in done_works:
