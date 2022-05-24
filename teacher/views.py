@@ -80,17 +80,20 @@ def one_student(request, student_id):
             for student in done_works:
                 if student.student_id == student_id:
                     students_works_list.append(student)
-            print(students_works_list)
+            #print(students_works_list)
             numbers = []
             for i in range(1, len(students_works_list)+1):
                 numbers.append(i)
-            print(numbers)
-            print(teacher, 'teacher')
-            print(works, 'works')
-            print(done_works, 'done_works')
+            #print(numbers)
+            #rint(teacher, 'teacher')
+            #print(works, 'works')
+            #print(done_works, 'done_works')
             student = Auth.objects.filter(id = student_id)[0]
-            print(student, "student")
-            
+            #print(student, "student")
+            # a=[]
+            # for i in grades:
+            #     a.append(i)
+            # print(i.status)
             context =  {
                 'grades': grades,
                 'numbers': numbers,
@@ -177,7 +180,7 @@ def work_review(request, student_id, work_id):
             #comment_grade = Grades.objects.filter(student_id = student_id)[0]
             student = Auth.objects.filter(id = student_id)[0]
             grades = Grades.objects.all()
-            done_works = DoneWorks.objects.filter(id=work_id, student_id=student_id)[0]
+            done_works = DoneWorks.objects.filter(id=work_id, student_id=student_id)
             works = Works.objects.filter(id=work_id)[0]
             my_school = Schools.objects.filter(id=request.user.school_number_id)[0]
             #print(done_works.student_id)

@@ -15,23 +15,25 @@
     </tr>
     {% if student_id == student.id %}
     {% for student_work in works %}
+    {% for g in grades %}
+    
     <tr>
         <td>{{ student_work.number }}</td>
         <td>
             <a href="{% url 'work_review' student_id student_work.id %}" class="done_homework">{{ student_work.work_name }}</a></td>
         <td>
-            {% if grades.status == True %}Проверено{% endif %}{% if grades.status == False %}Сдано{% endif %}
+            {% if g.status == True %}Проверено{% elif g.status == False %}Сдано{% endif %}
         </td>
         <td>
             2.03
         </td>
         
         <td>
-            {% if grades.work_id == student_work.id %}{{ grades.grade }}{% endif %}
+            {{ g.grade }}
         </td>
        
     </tr>
-{% endfor %}{% endif %}
+{% endfor %}{% endfor %}{% endif %}
 </table>
 
 {% endblock %}
