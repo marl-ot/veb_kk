@@ -67,7 +67,7 @@ def class_menu(request, class_id):
         if request.user.is_teacher:
             
             full_class = Classes.objects.get(id = class_id)
-            print(full_class)
+            #print(full_class)
             context =  {
                 'full_class': full_class,
                 'class_id': class_id,
@@ -181,24 +181,27 @@ def undone_work(request, class_id):
 @login_required
 @transaction.atomic
 def work_review(request, student_id, work_id):
-    if request.method == 'POST':
-        grades_form = GradesForm(request.POST, instance=request.user)
-        if grades_form.is_valid():
-            grades_form.save()
-            messages.success(request, _('Ваш профиль был успешно обновлен!'))
-            if request.user.is_teacher == True:
-                return redirect('home_teacher')
+    if request.user.is_authenticated:
+        if request.user.is_teacher:
+            done_works = DoneWorks.objects.get(id=student_id, work_id=work_id)
+            if request.method == 'POST':
+                grades_form = GradesForm(request.POST, instance=done_works)
+                if grades_form.is_valid():
+                    grades_form.save()
+                    messages.success(request, _('Ваш профиль был успешно обновлен!'))
+                    if request.user.is_teacher == True:
+                        return redirect('/')
+                    else:
+                        return pageNotFound(request)
+                else:
+                    messages.error(request, _('Пожалуйста, исправьте ошибки.'))
             else:
-                return pageNotFound(request)
-        else:
-            messages.error(request, _('Пожалуйста, исправьте ошибки.'))
-    else:
-        grades_form = GradesForm(instance=request.user)
+                grades_form = GradesForm(instance=done_works)
 
 
     if request.user.is_authenticated:
         if request.user.is_teacher:
-
+            print(done_works)
             student = Auth.objects.get(id=student_id)
             done_works = DoneWorks.objects.filter(id=work_id, student_id=student_id)
             works = Works.objects.get(id=work_id, teacher_id=request.user.id)

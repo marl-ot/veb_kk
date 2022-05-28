@@ -25,6 +25,10 @@ class Schools(models.Model):
     def __str__(self):
         return ('№' + str(self.school_num))
 
+    class Meta:
+        verbose_name = _("schools")
+        verbose_name_plural = _("Школы")
+
 
 class Classes(models.Model):
     class_number = models.IntegerField(
@@ -43,6 +47,10 @@ class Classes(models.Model):
 
     def __str__(self):
         return (str(self.class_number) + str(self.class_letter) + ' №' + str(self.school.school_num))
+
+    class Meta:
+        verbose_name = _("classes")
+        verbose_name_plural = _("Классы")
 
 
 class Auth(AbstractUser):
@@ -71,6 +79,10 @@ class Auth(AbstractUser):
             return ('Учитель ' + str(self.last_name) + ' ' + str(self.first_name) + ' ' + str(self.patronymic))
         else:
             return (str(self.username))
+
+    class Meta:
+        verbose_name = _("user")
+        verbose_name_plural = _("Пользователи")
 
 
 class Works(models.Model):
@@ -106,6 +118,10 @@ class Works(models.Model):
 
     def __str__(self):
         return (str(self.work_name) + ' ' + str(self.school_number.school_num))
+        
+    class Meta:
+        verbose_name = _("works")
+        verbose_name_plural = _("Заданные работы")
 
 
 class DoneWorks(models.Model):
@@ -146,3 +162,7 @@ class DoneWorks(models.Model):
 
     def __str__(self):
         return (str(self.student.last_name) + ' ' + str(self.work.work_name) + ' оценка ' + str(self.grade))
+
+    class Meta:
+        verbose_name = _("done_works")
+        verbose_name_plural = _("Сделанные работы")
