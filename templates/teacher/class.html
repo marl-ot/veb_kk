@@ -1,0 +1,43 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Журнал {{ full_class.class_number }}{{ full_class.class_letter }} класса{% endblock %} 
+
+{% block main %}
+{% if request.user.is_teacher %}
+<section class="class">
+    <div class="class-table">
+        <h3 class="class-h2 class-menu-h3"> Журнал {{ full_class.class_number }}{{ full_class.class_letter }} класса </h3>
+        <table cellspacing="0">
+            <tr>
+                <th>Номер по списку</th>
+                <th>ФИО</th>
+                {% for w in done_works %}
+                <th>{{ w.work.work_name }}</th>
+                {% endfor %}
+                <th>Средний балл</th>
+            </tr>
+
+            {% for student in all_students_one_school %}
+                {% if student.user_class == full_class %}
+                    {% if request.user.id == full_class.teacher_id %}
+            <tr>
+                
+                <td>{% for i in numbers %}{{ i }}{% endfor %}</td>
+                
+                <td>
+                    <a href="{% url 'one_student' student.id %}" class="one-student">{{ student.last_name }} {{ student.first_name }} {{ student.patronymic }}</a>
+                </td>
+                {% for w in done_works %}
+                    <td> {{ w.grade }} </td>
+                {% endfor %}
+                <td>{{ mean_grade }}</td>
+            </tr>
+            {% endif %}
+        {% endif %}{% endfor %}
+    {% comment %} </div>
+        <div class="class-works">
+            <a href="{% url 'undone_work' class_id %}" class="class-link"><span class="work-span">Непроверенные работы: </span>{{ uncheck_works }}</a>
+        </div> {% endcomment %}
+</section>
+{% endif %}
+{% endblock %}

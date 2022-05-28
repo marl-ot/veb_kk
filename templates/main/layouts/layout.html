@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/main/css/style.css' %}" rel="stylesheet">
+    <!-- <link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous"> -->
+    <link type="image/x-icon" rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}">
+    <link type="image/png" sizes="16x16" rel="icon" href="{% static 'main/img/favicon/favicon-16x16.png' %}">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'main/img/favicon/favicon-32x32.png' %}">
+    <link type="image/png" sizes="96x96" rel="icon" href="{% static 'main/img/favicon/favicon-96x96.png' %}">
+    <link type="image/png" sizes="120x120" rel="icon" href="{% static 'main/img/favicon/favicon-120x120.png' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header class="adapt-header">
+        <section class="page-navbar">
+            <div class="left-navbar">
+
+                {% if request.user.is_teacher %}
+
+                    <a href="{% url 'teacher_classes' %}" class="logo">
+
+                {% else %}
+
+                    <a href="{% url 'home' %}" class="logo">
+
+                {% endif %}
+                    <img src="{% static 'main/gif/logo.gif' %}" alt="Контурные карты" class="logo-gif" windth='220' height="220">
+                    </a>
+            </div>
+
+            {% block body %}
+                {% if request.user.is_authenticated %}
+            <div class="center-navbar">
+                <a href="{% url 'book' %}" class="center-nav-link">Учебник</a>
+                <a href="{% url 'atlas' %}" class="center-nav-link">Атлас</a>
+                <a href="{% url 'contour_map' %}" class="center-nav-link">Карта</a>
+            </div>
+                {% else %} 
+                    <div class="left-navbar">
+                    {% if request.user.is_teacher %}
+                        
+                        <a href="{% url 'teacher_classes' %}" class="title">Электронные контурные карты</a>
+
+                    {% else %}
+
+                        <a href="{% url 'home' %}" class="title">Электронные контурные карты</a>
+
+                    {% endif %} 
+                    </div> 
+                {% endif %} 
+            {% endblock %}
+
+            <div class="right-navbar">
+                <div class="navbar-registration">
+                    {% if request.user.is_authenticated %}
+                        <!-- <div class="logout"> -->
+                        <span class="hello-text">
+
+                        {% if request.user.is_teacher %}
+
+                            Учитель {% if request.user.first_name %} {{ user.first_name }} {% else %} {{ user.username }} {% endif %}
+                        
+                        {% else %}
+
+                            Ученик {% if request.user.first_name == None %} {{ user.username }} {% else %} {{ user.first_name }} {% endif %} 
+                        
+                        {% endif %}
+
+                        <a href="{% url 'logout' %}" class="logout-link">Выйти</a>
+                    
+                        </span>
+                    {% else %} 
+
+                    <!-- </div> -->
+                    <a href="{% url 'login' %}" class="registration-link">Войти</a> 
+                         
+                    {% endif %} 
+                </div>
+
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_teacher %}
+                        <a href="{% url 'account' %}" class="icon-account">
+                            <img src="{% static '/main/img/kvoka1.png' %}" alt="User" windth='119' height="119">
+
+                    {% else %}
+                        <a href="{% url 'account' %}" class="icon-account">
+                            <img src="{% static '/main/img/kvoka.png' %}" alt="User" windth='119' height="119">
+
+                    {% endif %}
+                {% else %}
+                    <img src="{% static '/main/img/kvoka.png' %}" alt="User" windth='119' height="119">
+                {% endif %}
+            </a>
+        </div>
+    </section>
+</header>
+    <div class="wrapper">
+        <main>
+            {% block main %} {% endblock %}
+        </main>
+    </div>
+    <footer>
+
+{% block footer %} 
+
+    {% if request.user.is_teacher %}
+        <a href="{% url 'teacher_classes' %}" class="to-start">На главную</a> 
+    {% else %}
+        <a href="{% url 'home' %}" class="to-start">На главную</a> 
+    {% endif %}
+        <!-- <a href="#" class="to-start">Техподдержка</a> -->
+        <span class="copyright"> Все права защищены</span> 
+{% endblock %}
+    </footer>
+</body>
+
+</html>

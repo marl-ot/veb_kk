@@ -1,0 +1,864 @@
+@import url("fonts/fonts.css");
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    /* min-height: 1000px;
+    min-width: 1000px; */
+}
+
+
+/* .center-nav-link:hover,
+.registration-link:hover,
+.form-sub:hover,
+.title:hover, */
+
+.button-map:hover,
+button:hover,
+a:hover {
+    color: rgb(42, 63, 182);
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+/* header */
+
+.adapt-header {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    background: #559ed6;
+    /* padding: 1% 3%; */
+    margin: 0 auto;
+    position: relative;
+}
+
+.page-navbar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.left-navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.title {
+    color: #000;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+}
+
+.logo-img {
+    margin-left: 100px;
+}
+
+.logo-gif {
+    margin-left: 100px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.center-navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 88px;
+    /* margin-left: 66px; */
+}
+
+.center-nav-link {
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 49px;
+}
+
+.center-nav-link:nth-child(2) {
+    margin: 0 72px;
+}
+
+.right-navbar {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+
+/*
+.icon-account {
+    margin-right: 126px;
+}
+*/
+
+.navbar-registration {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 27px;
+}
+
+.registration-link {
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 13px;
+    margin-right: 27px;
+}
+
+.hello-text,
+.logout-link {
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 13px;
+    margin-right: 27px;
+}
+
+
+/* main  index*/
+
+.wrapper {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    ;
+    display: flex;
+    /* flex-direction: row; */
+    height: 100%;
+    background-color: #89c9fa;
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.welcome {
+    display: flex;
+    /* background-color: #fff; */
+    align-items: flex-start;
+    /* padding-left: 30px; */
+    margin-top: 80px;
+    justify-content: center;
+    justify-items: center;
+    height: 90%;
+    background-image: url('/static/main/img/stand_kvokka.jpg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: bottom 0px right 50%;
+}
+
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15px;
+}
+
+.pdf-instr-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 24px;
+    margin-left: 30px;
+}
+
+.instruction-img {
+    height: 533px;
+    width: 375px;
+    /* margin-left: 40px; */
+    /* background-color: #fff; */
+    /* border-radius: 48px; */
+    /* padding: 5px; */
+    /* -webkit-border-radius: 48px;
+    -moz-border-radius: 48px;
+    -ms-border-radius: 48px; */
+    /* -o-border-radius: 48px; */
+    /* margin-left: 60px; */
+}
+
+.entering-video {
+    height: 300px;
+    width: 400px;
+    /* margin-top: 30px; */
+    /* border: rgb(42, 63, 182) solid 1px; */
+}
+
+.welcome-text {
+    color: #000;
+    background-color: #559ed6;
+    padding: 5% 3%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 35px;
+    max-width: 800px;
+    margin-left: 15px;
+    /* margin-top: 60px; */
+}
+
+
+/* auth */
+
+.form-sec {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.auth-form {
+    border: 2px solid white;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-width: 1000px;
+    align-items: center;
+}
+
+
+/*.floated {
+    float:left;
+    margin-right:5px;
+}
+*/
+
+.form-span {
+    color: rgb(0, 0, 0);
+    font-style: bold;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 45px;
+    padding-top: 10px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    margin: auto;
+    color: #1e8ac0;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    ;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    /* background-color: #000; */
+}
+
+.login-buttons button {
+    margin: 0 30px;
+}
+
+.form-sub {
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    background: #2dbaf6;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+    max-width: 316px;
+    margin: 30px auto;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+}
+
+
+/* .form_sub:hover {
+    transition: all 0.5s;
+    box-shadow: 0px 0px 20px 18px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 0px 20px 18px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 0px 0px 20px 18px rgba(255, 255, 255, 1);
+    -webkit-transition:;
+    -moz-transition:;
+    -ms-transition:;
+    -o-transition:; */
+
+
+/* } */
+
+.success {
+    color: #050537;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 84px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.warning {
+    color: red;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 84px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#id_username,
+#id_password,
+#id_password1,
+#id_password2 {
+    margin: 0 66px;
+    background-color: #69c9f2;
+    min-height: 49px;
+    font-weight: 700, bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000;
+}
+
+
+/* #id_old_password,
+#id_new_password.form-input,
+#id_new_password_2.form-input {
+    margin: auto;
+    color: #1e8ac0;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    background: #2dbaf6;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15px
+} */
+
+
+/* map */
+
+.main-map {
+    display: flex;
+}
+
+.colorButtons {
+    margin: 0 20px;
+}
+
+.buttonSize {
+    margin: 0 20px;
+}
+
+.Storage {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+}
+
+canvas {
+    cursor: crosshair;
+}
+
+div#sidebar {
+    position: absolute;
+    display: flex;
+    left: 0;
+    bottom: -250px;
+    padding: 20px 20px;
+    /* justify-content: space-around; */
+    /* top: 300; */
+    min-height: 49px;
+    font-weight: 700, bold;
+    font-size: 22px;
+    line-height: 28px;
+    color: #000;
+}
+
+canvas#canvas {
+    left: 25px;
+    top: 240px;
+}
+
+.Storage input {
+    /* margin-bottom: 15px; */
+}
+
+.legend-task {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000;
+    /* max-width: 240px; */
+}
+
+.legend {
+    padding-top: 100px;
+}
+
+.legend-input {
+    margin: auto;
+    color: #1e8ac0;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    background: #2dbaf6;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15px
+}
+
+.button-map {
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    background: #2dbaf6;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+    max-width: 316px;
+    /* margin: 30px auto; */
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+}
+
+
+/* classes */
+
+.classes-wrapper,
+.classes {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+}
+
+.classes-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.classes-wrapper {
+    margin: 38px 72px;
+    /* flex-direction: column; */
+}
+
+.class {
+    display: flex;
+}
+
+.class-works {
+    margin-top: 4%;
+}
+
+.class-h2 {
+    color: rgb(0, 0, 0);
+    font-style: bold;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 50px;
+    padding-left: 40px;
+}
+
+@media (max-width: 2500px) {
+    .classes-wrapper {
+        /* flex-direction: column; */
+        max-width: 1300px;
+    }
+}
+
+.work-span {
+    color: #000;
+}
+
+.class-link {
+    color: #fff;
+    border: none;
+    border-radius: 42px;
+    background: #2dbaf6;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 49px;
+    /* width: 200px; */
+    margin: 15px;
+    -webkit-border-radius: 42px;
+    -moz-border-radius: 42px;
+    -ms-border-radius: 42px;
+    -o-border-radius: 42px;
+}
+
+.class-menu {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
+
+.class-menu-h3 {
+    display: inline-block;
+    margin: 20px 35% 0;
+    font-size: 45px;
+    width: 1000px;
+}
+
+
+/* .class-11 {
+    width: 657px;
+} */
+
+
+/* end of classes */
+
+
+/* work review */
+
+.work-review {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 80px 5% 0;
+}
+
+.done-work {
+    width: 1100px;
+    height: 800px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-label {
+    color: rgb(0, 0, 0);
+    font-style: bold;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 45px;
+    padding-top: 10px;
+}
+
+.select-width {
+    width: 100px;
+}
+
+
+/* end of work review */
+
+
+/* account */
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 0 40px;
+    /* background-image: url('/static/main/img/point-kvokka.jpg');
+    background-size: 35%;
+    background-repeat: no-repeat;
+    background-position: bottom 0px right 50%; */
+}
+
+.info-span {
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 15px;
+}
+
+.button-acc {
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    background: #2dbaf6;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    cursor: pointer;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+    max-width: 316px;
+    /* margin: 30px auto; */
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+}
+
+
+/* end of account */
+
+
+/* table of class */
+
+TABLE {
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 30px;
+}
+
+TD,
+TH {
+    padding: 15px;
+    border: 1px solid #1e8ac0;
+}
+
+TH {
+    text-align: left;
+}
+
+
+/* end of table of class */
+
+
+/* homework and classwork */
+
+.select {
+    color: #fff;
+    border: none;
+    border-radius: 42px;
+    background: #2dbaf6;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 30px;
+}
+
+.input-hw-cw {
+    color: #000;
+    border: none;
+    background: #89c9fa;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 30px;
+}
+
+.sub-hm {
+    margin-left: 30px;
+}
+
+.active-span {
+    font-style: bold;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 30px;
+}
+
+
+/* end */
+
+
+/* student-home */
+
+.student-home {
+    /* display: flex;
+    flex-direction: column; */
+    /* margin: 10% auto; */
+    /* margin-top: 40px; */
+    height: 100%;
+    min-height: 1000px;
+    justify-content: space-around;
+    background-image: url('/static/main/img/raise-the-sun-kvokka.jpg');
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: bottom 100px right 50%;
+}
+
+.hm {
+    display: flex;
+    flex-direction: column;
+    background-color: azure;
+    padding: 100px 100px;
+    min-width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.hm-wrap {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 6%;
+}
+
+.home-page-h3 {
+    margin: 5% 45% 0 45%;
+    min-width: 20%;
+    color: rgb(0, 0, 0);
+    font-style: bold;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 45px;
+}
+
+.hm-span,
+.last-grade {
+    color: #000;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 30px;
+}
+
+.last-grade {
+    margin-top: 10px;
+}
+
+.hm-link {
+    margin-top: 10px;
+    font-weight: 700, bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: #559ed6;
+}
+
+
+/* end student-home */
+
+
+/* atlases and studentbook */
+
+.paginate-book {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.img-book {
+    width: 600px;
+    height: 794px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #4c65af;
+    color: white;
+    border: 1px solid #4c65af;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+/* end */
+
+
+/* footer  */
+
+footer {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    ;
+    /* flex: 1 0 auto; */
+    display: flex;
+    background-color: #fff;
+    color: #559ed6;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    padding: 30px 53px;
+    justify-content: space-between;
+}
+
+.to-start {
+    color: #559ed6;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.active-page {
+    color: rgb(42, 63, 182);
+}
+
+
+/* end footer  */

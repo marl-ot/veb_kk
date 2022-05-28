@@ -1,0 +1,31 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+<section class="class">
+    <div class="class-table">
+        <h3 class="class-h2 class-menu-h3"> Непроверенные работы {{ full_class.class_number }}{{ full_class.class_letter }} </h3>
+        <table cellspacing="0">
+            <tr>
+                <th>Номер по списку</th>
+                <th>ФИО</th>
+                <th>работа</th>
+                <th>сдана</th>
+            </tr>
+            {% for student in all_students_one_school %}
+                {% if student.user_class_id == class_id %}
+                    {% for work in comment_grade %}
+                        {% if student.id == work.student.id %}
+                            
+            <tr>
+                <td>{% for num in numbers %}{{ num }}{% endfor %}</td>
+
+                <td><a href="{% url 'work_review' student.id work.work_id %}" class="one-student">{{ student.last_name }} {{ student.first_name }} {{ student.patronymic }}</a></td>
+                
+                <td><a href="{% url 'work_review' student.id work.work_id %}" class="homework-review">{{ work.work_id }}</a></td>
+                
+                <td>16.03</td> 
+            </tr>
+            
+            {% endif %}{% endfor %}{% endif %}{% endfor %}
+        </table>
+    </div>
+</section>
+{% endblock %}

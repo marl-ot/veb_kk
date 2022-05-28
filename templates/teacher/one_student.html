@@ -1,0 +1,38 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} 
+
+{% block title %}Ученик{% endblock %} 
+
+{% block main %}
+
+<h3 class="class-h2 class-menu-h3"> {{ student.last_name }} {{ student.first_name }} {{ student.patronymic }} {{ student_class.class_number }}{{ student_class.class_letter }}</h3>
+<table cellspacing="0">
+    <tr>
+        <th>Номер</th>
+        <th>Работа</th>
+        <th>Статус</th>
+        <th>Дата проверки</th>
+        <th>Оценка</th>
+    </tr>
+    {% if student_id == student.id %}
+    {% for student_work in done_works %}
+    
+    <tr>
+        <td>{{ student_work.work.number }}</td>
+        <td>
+            <a href="{% url 'work_review' student_id student_work.work_id %}" class="done_homework">{{ student_work.work.work_name }}</a></td>
+        <td>
+            {% if student_work.grade %}Проверено{% else %}Сдано{% endif %}
+        </td>
+        <td>
+            {{ student_work.time_update }}
+        </td>
+        
+        <td>
+            {{ student_work.grade }}
+        </td>
+       
+    </tr>
+{% endfor %}{% endif %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'main/layouts/layout.html' %} {% load static %} {% block title %}Электронные контурные карты{% endblock %} {% block main %}
+{% if request.user.is_authenticated %}
+<section class="work-review">
+{% if request.user.is_teacher %}
+    <img src="{% static '/main/img/test-map-1.png' %}" alt="done_work" class="done-work"> <!-- ВЫВОД КАРТЫ ИЗ БАЗЫ -->
+    <form action="" class="review-form">
+        {% comment %} <label for="grade" class="review-label">оценка</label>
+        <select name="grade" id="grade" class="select select-width">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option> {% endcomment %}
+            {% if request.user.school_number_id == student.school_number_id %} 
+            <span class="info-span">ФИО: {{ student.last_name}} {{ student.first_name }} {{ student.patronymic }} </span>
+            <span class="info-span">Класс: {{ student_class.class_number }}{{ student_class.class_letter }}</span>
+            <span class="info-span">Работа: {{ works.work_name }}</span>
+            <span class="info-span">Задание: {{ works.task }}</span>
+            <span class="info-span">Легенда: {{ works.legend }}</span>
+            <form method="post">
+                {% csrf_token %}
+                    {{ grades_form.as_p }}
+                    <span>{{ error }}</span>
+        <button class="form-sub" type="submit">Сохранить</button>
+        {% endif %}
+        </select>
+        {% comment %} <label for="comment" class="review-label">Комментарий</label>
+        <textarea name="comment" id="comment" cols="60" rows="20"></textarea> {% endcomment %}
+    </form>
+
+{% else %}
+    <img src="{% static '/main/img/test-map-1.png' %}" alt="done_work" class="done-work"> <!-- ВЫВОД КАРТЫ ИЗ БАЗЫ -->
+    <form action="" class="review-form">
+            {% if request.user.school_number_id == student.school_number_id %} 
+            <span class="info-span">ФИО: {{ student.last_name}} {{ student.first_name }} {{ student.patronymic }} </span>
+            <span class="info-span">Класс: {{ student_class.class_number }}{{ student_class.class_letter }}</span>
+            <span class="info-span">Работа: {{ works.work_name }}</span>
+            <span class="info-span">Задание: {{ works.task }}</span>
+            <span class="info-span">Легенда: {{ works.legend }}</span>
+            <span class="info-span">Оценка: {{ done_works.grade }}</span>
+            {% if works.comment_from_teacher != None %}
+            <span class="info-span">Комментарий от учителя: {{ works.comment_from_teacher }}</span>
+            {% endif %}
+        {% endif %}
+        </select>
+    </form>
+{% endif %}
+</section>
+{% endif %}
+{% endblock %}
