@@ -10,6 +10,10 @@ from django.utils.translation import gettext_lazy as _
 @transaction.atomic
 def account_changes(request):
     if request.user.is_authenticated:
+
+        user_info = Auth.objects.get(id=request.user.id)
+        user_school = Schools.objects.get(id=request.user.school_number_id)
+
         if request.user.is_teacher:
             if request.method == 'POST':
                 user_form = UserForm(request.POST, instance=request.user)
@@ -24,13 +28,7 @@ def account_changes(request):
             else:
                 user_form = UserForm(instance=request.user)
                 teacher_form = TeacherForm(instance=request.user)
-
-    if request.user.is_authenticated:
-
-        user_info = Auth.objects.get(id=request.user.id)
-        user_school = Schools.objects.get(id=request.user.school_number_id)
-
-        if request.user.is_teacher:
+                
             
             teacher_classes = Classes.objects.filter(school_id=request.user.school_number_id)
             class_teacher = Classes.objects.filter(teacher_id=request.user.id)

@@ -195,10 +195,7 @@ def work_review(request, student_id, work_id):
             else:
                 grades_form = GradesForm(instance=done_works)
 
-
-    if request.user.is_authenticated:
-        if request.user.is_teacher:
-            print(done_works)
+            #print(done_works)
             student = Auth.objects.get(id=student_id)
             done_works = DoneWorks.objects.filter(id=work_id, student_id=student_id)
             works = Works.objects.get(id=work_id, teacher_id=request.user.id)
