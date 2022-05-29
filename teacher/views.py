@@ -189,10 +189,7 @@ def work_review(request, student_id, work_id):
                 if grades_form.is_valid():
                     grades_form.save()
                     messages.success(request, _('Ваш профиль был успешно обновлен!'))
-                    if request.user.is_teacher == True:
-                        return redirect('/')
-                    else:
-                        return pageNotFound(request)
+                    return redirect('/')
                 else:
                     messages.error(request, _('Пожалуйста, исправьте ошибки.'))
             else:
