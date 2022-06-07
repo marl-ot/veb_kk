@@ -226,7 +226,6 @@ def work_review(request, student_id, work_id):
                 'done_works': done_works,
                 'student': student,
                 'works': works,
-                'grades_form': grades_form,
                 'student_id': student_id,
                 'work_id': work_id,
                 'my_school': my_school,
