@@ -89,7 +89,7 @@
             <h3 class="home-page-h3">Привет, {{ user.first_name }}!</h3>
             <div class="hm-wrap">
                 <div class="hm">
-                    {% if grade %}
+                    {% if grade != 0%}
                         <span class="hm-span">Ваша оценка за последнее дз</span>
                         <span class="last-grade">{{ grade }}</span>
                         <a href="{% url 'student_review' student_id work_id %}" class="hm-link">Подробнее</a>
@@ -97,20 +97,23 @@
                         <span class="hm-span">Оценок пока нет</span>
                     {% endif %}
                 </div>
-
-                <div class="hm">
-                {% if is_active == 1 %}
-                    <span class="hm-span">Вам задано новое домашнее задание!</span>
-                    <a href="{% url 'active_homework' %}" class="hm-link">Посмотреть задание</a>
-                {% elif is_active > 1 %}
-                    <span class="hm-span">Вам задано новых домашних заданий: {{ is_active }}</span>
-                    <a href="{% url 'active_homework' %}" class="hm-link">Посмотреть задания</a>
+                {% if is_active != 0 %}
+                    <div class="hm">
+                        <span class="hm-span">Вам задано новое домашнее задание!</span>
+                        <a href="{% url 'active_homework' %}" class="hm-link">Посмотреть задание</a>
+                        {% if is_active > 1 %}
+                            <span class="hm-span">Вам задано новых домашних заданий: {{ is_active }}</span>
+                            <a href="{% url 'active_homework' %}" class="hm-link">Посмотреть задания</a>
+                        {% endif %}
+                    </div>
                 {% endif %}
-                </div>
-                
                 <div class="hm">
-                    <span class="hm-span">Список всех ваших домашних работ</span>
-                    <a href="{% url 'homework_list' %}" class="hm-link">Посмотреть</a>
+                    {% if is_active != 0 %}
+                        <span class="hm-span">Список всех ваших домашних работ</span>
+                        <a href="{% url 'homework_list' %}" class="hm-link">Посмотреть</a>
+                    {% else %}
+                        <span class="hm-span">У вас пока нет домашних работ</span>
+                    {% endif %}
                 </div>
             </div>
         </section>

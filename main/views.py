@@ -26,20 +26,25 @@ def index(request):
             }
 
         else:
-            student_id = request.user.id
+            student_id = request.user.id 
+            if done_works:
+                           
 
-            is_active = 0
-            for w in works:
-                if w.is_active == 1:
-                    is_active += 1
+                is_active = 0
+                for w in works:
+                    if w.is_active == 1:
+                        is_active += 1
 
-            for d in done_works:
-                if d.grade:
-                    grade = d.grade
-                    work_id = d.id
+                for d in done_works:
+                    if d.grade:
+                        grade = d.grade
+                        work_id = d.id
 
+            else:
+                work_id = 0
+                grade = 0
+                is_active = 0
             #print(is_active)
-
             context = {
                 'student_id': student_id,
                 'grade': grade,
